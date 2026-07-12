@@ -1,0 +1,44 @@
+============================================================
+LAPORAN EVALUASI SISTEM PREDIKSI PERTUMBUHAN BALITA
+Metode: WHO-Simulation + LOOCV
+============================================================
+
+--- SKENARIO 1: EARLY MONTHS (History: 4 bulan, Prediksi: 6 bulan) ---
+Kasus ID             | Kondisi              | Model                | MAE (cm) | RMSE     | R2      
+---------------------------------------------------------------------------------------------------
+EARLY-L-Normal       | Normal               | HAZ Weighted Trend   | 0.008    | 0.009    | 1.000   
+EARLY-L-NormalAtas   | Normal Atas          | HAZ Weighted Trend   | 0.007    | 0.008    | 1.000   
+EARLY-L-AtRisk       | At Risk              | HAZ Weighted Trend   | 0.012    | 0.012    | 1.000   
+EARLY-L-Stunted      | Stunted              | HAZ Weighted Trend   | 0.002    | 0.004    | 1.000   
+EARLY-L-SeverelyStunted | Severely Stunted     | HAZ Weighted Trend   | 0.017    | 0.017    | 1.000   
+EARLY-P-Normal       | Normal               | HAZ Weighted Trend   | 0.008    | 0.009    | 1.000   
+EARLY-P-NormalAtas   | Normal Atas          | HAZ Weighted Trend   | 0.007    | 0.008    | 1.000   
+EARLY-P-AtRisk       | At Risk              | HAZ Weighted Trend   | 0.003    | 0.006    | 1.000   
+EARLY-P-Stunted      | Stunted              | HAZ Weighted Trend   | 0.008    | 0.009    | 1.000   
+EARLY-P-SeverelyStunted | Severely Stunted     | HAZ Weighted Trend   | 0.008    | 0.011    | 1.000   
+---------------------------------------------------------------------------------------------------
+RATA-RATA            | Semua Kasus          |                      | 0.008    | 0.009    | 1.000   
+
+
+--- SKENARIO 2: NORMAL MODE (History: 6 bulan, Prediksi: 6 bulan) ---
+Kasus ID             | Kondisi              | Model                | MAE (cm) | RMSE     | R2      
+---------------------------------------------------------------------------------------------------
+NORM-L-Normal        | Normal               | Von Bertalanffy      | 1.333    | 1.627    | 0.525   
+NORM-L-NormalAtas    | Normal Atas          | Von Bertalanffy      | 1.383    | 1.692    | 0.513   
+NORM-L-AtRisk        | At Risk              | Von Bertalanffy      | 1.288    | 1.570    | 0.533   
+NORM-L-Stunted       | Stunted              | Von Bertalanffy      | 1.245    | 1.513    | 0.540   
+NORM-L-SeverelyStunted | Severely Stunted     | Von Bertalanffy      | 1.208    | 1.463    | 0.544   
+NORM-P-Normal        | Normal               | Von Bertalanffy      | 1.665    | 1.974    | 0.324   
+NORM-P-NormalAtas    | Normal Atas          | Von Bertalanffy      | 1.712    | 2.035    | 0.331   
+NORM-P-AtRisk        | At Risk              | Von Bertalanffy      | 1.610    | 1.907    | 0.322   
+NORM-P-Stunted       | Stunted              | Von Bertalanffy      | 1.547    | 1.830    | 0.325   
+NORM-P-SeverelyStunted | Severely Stunted     | Von Bertalanffy      | 1.500    | 1.771    | 0.317   
+---------------------------------------------------------------------------------------------------
+RATA-RATA            | Semua Kasus          |                      | 1.449    | 1.738    | 0.427   
+
+
+--- RINGKASAN PERFORMA PER MODEL ---
+Model                | Jumlah Kasus | MAE (cm) | RMSE     | R2      
+--------------------------------------------------------------------
+HAZ Weighted Trend   | 10           | 0.008    | 0.009    | 1.000   
+Von Bertalanffy      | 10           | 1.449    | 1.738    | 0.427   

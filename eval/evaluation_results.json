@@ -1,0 +1,202 @@
+[
+    {
+        "case_id": "EARLY-L-Normal",
+        "mode": "early_months",
+        "label": "Normal",
+        "sex": "L",
+        "model": "HAZ Weighted Trend",
+        "mae": 0.0083,
+        "rmse": 0.0091,
+        "r2": 1.0
+    },
+    {
+        "case_id": "NORM-L-Normal",
+        "mode": "normal",
+        "label": "Normal",
+        "sex": "L",
+        "model": "Von Bertalanffy",
+        "mae": 1.3333,
+        "rmse": 1.6265,
+        "r2": 0.525
+    },
+    {
+        "case_id": "EARLY-L-NormalAtas",
+        "mode": "early_months",
+        "label": "Normal Atas",
+        "sex": "L",
+        "model": "HAZ Weighted Trend",
+        "mae": 0.0067,
+        "rmse": 0.0082,
+        "r2": 1.0
+    },
+    {
+        "case_id": "NORM-L-NormalAtas",
+        "mode": "normal",
+        "label": "Normal Atas",
+        "sex": "L",
+        "model": "Von Bertalanffy",
+        "mae": 1.3833,
+        "rmse": 1.6915,
+        "r2": 0.5131
+    },
+    {
+        "case_id": "EARLY-L-AtRisk",
+        "mode": "early_months",
+        "label": "At Risk",
+        "sex": "L",
+        "model": "HAZ Weighted Trend",
+        "mae": 0.0117,
+        "rmse": 0.0122,
+        "r2": 1.0
+    },
+    {
+        "case_id": "NORM-L-AtRisk",
+        "mode": "normal",
+        "label": "At Risk",
+        "sex": "L",
+        "model": "Von Bertalanffy",
+        "mae": 1.2883,
+        "rmse": 1.5696,
+        "r2": 0.5327
+    },
+    {
+        "case_id": "EARLY-L-Stunted",
+        "mode": "early_months",
+        "label": "Stunted",
+        "sex": "L",
+        "model": "HAZ Weighted Trend",
+        "mae": 0.0017,
+        "rmse": 0.0041,
+        "r2": 1.0
+    },
+    {
+        "case_id": "NORM-L-Stunted",
+        "mode": "normal",
+        "label": "Stunted",
+        "sex": "L",
+        "model": "Von Bertalanffy",
+        "mae": 1.245,
+        "rmse": 1.5131,
+        "r2": 0.5396
+    },
+    {
+        "case_id": "EARLY-L-SeverelyStunted",
+        "mode": "early_months",
+        "label": "Severely Stunted",
+        "sex": "L",
+        "model": "HAZ Weighted Trend",
+        "mae": 0.0167,
+        "rmse": 0.0173,
+        "r2": 1.0
+    },
+    {
+        "case_id": "NORM-L-SeverelyStunted",
+        "mode": "normal",
+        "label": "Severely Stunted",
+        "sex": "L",
+        "model": "Von Bertalanffy",
+        "mae": 1.2083,
+        "rmse": 1.4631,
+        "r2": 0.5439
+    },
+    {
+        "case_id": "EARLY-P-Normal",
+        "mode": "early_months",
+        "label": "Normal",
+        "sex": "P",
+        "model": "HAZ Weighted Trend",
+        "mae": 0.0083,
+        "rmse": 0.0091,
+        "r2": 1.0
+    },
+    {
+        "case_id": "NORM-P-Normal",
+        "mode": "normal",
+        "label": "Normal",
+        "sex": "P",
+        "model": "Von Bertalanffy",
+        "mae": 1.665,
+        "rmse": 1.9742,
+        "r2": 0.3235
+    },
+    {
+        "case_id": "EARLY-P-NormalAtas",
+        "mode": "early_months",
+        "label": "Normal Atas",
+        "sex": "P",
+        "model": "HAZ Weighted Trend",
+        "mae": 0.0067,
+        "rmse": 0.0082,
+        "r2": 1.0
+    },
+    {
+        "case_id": "NORM-P-NormalAtas",
+        "mode": "normal",
+        "label": "Normal Atas",
+        "sex": "P",
+        "model": "Von Bertalanffy",
+        "mae": 1.7117,
+        "rmse": 2.0348,
+        "r2": 0.3308
+    },
+    {
+        "case_id": "EARLY-P-AtRisk",
+        "mode": "early_months",
+        "label": "At Risk",
+        "sex": "P",
+        "model": "HAZ Weighted Trend",
+        "mae": 0.0033,
+        "rmse": 0.0058,
+        "r2": 1.0
+    },
+    {
+        "case_id": "NORM-P-AtRisk",
+        "mode": "normal",
+        "label": "At Risk",
+        "sex": "P",
+        "model": "Von Bertalanffy",
+        "mae": 1.61,
+        "rmse": 1.9072,
+        "r2": 0.3215
+    },
+    {
+        "case_id": "EARLY-P-Stunted",
+        "mode": "early_months",
+        "label": "Stunted",
+        "sex": "P",
+        "model": "HAZ Weighted Trend",
+        "mae": 0.0083,
+        "rmse": 0.0091,
+        "r2": 1.0
+    },
+    {
+        "case_id": "NORM-P-Stunted",
+        "mode": "normal",
+        "label": "Stunted",
+        "sex": "P",
+        "model": "Von Bertalanffy",
+        "mae": 1.5467,
+        "rmse": 1.8299,
+        "r2": 0.3249
+    },
+    {
+        "case_id": "EARLY-P-SeverelyStunted",
+        "mode": "early_months",
+        "label": "Severely Stunted",
+        "sex": "P",
+        "model": "HAZ Weighted Trend",
+        "mae": 0.0083,
+        "rmse": 0.0108,
+        "r2": 1.0
+    },
+    {
+        "case_id": "NORM-P-SeverelyStunted",
+        "mode": "normal",
+        "label": "Severely Stunted",
+        "sex": "P",
+        "model": "Von Bertalanffy",
+        "mae": 1.5,
+        "rmse": 1.7709,
+        "r2": 0.3167
+    }
+]
