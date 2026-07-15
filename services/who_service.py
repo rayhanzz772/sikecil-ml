@@ -293,3 +293,196 @@ def get_who_median(age_months: int, sex: str, who_lms_df) -> float:
         return np.nan
 
     return float(row["M"].iloc[0])
+
+
+# ==========================================================
+# LOAD WHO WAZ & HCAZ
+# ==========================================================
+
+def load_who_waz(csv_path):
+    """Load WHO Weight-for-Age LMS table dari file CSV."""
+    return pd.read_csv(csv_path)
+
+
+def load_who_hcaz(csv_path):
+    """Load WHO Head Circumference-for-Age LMS table dari file CSV."""
+    return pd.read_csv(csv_path)
+
+
+# ==========================================================
+# WAZ (Weight-for-Age Z-score)
+# ==========================================================
+
+def compute_waz(weight_kg, age_months, sex, who_waz_df) -> float:
+    """
+    Menghitung Weight-for-Age Z-score (WAZ) menggunakan metode LMS WHO.
+
+    Parameters
+    ----------
+    weight_kg   : float — berat badan dalam kg
+    age_months  : int   — usia dalam bulan (0-60)
+    sex         : str   — "L" atau "P"
+    who_waz_df  : DataFrame — tabel WHO WAZ LMS
+
+    Returns
+    -------
+    float — nilai WAZ (z-score berat badan)
+    """
+    age = int(round(age_months))
+    age = max(0, min(60, age))
+
+    row = who_waz_df[
+        (who_waz_df["age"] == age) &
+        (who_waz_df["sex"] == sex)
+    ]
+
+    if row.empty:
+        return np.nan
+
+    L = float(row["L"].iloc[0])
+    M = float(row["M"].iloc[0])
+    S = float(row["S"].iloc[0])
+
+    if abs(L) < 1e-8:
+        waz = np.log(weight_kg / M) / S
+    else:
+        waz = (((weight_kg / M) ** L) - 1) / (L * S)
+
+    return float(waz)
+
+
+# ==========================================================
+# HCAZ (Head Circumference-for-Age Z-score)
+# ==========================================================
+
+def compute_hcaz(hc_cm, age_months, sex, who_hcaz_df) -> float:
+    """
+    Menghitung Head Circumference-for-Age Z-score (HCAZ) menggunakan metode LMS WHO.
+
+    Parameters
+    ----------
+    hc_cm       : float — lingkar kepala dalam cm
+    age_months  : int   — usia dalam bulan (0-60)
+    sex         : str   — "L" atau "P"
+    who_hcaz_df : DataFrame — tabel WHO HCAZ LMS
+
+    Returns
+    -------
+    float — nilai HCAZ (z-score lingkar kepala)
+    """
+    age = int(round(age_months))
+    age = max(0, min(60, age))
+
+    row = who_hcaz_df[
+        (who_hcaz_df["age"] == age) &
+        (who_hcaz_df["sex"] == sex)
+    ]
+
+    if row.empty:
+        return np.nan
+
+    L = float(row["L"].iloc[0])
+    M = float(row["M"].iloc[0])
+    S = float(row["S"].iloc[0])
+
+    if abs(L) < 1e-8:
+        hcaz = np.log(hc_cm / M) / S
+    else:
+        hcaz = (((hc_cm / M) ** L) - 1) / (L * S)
+
+    return float(hcaz)
+
+
+# ==========================================================
+# CLASSIFY STATUS — Z-SCORE UNIVERSAL
+# ==========================================================
+
+def classify_zscore_status(z_score: float, indicator: str = "height") -> str:
+    """
+    Mengklasifikasikan status pertumbuhan berdasarkan nilai Z-score.
+
+    Parameters
+    ----------
+    z_score   : float  — nilai z-score (HAZ / WAZ / HCAZ)
+    indicator : str    — "height" / "weight" / "head_circ"
+
+    Returns
+    -------
+    str — label status pertumbuhan
+    """
+    if np.isnan(z_score):
+        return "Tidak Diketahui"
+
+    if indicator == "weight":
+        if z_score < -3:
+            return "Gizi Buruk"
+        elif z_score < -2:
+            return "Gizi Kurang"
+        elif z_score <= 2:
+            return "Gizi Baik"
+        else:
+            return "Gizi Lebih"
+
+    elif indicator == "head_circ":
+        if z_score < -3:
+            return "Mikrosefali Berat"
+        elif z_score < -2:
+            return "Mikrosefali"
+        elif z_score <= 2:
+            return "Normal"
+        else:
+            return "Makrosefali"
+
+    else:  # height / HAZ default
+        if z_score < -3:
+            return "Stunting Berat"
+        elif z_score < -2:
+            return "Stunting"
+        elif z_score <= 2:
+            return "Normal"
+        else:
+            return "Tinggi"
+
+
+# ==========================================================
+# WHO MEDIAN HELPERS — BERAT BADAN & LINGKAR KEPALA
+# ==========================================================
+
+def get_who_weight_median(age_months: int, sex: str, who_waz_df) -> float:
+    """
+    Mengembalikan nilai median berat badan (M) dari tabel WHO WAZ
+    untuk usia dan jenis kelamin tertentu.
+    Digunakan sebagai prior mean untuk GPR berat badan.
+    """
+    age = int(round(age_months))
+    age = max(0, min(60, age))
+
+    row = who_waz_df[
+        (who_waz_df["age"] == age) &
+        (who_waz_df["sex"] == sex)
+    ]
+
+    if row.empty:
+        return np.nan
+
+    return float(row["M"].iloc[0])
+
+
+def get_who_hc_median(age_months: int, sex: str, who_hcaz_df) -> float:
+    """
+    Mengembalikan nilai median lingkar kepala (M) dari tabel WHO HCAZ
+    untuk usia dan jenis kelamin tertentu.
+    Digunakan sebagai prior mean untuk GPR lingkar kepala.
+    """
+    age = int(round(age_months))
+    age = max(0, min(60, age))
+
+    row = who_hcaz_df[
+        (who_hcaz_df["age"] == age) &
+        (who_hcaz_df["sex"] == sex)
+    ]
+
+    if row.empty:
+        return np.nan
+
+    return float(row["M"].iloc[0])
