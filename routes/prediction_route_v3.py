@@ -2,7 +2,9 @@
 prediction_route_v3.py — Endpoint /api/predict/v3
 
 Model yang digunakan:
-    - Gaussian Process Regression (GPR) + WHO Median Prior
+    - Gaussian Process Regression (GPR) + WHO Median Prior  [primary]
+    - Linear Regression                                      [comparison]
+    - Polynomial Regression (degree 2 & 3)                  [comparison]
 
 Keunggulan dibanding v1 dan v2:
     - Tidak pernah menghasilkan prediksi yang menurun (guaranteed)
@@ -14,6 +16,9 @@ Keunggulan dibanding v1 dan v2:
         1. Tinggi Badan (HAZ)
         2. Berat Badan (WAZ)   [opsional]
         3. Lingkar Kepala (HCAZ) [opsional]
+    - [v3.2] Model perbandingan (Linear & Polynomial) disertakan di:
+        - metrics            : MAE, RMSE, R² in-sample
+        - model_comparisons  : prediksi masa depan per model
 """
 import os
 import math
@@ -28,6 +33,8 @@ from services.preprocessing_service import (
 from services.model_service import (
     train_gpr_who,
     gpr_predict_with_who,
+    train_linear,
+    train_polynomial,
 )
 from services.prediction_service import build_prediction
 from services.who_service import (
@@ -98,6 +105,49 @@ def _compute_gpr_metrics(gpr_dict: dict, X, y) -> dict:
         return {"mae": round(mae_val, 6), "rmse": round(rmse_val, 6), "r2": round(r2_val, 6)}
     except Exception:
         return {"mae": None, "rmse": None, "r2": None}
+
+
+def _compute_sklearn_metrics(model_dict: dict, X, y) -> dict:
+    """
+    Menghitung MAE, RMSE, R² in-sample untuk model sklearn
+    (LinearRegression, Pipeline Polynomial, dst).
+    """
+    try:
+        model     = model_dict["model"]
+        y_fitted  = model.predict(X)
+        mae_val   = float(np.mean(np.abs(y - y_fitted)))
+        rmse_val  = float(math.sqrt(np.mean((y - y_fitted) ** 2)))
+        ss_res    = float(np.sum((y - y_fitted) ** 2))
+        ss_tot    = float(np.sum((y - float(np.mean(y))) ** 2))
+        r2_val    = 1.0 - (ss_res / ss_tot) if ss_tot > 0 else 1.0
+        return {"mae": round(mae_val, 6), "rmse": round(rmse_val, 6), "r2": round(r2_val, 6)}
+    except Exception:
+        return {"mae": None, "rmse": None, "r2": None}
+
+
+def _predict_sklearn_future(
+    model_dict: dict,
+    last_age: int,
+    horizon: int,
+) -> list[dict]:
+    """
+    Hasilkan prediksi masa depan (age = last_age+1 … last_age+horizon)
+    menggunakan model sklearn biasa (Linear / Polynomial).
+
+    Returns
+    -------
+    list of dict: [{"age": int, "value": float}, ...]
+    """
+    try:
+        model = model_dict["model"]
+        future_ages = np.array([[last_age + i] for i in range(1, horizon + 1)], dtype=float)
+        preds = model.predict(future_ages)
+        return [
+            {"age": int(last_age + i + 1), "value": round(max(0.0, float(preds[i])), 3)}
+            for i in range(horizon)
+        ]
+    except Exception:
+        return []
 
 
 # ============================================================
@@ -337,8 +387,49 @@ def predict_v3():
             except Exception:
                 preds_hc_enriched = None
 
-    # 12. Hitung metrik in-sample
-    gpr_metrics = {"GPR WHO Prior": _compute_gpr_metrics(gpr_h, X_h, y_h)}
+    # 12. Latih model perbandingan: Linear Regression & Polynomial Regression
+    #     (hanya untuk tinggi badan — indikator primer)
+    comparison_models = []
+    linear_dict = None
+    poly2_dict  = None
+    poly3_dict  = None
+
+    try:
+        linear_dict = train_linear(X_h, y_h)
+        comparison_models.append(linear_dict)
+    except Exception:
+        linear_dict = None
+
+    try:
+        poly2_dict = train_polynomial(X_h, y_h, degree=2)
+        if poly2_dict is not None:
+            comparison_models.append(poly2_dict)
+    except Exception:
+        poly2_dict = None
+
+    try:
+        poly3_dict = train_polynomial(X_h, y_h, degree=3)
+        if poly3_dict is not None:
+            comparison_models.append(poly3_dict)
+    except Exception:
+        poly3_dict = None
+
+    # 12a. Hitung metrik in-sample — GPR + model perbandingan
+    all_metrics = {"GPR WHO Prior": _compute_gpr_metrics(gpr_h, X_h, y_h)}
+    for m in comparison_models:
+        if m is not None:
+            all_metrics[m["name"]] = _compute_sklearn_metrics(m, X_h, y_h)
+
+    # 12b. Buat prediksi masa depan untuk model perbandingan
+    comparison_predictions = {}
+    for m in comparison_models:
+        if m is None:
+            continue
+        future_preds = _predict_sklearn_future(m, last_age, horizon)
+        comparison_predictions[m["name"]] = future_preds
+
+    # (alias untuk kompatibilitas ke bawah)
+    gpr_metrics = all_metrics
 
     # 13. Gabungkan prediksi menjadi satu list per bulan
     combined = []
@@ -387,8 +478,10 @@ def predict_v3():
         "selected_model": "GPR WHO Prior",
         "n_history":      n_samples,
         "skipped_models": [],
-        "metrics":        gpr_metrics,
+        "metrics":        all_metrics,
         "prediction":     combined,
+        # Model perbandingan — hanya prediksi tinggi badan untuk evaluasi
+        "model_comparisons": comparison_predictions,
     }
 
     return jsonify(response), 200

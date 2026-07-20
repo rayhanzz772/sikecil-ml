@@ -1,0 +1,1502 @@
+[
+  {
+    "case_id": "EARLY-L-Normal",
+    "mode": "early_months",
+    "label": "Normal",
+    "sex": "L",
+    "model": "Linear Regression",
+    "mae": 7.0967,
+    "rmse": 8.0604,
+    "r2": -7.6441
+  },
+  {
+    "case_id": "EARLY-L-Normal",
+    "mode": "early_months",
+    "label": "Normal",
+    "sex": "L",
+    "model": "Polynomial Degree 2",
+    "mae": 5.1033,
+    "rmse": 6.5525,
+    "r2": -4.7125
+  },
+  {
+    "case_id": "EARLY-L-Normal",
+    "mode": "early_months",
+    "label": "Normal",
+    "sex": "L",
+    "model": "Bayesian Ridge",
+    "mae": 7.02,
+    "rmse": 7.9799,
+    "r2": -7.4724
+  },
+  {
+    "case_id": "EARLY-L-Normal",
+    "mode": "early_months",
+    "label": "Normal",
+    "sex": "L",
+    "model": "Von Bertalanffy",
+    "mae": 1.0067,
+    "rmse": 1.25,
+    "r2": 0.7921
+  },
+  {
+    "case_id": "EARLY-L-Normal",
+    "mode": "early_months",
+    "label": "Normal",
+    "sex": "L",
+    "model": "Gompertz",
+    "mae": 1.475,
+    "rmse": 1.7957,
+    "r2": 0.571
+  },
+  {
+    "case_id": "EARLY-L-Normal",
+    "mode": "early_months",
+    "label": "Normal",
+    "sex": "L",
+    "model": "GPR WHO Prior",
+    "mae": 0.0017,
+    "rmse": 0.0041,
+    "r2": 1.0
+  },
+  {
+    "case_id": "EARLY-L-Normal",
+    "mode": "early_months",
+    "label": "Normal",
+    "sex": "L",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0083,
+    "rmse": 0.0091,
+    "r2": 1.0
+  },
+  {
+    "case_id": "NORM-L-Normal",
+    "mode": "normal",
+    "label": "Normal",
+    "sex": "L",
+    "model": "Linear Regression",
+    "mae": 6.805,
+    "rmse": 7.453,
+    "r2": -8.9748
+  },
+  {
+    "case_id": "NORM-L-Normal",
+    "mode": "normal",
+    "label": "Normal",
+    "sex": "L",
+    "model": "Polynomial Degree 2",
+    "mae": 5.4767,
+    "rmse": 6.8001,
+    "r2": -7.3037
+  },
+  {
+    "case_id": "NORM-L-Normal",
+    "mode": "normal",
+    "label": "Normal",
+    "sex": "L",
+    "model": "Polynomial Degree 3",
+    "mae": 3.0583,
+    "rmse": 4.1374,
+    "r2": -2.074
+  },
+  {
+    "case_id": "NORM-L-Normal",
+    "mode": "normal",
+    "label": "Normal",
+    "sex": "L",
+    "model": "Bayesian Ridge",
+    "mae": 6.7117,
+    "rmse": 7.3567,
+    "r2": -8.7187
+  },
+  {
+    "case_id": "NORM-L-Normal",
+    "mode": "normal",
+    "label": "Normal",
+    "sex": "L",
+    "model": "Von Bertalanffy",
+    "mae": 1.3333,
+    "rmse": 1.6265,
+    "r2": 0.525
+  },
+  {
+    "case_id": "NORM-L-Normal",
+    "mode": "normal",
+    "label": "Normal",
+    "sex": "L",
+    "model": "Gompertz",
+    "mae": 1.7517,
+    "rmse": 2.0958,
+    "r2": 0.2113
+  },
+  {
+    "case_id": "NORM-L-Normal",
+    "mode": "normal",
+    "label": "Normal",
+    "sex": "L",
+    "model": "GPR WHO Prior",
+    "mae": 0.0,
+    "rmse": 0.0,
+    "r2": 1.0
+  },
+  {
+    "case_id": "NORM-L-Normal",
+    "mode": "normal",
+    "label": "Normal",
+    "sex": "L",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0017,
+    "rmse": 0.0041,
+    "r2": 1.0
+  },
+  {
+    "case_id": "EARLY-L-NormalAtas",
+    "mode": "early_months",
+    "label": "Normal Atas",
+    "sex": "L",
+    "model": "Linear Regression",
+    "mae": 7.155,
+    "rmse": 8.1235,
+    "r2": -7.4442
+  },
+  {
+    "case_id": "EARLY-L-NormalAtas",
+    "mode": "early_months",
+    "label": "Normal Atas",
+    "sex": "L",
+    "model": "Polynomial Degree 2",
+    "mae": 5.1817,
+    "rmse": 6.6506,
+    "r2": -4.6596
+  },
+  {
+    "case_id": "EARLY-L-NormalAtas",
+    "mode": "early_months",
+    "label": "Normal Atas",
+    "sex": "L",
+    "model": "Bayesian Ridge",
+    "mae": 7.08,
+    "rmse": 8.0457,
+    "r2": -7.2831
+  },
+  {
+    "case_id": "EARLY-L-NormalAtas",
+    "mode": "early_months",
+    "label": "Normal Atas",
+    "sex": "L",
+    "model": "Von Bertalanffy",
+    "mae": 1.0367,
+    "rmse": 1.2869,
+    "r2": 0.7881
+  },
+  {
+    "case_id": "EARLY-L-NormalAtas",
+    "mode": "early_months",
+    "label": "Normal Atas",
+    "sex": "L",
+    "model": "Gompertz",
+    "mae": 1.5033,
+    "rmse": 1.829,
+    "r2": 0.5719
+  },
+  {
+    "case_id": "EARLY-L-NormalAtas",
+    "mode": "early_months",
+    "label": "Normal Atas",
+    "sex": "L",
+    "model": "GPR WHO Prior",
+    "mae": 0.1617,
+    "rmse": 0.1803,
+    "r2": 0.9958
+  },
+  {
+    "case_id": "EARLY-L-NormalAtas",
+    "mode": "early_months",
+    "label": "Normal Atas",
+    "sex": "L",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0067,
+    "rmse": 0.0082,
+    "r2": 1.0
+  },
+  {
+    "case_id": "NORM-L-NormalAtas",
+    "mode": "normal",
+    "label": "Normal Atas",
+    "sex": "L",
+    "model": "Linear Regression",
+    "mae": 6.845,
+    "rmse": 7.4931,
+    "r2": -8.5554
+  },
+  {
+    "case_id": "NORM-L-NormalAtas",
+    "mode": "normal",
+    "label": "Normal Atas",
+    "sex": "L",
+    "model": "Polynomial Degree 2",
+    "mae": 5.5567,
+    "rmse": 6.8994,
+    "r2": -7.1012
+  },
+  {
+    "case_id": "NORM-L-NormalAtas",
+    "mode": "normal",
+    "label": "Normal Atas",
+    "sex": "L",
+    "model": "Polynomial Degree 3",
+    "mae": 3.025,
+    "rmse": 4.0966,
+    "r2": -1.856
+  },
+  {
+    "case_id": "NORM-L-NormalAtas",
+    "mode": "normal",
+    "label": "Normal Atas",
+    "sex": "L",
+    "model": "Bayesian Ridge",
+    "mae": 6.7483,
+    "rmse": 7.3933,
+    "r2": -8.3025
+  },
+  {
+    "case_id": "NORM-L-NormalAtas",
+    "mode": "normal",
+    "label": "Normal Atas",
+    "sex": "L",
+    "model": "Von Bertalanffy",
+    "mae": 1.3833,
+    "rmse": 1.6915,
+    "r2": 0.5131
+  },
+  {
+    "case_id": "NORM-L-NormalAtas",
+    "mode": "normal",
+    "label": "Normal Atas",
+    "sex": "L",
+    "model": "Gompertz",
+    "mae": 1.8017,
+    "rmse": 2.1586,
+    "r2": 0.207
+  },
+  {
+    "case_id": "NORM-L-NormalAtas",
+    "mode": "normal",
+    "label": "Normal Atas",
+    "sex": "L",
+    "model": "GPR WHO Prior",
+    "mae": 0.1217,
+    "rmse": 0.1492,
+    "r2": 0.9962
+  },
+  {
+    "case_id": "NORM-L-NormalAtas",
+    "mode": "normal",
+    "label": "Normal Atas",
+    "sex": "L",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0067,
+    "rmse": 0.0082,
+    "r2": 1.0
+  },
+  {
+    "case_id": "EARLY-L-AtRisk",
+    "mode": "early_months",
+    "label": "At Risk",
+    "sex": "L",
+    "model": "Linear Regression",
+    "mae": 7.0167,
+    "rmse": 7.9719,
+    "r2": -7.8041
+  },
+  {
+    "case_id": "EARLY-L-AtRisk",
+    "mode": "early_months",
+    "label": "At Risk",
+    "sex": "L",
+    "model": "Polynomial Degree 2",
+    "mae": 5.185,
+    "rmse": 6.6377,
+    "r2": -5.1038
+  },
+  {
+    "case_id": "EARLY-L-AtRisk",
+    "mode": "early_months",
+    "label": "At Risk",
+    "sex": "L",
+    "model": "Bayesian Ridge",
+    "mae": 6.9417,
+    "rmse": 7.8937,
+    "r2": -7.6323
+  },
+  {
+    "case_id": "EARLY-L-AtRisk",
+    "mode": "early_months",
+    "label": "At Risk",
+    "sex": "L",
+    "model": "Von Bertalanffy",
+    "mae": 1.0483,
+    "rmse": 1.2869,
+    "r2": 0.7706
+  },
+  {
+    "case_id": "EARLY-L-AtRisk",
+    "mode": "early_months",
+    "label": "At Risk",
+    "sex": "L",
+    "model": "Gompertz",
+    "mae": 1.5167,
+    "rmse": 1.8328,
+    "r2": 0.5346
+  },
+  {
+    "case_id": "EARLY-L-AtRisk",
+    "mode": "early_months",
+    "label": "At Risk",
+    "sex": "L",
+    "model": "GPR WHO Prior",
+    "mae": 0.145,
+    "rmse": 0.1695,
+    "r2": 0.996
+  },
+  {
+    "case_id": "EARLY-L-AtRisk",
+    "mode": "early_months",
+    "label": "At Risk",
+    "sex": "L",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0117,
+    "rmse": 0.0122,
+    "r2": 1.0
+  },
+  {
+    "case_id": "NORM-L-AtRisk",
+    "mode": "normal",
+    "label": "At Risk",
+    "sex": "L",
+    "model": "Linear Regression",
+    "mae": 6.755,
+    "rmse": 7.4031,
+    "r2": -9.3952
+  },
+  {
+    "case_id": "NORM-L-AtRisk",
+    "mode": "normal",
+    "label": "At Risk",
+    "sex": "L",
+    "model": "Polynomial Degree 2",
+    "mae": 5.39,
+    "rmse": 6.6867,
+    "r2": -7.4808
+  },
+  {
+    "case_id": "NORM-L-AtRisk",
+    "mode": "normal",
+    "label": "At Risk",
+    "sex": "L",
+    "model": "Polynomial Degree 3",
+    "mae": 3.325,
+    "rmse": 4.4777,
+    "r2": -2.8029
+  },
+  {
+    "case_id": "NORM-L-AtRisk",
+    "mode": "normal",
+    "label": "At Risk",
+    "sex": "L",
+    "model": "Bayesian Ridge",
+    "mae": 6.6633,
+    "rmse": 7.3081,
+    "r2": -9.1301
+  },
+  {
+    "case_id": "NORM-L-AtRisk",
+    "mode": "normal",
+    "label": "At Risk",
+    "sex": "L",
+    "model": "Von Bertalanffy",
+    "mae": 1.2883,
+    "rmse": 1.5696,
+    "r2": 0.5327
+  },
+  {
+    "case_id": "NORM-L-AtRisk",
+    "mode": "normal",
+    "label": "At Risk",
+    "sex": "L",
+    "model": "Gompertz",
+    "mae": 1.71,
+    "rmse": 2.0422,
+    "r2": 0.2089
+  },
+  {
+    "case_id": "NORM-L-AtRisk",
+    "mode": "normal",
+    "label": "At Risk",
+    "sex": "L",
+    "model": "GPR WHO Prior",
+    "mae": 0.0983,
+    "rmse": 0.1373,
+    "r2": 0.9964
+  },
+  {
+    "case_id": "NORM-L-AtRisk",
+    "mode": "normal",
+    "label": "At Risk",
+    "sex": "L",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0017,
+    "rmse": 0.0041,
+    "r2": 1.0
+  },
+  {
+    "case_id": "EARLY-L-Stunted",
+    "mode": "early_months",
+    "label": "Stunted",
+    "sex": "L",
+    "model": "Linear Regression",
+    "mae": 6.955,
+    "rmse": 7.9028,
+    "r2": -8.0043
+  },
+  {
+    "case_id": "EARLY-L-Stunted",
+    "mode": "early_months",
+    "label": "Stunted",
+    "sex": "L",
+    "model": "Polynomial Degree 2",
+    "mae": 5.1117,
+    "rmse": 6.545,
+    "r2": -5.176
+  },
+  {
+    "case_id": "EARLY-L-Stunted",
+    "mode": "early_months",
+    "label": "Stunted",
+    "sex": "L",
+    "model": "Bayesian Ridge",
+    "mae": 6.8817,
+    "rmse": 7.8257,
+    "r2": -7.8294
+  },
+  {
+    "case_id": "EARLY-L-Stunted",
+    "mode": "early_months",
+    "label": "Stunted",
+    "sex": "L",
+    "model": "Von Bertalanffy",
+    "mae": 1.0167,
+    "rmse": 1.2464,
+    "r2": 0.776
+  },
+  {
+    "case_id": "EARLY-L-Stunted",
+    "mode": "early_months",
+    "label": "Stunted",
+    "sex": "L",
+    "model": "Gompertz",
+    "mae": 1.49,
+    "rmse": 1.7967,
+    "r2": 0.5346
+  },
+  {
+    "case_id": "EARLY-L-Stunted",
+    "mode": "early_months",
+    "label": "Stunted",
+    "sex": "L",
+    "model": "GPR WHO Prior",
+    "mae": 0.2533,
+    "rmse": 0.3054,
+    "r2": 0.9866
+  },
+  {
+    "case_id": "EARLY-L-Stunted",
+    "mode": "early_months",
+    "label": "Stunted",
+    "sex": "L",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0017,
+    "rmse": 0.0041,
+    "r2": 1.0
+  },
+  {
+    "case_id": "NORM-L-Stunted",
+    "mode": "normal",
+    "label": "Stunted",
+    "sex": "L",
+    "model": "Linear Regression",
+    "mae": 6.7067,
+    "rmse": 7.3548,
+    "r2": -9.8777
+  },
+  {
+    "case_id": "NORM-L-Stunted",
+    "mode": "normal",
+    "label": "Stunted",
+    "sex": "L",
+    "model": "Polynomial Degree 2",
+    "mae": 5.31,
+    "rmse": 6.5843,
+    "r2": -7.7179
+  },
+  {
+    "case_id": "NORM-L-Stunted",
+    "mode": "normal",
+    "label": "Stunted",
+    "sex": "L",
+    "model": "Polynomial Degree 3",
+    "mae": 3.49,
+    "rmse": 4.689,
+    "r2": -3.4214
+  },
+  {
+    "case_id": "NORM-L-Stunted",
+    "mode": "normal",
+    "label": "Stunted",
+    "sex": "L",
+    "model": "Bayesian Ridge",
+    "mae": 6.61,
+    "rmse": 7.2559,
+    "r2": -9.5872
+  },
+  {
+    "case_id": "NORM-L-Stunted",
+    "mode": "normal",
+    "label": "Stunted",
+    "sex": "L",
+    "model": "Von Bertalanffy",
+    "mae": 1.245,
+    "rmse": 1.5131,
+    "r2": 0.5396
+  },
+  {
+    "case_id": "NORM-L-Stunted",
+    "mode": "normal",
+    "label": "Stunted",
+    "sex": "L",
+    "model": "Gompertz",
+    "mae": 1.6717,
+    "rmse": 1.9871,
+    "r2": 0.206
+  },
+  {
+    "case_id": "NORM-L-Stunted",
+    "mode": "normal",
+    "label": "Stunted",
+    "sex": "L",
+    "model": "GPR WHO Prior",
+    "mae": 0.1967,
+    "rmse": 0.2428,
+    "r2": 0.9881
+  },
+  {
+    "case_id": "NORM-L-Stunted",
+    "mode": "normal",
+    "label": "Stunted",
+    "sex": "L",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0,
+    "rmse": 0.0,
+    "r2": 1.0
+  },
+  {
+    "case_id": "EARLY-L-SeverelyStunted",
+    "mode": "early_months",
+    "label": "Severely Stunted",
+    "sex": "L",
+    "model": "Linear Regression",
+    "mae": 6.9067,
+    "rmse": 7.8485,
+    "r2": -8.2625
+  },
+  {
+    "case_id": "EARLY-L-SeverelyStunted",
+    "mode": "early_months",
+    "label": "Severely Stunted",
+    "sex": "L",
+    "model": "Polynomial Degree 2",
+    "mae": 5.0933,
+    "rmse": 6.5189,
+    "r2": -5.3901
+  },
+  {
+    "case_id": "EARLY-L-SeverelyStunted",
+    "mode": "early_months",
+    "label": "Severely Stunted",
+    "sex": "L",
+    "model": "Bayesian Ridge",
+    "mae": 6.8317,
+    "rmse": 7.7707,
+    "r2": -8.0798
+  },
+  {
+    "case_id": "EARLY-L-SeverelyStunted",
+    "mode": "early_months",
+    "label": "Severely Stunted",
+    "sex": "L",
+    "model": "Von Bertalanffy",
+    "mae": 0.9983,
+    "rmse": 1.2225,
+    "r2": 0.7753
+  },
+  {
+    "case_id": "EARLY-L-SeverelyStunted",
+    "mode": "early_months",
+    "label": "Severely Stunted",
+    "sex": "L",
+    "model": "Gompertz",
+    "mae": 1.4817,
+    "rmse": 1.7836,
+    "r2": 0.5216
+  },
+  {
+    "case_id": "EARLY-L-SeverelyStunted",
+    "mode": "early_months",
+    "label": "Severely Stunted",
+    "sex": "L",
+    "model": "GPR WHO Prior",
+    "mae": 0.3733,
+    "rmse": 0.45,
+    "r2": 0.9696
+  },
+  {
+    "case_id": "EARLY-L-SeverelyStunted",
+    "mode": "early_months",
+    "label": "Severely Stunted",
+    "sex": "L",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0167,
+    "rmse": 0.0173,
+    "r2": 1.0
+  },
+  {
+    "case_id": "NORM-L-SeverelyStunted",
+    "mode": "normal",
+    "label": "Severely Stunted",
+    "sex": "L",
+    "model": "Linear Regression",
+    "mae": 6.6667,
+    "rmse": 7.3156,
+    "r2": -10.4041
+  },
+  {
+    "case_id": "NORM-L-SeverelyStunted",
+    "mode": "normal",
+    "label": "Severely Stunted",
+    "sex": "L",
+    "model": "Polynomial Degree 2",
+    "mae": 5.2583,
+    "rmse": 6.517,
+    "r2": -8.05
+  },
+  {
+    "case_id": "NORM-L-SeverelyStunted",
+    "mode": "normal",
+    "label": "Severely Stunted",
+    "sex": "L",
+    "model": "Polynomial Degree 3",
+    "mae": 3.5867,
+    "rmse": 4.8141,
+    "r2": -3.9384
+  },
+  {
+    "case_id": "NORM-L-SeverelyStunted",
+    "mode": "normal",
+    "label": "Severely Stunted",
+    "sex": "L",
+    "model": "Bayesian Ridge",
+    "mae": 6.5717,
+    "rmse": 7.2168,
+    "r2": -10.0981
+  },
+  {
+    "case_id": "NORM-L-SeverelyStunted",
+    "mode": "normal",
+    "label": "Severely Stunted",
+    "sex": "L",
+    "model": "Von Bertalanffy",
+    "mae": 1.2083,
+    "rmse": 1.4631,
+    "r2": 0.5439
+  },
+  {
+    "case_id": "NORM-L-SeverelyStunted",
+    "mode": "normal",
+    "label": "Severely Stunted",
+    "sex": "L",
+    "model": "Gompertz",
+    "mae": 1.6367,
+    "rmse": 1.9412,
+    "r2": 0.1971
+  },
+  {
+    "case_id": "NORM-L-SeverelyStunted",
+    "mode": "normal",
+    "label": "Severely Stunted",
+    "sex": "L",
+    "model": "GPR WHO Prior",
+    "mae": 0.275,
+    "rmse": 0.3409,
+    "r2": 0.9752
+  },
+  {
+    "case_id": "NORM-L-SeverelyStunted",
+    "mode": "normal",
+    "label": "Severely Stunted",
+    "sex": "L",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0083,
+    "rmse": 0.0091,
+    "r2": 1.0
+  },
+  {
+    "case_id": "EARLY-P-Normal",
+    "mode": "early_months",
+    "label": "Normal",
+    "sex": "P",
+    "model": "Linear Regression",
+    "mae": 6.2533,
+    "rmse": 7.0733,
+    "r2": -5.6826
+  },
+  {
+    "case_id": "EARLY-P-Normal",
+    "mode": "early_months",
+    "label": "Normal",
+    "sex": "P",
+    "model": "Polynomial Degree 2",
+    "mae": 5.81,
+    "rmse": 7.367,
+    "r2": -6.249
+  },
+  {
+    "case_id": "EARLY-P-Normal",
+    "mode": "early_months",
+    "label": "Normal",
+    "sex": "P",
+    "model": "Bayesian Ridge",
+    "mae": 6.1767,
+    "rmse": 6.9937,
+    "r2": -5.533
+  },
+  {
+    "case_id": "EARLY-P-Normal",
+    "mode": "early_months",
+    "label": "Normal",
+    "sex": "P",
+    "model": "Von Bertalanffy",
+    "mae": 1.56,
+    "rmse": 1.8779,
+    "r2": 0.529
+  },
+  {
+    "case_id": "EARLY-P-Normal",
+    "mode": "early_months",
+    "label": "Normal",
+    "sex": "P",
+    "model": "Gompertz",
+    "mae": 1.9517,
+    "rmse": 2.333,
+    "r2": 0.273
+  },
+  {
+    "case_id": "EARLY-P-Normal",
+    "mode": "early_months",
+    "label": "Normal",
+    "sex": "P",
+    "model": "GPR WHO Prior",
+    "mae": 0.0,
+    "rmse": 0.0,
+    "r2": 1.0
+  },
+  {
+    "case_id": "EARLY-P-Normal",
+    "mode": "early_months",
+    "label": "Normal",
+    "sex": "P",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0083,
+    "rmse": 0.0091,
+    "r2": 1.0
+  },
+  {
+    "case_id": "NORM-P-Normal",
+    "mode": "normal",
+    "label": "Normal",
+    "sex": "P",
+    "model": "Linear Regression",
+    "mae": 5.8217,
+    "rmse": 6.3741,
+    "r2": -6.0528
+  },
+  {
+    "case_id": "NORM-P-Normal",
+    "mode": "normal",
+    "label": "Normal",
+    "sex": "P",
+    "model": "Polynomial Degree 2",
+    "mae": 5.3383,
+    "rmse": 6.5653,
+    "r2": -6.4822
+  },
+  {
+    "case_id": "NORM-P-Normal",
+    "mode": "normal",
+    "label": "Normal",
+    "sex": "P",
+    "model": "Polynomial Degree 3",
+    "mae": 4.9833,
+    "rmse": 6.6593,
+    "r2": -6.6979
+  },
+  {
+    "case_id": "NORM-P-Normal",
+    "mode": "normal",
+    "label": "Normal",
+    "sex": "P",
+    "model": "Bayesian Ridge",
+    "mae": 5.735,
+    "rmse": 6.2855,
+    "r2": -5.8579
+  },
+  {
+    "case_id": "NORM-P-Normal",
+    "mode": "normal",
+    "label": "Normal",
+    "sex": "P",
+    "model": "Von Bertalanffy",
+    "mae": 1.665,
+    "rmse": 1.9742,
+    "r2": 0.3235
+  },
+  {
+    "case_id": "NORM-P-Normal",
+    "mode": "normal",
+    "label": "Normal",
+    "sex": "P",
+    "model": "Gompertz",
+    "mae": 2.03,
+    "rmse": 2.3859,
+    "r2": 0.0119
+  },
+  {
+    "case_id": "NORM-P-Normal",
+    "mode": "normal",
+    "label": "Normal",
+    "sex": "P",
+    "model": "GPR WHO Prior",
+    "mae": 0.0,
+    "rmse": 0.0,
+    "r2": 1.0
+  },
+  {
+    "case_id": "NORM-P-Normal",
+    "mode": "normal",
+    "label": "Normal",
+    "sex": "P",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0,
+    "rmse": 0.0,
+    "r2": 1.0
+  },
+  {
+    "case_id": "EARLY-P-NormalAtas",
+    "mode": "early_months",
+    "label": "Normal Atas",
+    "sex": "P",
+    "model": "Linear Regression",
+    "mae": 6.365,
+    "rmse": 7.1987,
+    "r2": -5.5072
+  },
+  {
+    "case_id": "EARLY-P-NormalAtas",
+    "mode": "early_months",
+    "label": "Normal Atas",
+    "sex": "P",
+    "model": "Polynomial Degree 2",
+    "mae": 5.7667,
+    "rmse": 7.326,
+    "r2": -5.7395
+  },
+  {
+    "case_id": "EARLY-P-NormalAtas",
+    "mode": "early_months",
+    "label": "Normal Atas",
+    "sex": "P",
+    "model": "Bayesian Ridge",
+    "mae": 6.2917,
+    "rmse": 7.1211,
+    "r2": -5.3678
+  },
+  {
+    "case_id": "EARLY-P-NormalAtas",
+    "mode": "early_months",
+    "label": "Normal Atas",
+    "sex": "P",
+    "model": "Von Bertalanffy",
+    "mae": 1.5433,
+    "rmse": 1.8691,
+    "r2": 0.5613
+  },
+  {
+    "case_id": "EARLY-P-NormalAtas",
+    "mode": "early_months",
+    "label": "Normal Atas",
+    "sex": "P",
+    "model": "Gompertz",
+    "mae": 1.945,
+    "rmse": 2.3356,
+    "r2": 0.315
+  },
+  {
+    "case_id": "EARLY-P-NormalAtas",
+    "mode": "early_months",
+    "label": "Normal Atas",
+    "sex": "P",
+    "model": "GPR WHO Prior",
+    "mae": 0.0767,
+    "rmse": 0.1041,
+    "r2": 0.9986
+  },
+  {
+    "case_id": "EARLY-P-NormalAtas",
+    "mode": "early_months",
+    "label": "Normal Atas",
+    "sex": "P",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0067,
+    "rmse": 0.0082,
+    "r2": 1.0
+  },
+  {
+    "case_id": "NORM-P-NormalAtas",
+    "mode": "normal",
+    "label": "Normal Atas",
+    "sex": "P",
+    "model": "Linear Regression",
+    "mae": 5.9133,
+    "rmse": 6.4715,
+    "r2": -5.7691
+  },
+  {
+    "case_id": "NORM-P-NormalAtas",
+    "mode": "normal",
+    "label": "Normal Atas",
+    "sex": "P",
+    "model": "Polynomial Degree 2",
+    "mae": 5.4183,
+    "rmse": 6.6681,
+    "r2": -6.1865
+  },
+  {
+    "case_id": "NORM-P-NormalAtas",
+    "mode": "normal",
+    "label": "Normal Atas",
+    "sex": "P",
+    "model": "Polynomial Degree 3",
+    "mae": 4.9233,
+    "rmse": 6.5827,
+    "r2": -6.0036
+  },
+  {
+    "case_id": "NORM-P-NormalAtas",
+    "mode": "normal",
+    "label": "Normal Atas",
+    "sex": "P",
+    "model": "Bayesian Ridge",
+    "mae": 5.8283,
+    "rmse": 6.3838,
+    "r2": -5.5867
+  },
+  {
+    "case_id": "NORM-P-NormalAtas",
+    "mode": "normal",
+    "label": "Normal Atas",
+    "sex": "P",
+    "model": "Von Bertalanffy",
+    "mae": 1.7117,
+    "rmse": 2.0348,
+    "r2": 0.3308
+  },
+  {
+    "case_id": "NORM-P-NormalAtas",
+    "mode": "normal",
+    "label": "Normal Atas",
+    "sex": "P",
+    "model": "Gompertz",
+    "mae": 2.0833,
+    "rmse": 2.4527,
+    "r2": 0.0277
+  },
+  {
+    "case_id": "NORM-P-NormalAtas",
+    "mode": "normal",
+    "label": "Normal Atas",
+    "sex": "P",
+    "model": "GPR WHO Prior",
+    "mae": 0.1,
+    "rmse": 0.1252,
+    "r2": 0.9975
+  },
+  {
+    "case_id": "NORM-P-NormalAtas",
+    "mode": "normal",
+    "label": "Normal Atas",
+    "sex": "P",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0033,
+    "rmse": 0.0058,
+    "r2": 1.0
+  },
+  {
+    "case_id": "EARLY-P-AtRisk",
+    "mode": "early_months",
+    "label": "At Risk",
+    "sex": "P",
+    "model": "Linear Regression",
+    "mae": 6.1567,
+    "rmse": 6.965,
+    "r2": -5.9043
+  },
+  {
+    "case_id": "EARLY-P-AtRisk",
+    "mode": "early_months",
+    "label": "At Risk",
+    "sex": "P",
+    "model": "Polynomial Degree 2",
+    "mae": 5.6417,
+    "rmse": 7.1597,
+    "r2": -6.2957
+  },
+  {
+    "case_id": "EARLY-P-AtRisk",
+    "mode": "early_months",
+    "label": "At Risk",
+    "sex": "P",
+    "model": "Bayesian Ridge",
+    "mae": 6.0783,
+    "rmse": 6.8828,
+    "r2": -5.7422
+  },
+  {
+    "case_id": "EARLY-P-AtRisk",
+    "mode": "early_months",
+    "label": "At Risk",
+    "sex": "P",
+    "model": "Von Bertalanffy",
+    "mae": 1.485,
+    "rmse": 1.791,
+    "r2": 0.5435
+  },
+  {
+    "case_id": "EARLY-P-AtRisk",
+    "mode": "early_months",
+    "label": "At Risk",
+    "sex": "P",
+    "model": "Gompertz",
+    "mae": 1.875,
+    "rmse": 2.2422,
+    "r2": 0.2845
+  },
+  {
+    "case_id": "EARLY-P-AtRisk",
+    "mode": "early_months",
+    "label": "At Risk",
+    "sex": "P",
+    "model": "GPR WHO Prior",
+    "mae": 0.155,
+    "rmse": 0.187,
+    "r2": 0.995
+  },
+  {
+    "case_id": "EARLY-P-AtRisk",
+    "mode": "early_months",
+    "label": "At Risk",
+    "sex": "P",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0033,
+    "rmse": 0.0058,
+    "r2": 1.0
+  },
+  {
+    "case_id": "NORM-P-AtRisk",
+    "mode": "normal",
+    "label": "At Risk",
+    "sex": "P",
+    "model": "Linear Regression",
+    "mae": 5.7367,
+    "rmse": 6.2824,
+    "r2": -6.3623
+  },
+  {
+    "case_id": "NORM-P-AtRisk",
+    "mode": "normal",
+    "label": "At Risk",
+    "sex": "P",
+    "model": "Polynomial Degree 2",
+    "mae": 5.2433,
+    "rmse": 6.4478,
+    "r2": -6.7551
+  },
+  {
+    "case_id": "NORM-P-AtRisk",
+    "mode": "normal",
+    "label": "At Risk",
+    "sex": "P",
+    "model": "Polynomial Degree 3",
+    "mae": 4.725,
+    "rmse": 6.3241,
+    "r2": -6.4603
+  },
+  {
+    "case_id": "NORM-P-AtRisk",
+    "mode": "normal",
+    "label": "At Risk",
+    "sex": "P",
+    "model": "Bayesian Ridge",
+    "mae": 5.65,
+    "rmse": 6.1921,
+    "r2": -6.1522
+  },
+  {
+    "case_id": "NORM-P-AtRisk",
+    "mode": "normal",
+    "label": "At Risk",
+    "sex": "P",
+    "model": "Von Bertalanffy",
+    "mae": 1.61,
+    "rmse": 1.9072,
+    "r2": 0.3215
+  },
+  {
+    "case_id": "NORM-P-AtRisk",
+    "mode": "normal",
+    "label": "At Risk",
+    "sex": "P",
+    "model": "Gompertz",
+    "mae": 1.965,
+    "rmse": 2.3064,
+    "r2": 0.0077
+  },
+  {
+    "case_id": "NORM-P-AtRisk",
+    "mode": "normal",
+    "label": "At Risk",
+    "sex": "P",
+    "model": "GPR WHO Prior",
+    "mae": 0.0567,
+    "rmse": 0.0611,
+    "r2": 0.9993
+  },
+  {
+    "case_id": "NORM-P-AtRisk",
+    "mode": "normal",
+    "label": "At Risk",
+    "sex": "P",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0017,
+    "rmse": 0.0041,
+    "r2": 1.0
+  },
+  {
+    "case_id": "EARLY-P-Stunted",
+    "mode": "early_months",
+    "label": "Stunted",
+    "sex": "P",
+    "model": "Linear Regression",
+    "mae": 6.0467,
+    "rmse": 6.841,
+    "r2": -6.1088
+  },
+  {
+    "case_id": "EARLY-P-Stunted",
+    "mode": "early_months",
+    "label": "Stunted",
+    "sex": "P",
+    "model": "Polynomial Degree 2",
+    "mae": 5.685,
+    "rmse": 7.1987,
+    "r2": -6.8716
+  },
+  {
+    "case_id": "EARLY-P-Stunted",
+    "mode": "early_months",
+    "label": "Stunted",
+    "sex": "P",
+    "model": "Bayesian Ridge",
+    "mae": 5.97,
+    "rmse": 6.7623,
+    "r2": -5.9463
+  },
+  {
+    "case_id": "EARLY-P-Stunted",
+    "mode": "early_months",
+    "label": "Stunted",
+    "sex": "P",
+    "model": "Von Bertalanffy",
+    "mae": 1.5033,
+    "rmse": 1.8018,
+    "r2": 0.5069
+  },
+  {
+    "case_id": "EARLY-P-Stunted",
+    "mode": "early_months",
+    "label": "Stunted",
+    "sex": "P",
+    "model": "Gompertz",
+    "mae": 1.885,
+    "rmse": 2.2417,
+    "r2": 0.2367
+  },
+  {
+    "case_id": "EARLY-P-Stunted",
+    "mode": "early_months",
+    "label": "Stunted",
+    "sex": "P",
+    "model": "GPR WHO Prior",
+    "mae": 0.33,
+    "rmse": 0.4095,
+    "r2": 0.9745
+  },
+  {
+    "case_id": "EARLY-P-Stunted",
+    "mode": "early_months",
+    "label": "Stunted",
+    "sex": "P",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0083,
+    "rmse": 0.0091,
+    "r2": 1.0
+  },
+  {
+    "case_id": "NORM-P-Stunted",
+    "mode": "normal",
+    "label": "Stunted",
+    "sex": "P",
+    "model": "Linear Regression",
+    "mae": 5.65,
+    "rmse": 6.1906,
+    "r2": -6.7263
+  },
+  {
+    "case_id": "NORM-P-Stunted",
+    "mode": "normal",
+    "label": "Stunted",
+    "sex": "P",
+    "model": "Polynomial Degree 2",
+    "mae": 5.1267,
+    "rmse": 6.3005,
+    "r2": -7.0031
+  },
+  {
+    "case_id": "NORM-P-Stunted",
+    "mode": "normal",
+    "label": "Stunted",
+    "sex": "P",
+    "model": "Polynomial Degree 3",
+    "mae": 5.11,
+    "rmse": 6.8117,
+    "r2": -8.3545
+  },
+  {
+    "case_id": "NORM-P-Stunted",
+    "mode": "normal",
+    "label": "Stunted",
+    "sex": "P",
+    "model": "Bayesian Ridge",
+    "mae": 5.5667,
+    "rmse": 6.105,
+    "r2": -6.5141
+  },
+  {
+    "case_id": "NORM-P-Stunted",
+    "mode": "normal",
+    "label": "Stunted",
+    "sex": "P",
+    "model": "Von Bertalanffy",
+    "mae": 1.5467,
+    "rmse": 1.8299,
+    "r2": 0.3249
+  },
+  {
+    "case_id": "NORM-P-Stunted",
+    "mode": "normal",
+    "label": "Stunted",
+    "sex": "P",
+    "model": "Gompertz",
+    "mae": 1.9033,
+    "rmse": 2.2295,
+    "r2": -0.0021
+  },
+  {
+    "case_id": "NORM-P-Stunted",
+    "mode": "normal",
+    "label": "Stunted",
+    "sex": "P",
+    "model": "GPR WHO Prior",
+    "mae": 0.1617,
+    "rmse": 0.1946,
+    "r2": 0.9924
+  },
+  {
+    "case_id": "NORM-P-Stunted",
+    "mode": "normal",
+    "label": "Stunted",
+    "sex": "P",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0067,
+    "rmse": 0.0082,
+    "r2": 1.0
+  },
+  {
+    "case_id": "EARLY-P-SeverelyStunted",
+    "mode": "early_months",
+    "label": "Severely Stunted",
+    "sex": "P",
+    "model": "Linear Regression",
+    "mae": 5.9567,
+    "rmse": 6.7404,
+    "r2": -6.3853
+  },
+  {
+    "case_id": "EARLY-P-SeverelyStunted",
+    "mode": "early_months",
+    "label": "Severely Stunted",
+    "sex": "P",
+    "model": "Polynomial Degree 2",
+    "mae": 5.575,
+    "rmse": 7.0628,
+    "r2": -7.1088
+  },
+  {
+    "case_id": "EARLY-P-SeverelyStunted",
+    "mode": "early_months",
+    "label": "Severely Stunted",
+    "sex": "P",
+    "model": "Bayesian Ridge",
+    "mae": 5.8783,
+    "rmse": 6.6581,
+    "r2": -6.2062
+  },
+  {
+    "case_id": "EARLY-P-SeverelyStunted",
+    "mode": "early_months",
+    "label": "Severely Stunted",
+    "sex": "P",
+    "model": "Von Bertalanffy",
+    "mae": 1.445,
+    "rmse": 1.7317,
+    "r2": 0.5125
+  },
+  {
+    "case_id": "EARLY-P-SeverelyStunted",
+    "mode": "early_months",
+    "label": "Severely Stunted",
+    "sex": "P",
+    "model": "Gompertz",
+    "mae": 1.82,
+    "rmse": 2.165,
+    "r2": 0.2381
+  },
+  {
+    "case_id": "EARLY-P-SeverelyStunted",
+    "mode": "early_months",
+    "label": "Severely Stunted",
+    "sex": "P",
+    "model": "GPR WHO Prior",
+    "mae": 0.3433,
+    "rmse": 0.4309,
+    "r2": 0.9698
+  },
+  {
+    "case_id": "EARLY-P-SeverelyStunted",
+    "mode": "early_months",
+    "label": "Severely Stunted",
+    "sex": "P",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0083,
+    "rmse": 0.0108,
+    "r2": 1.0
+  },
+  {
+    "case_id": "NORM-P-SeverelyStunted",
+    "mode": "normal",
+    "label": "Severely Stunted",
+    "sex": "P",
+    "model": "Linear Regression",
+    "mae": 5.565,
+    "rmse": 6.0981,
+    "r2": -7.1022
+  },
+  {
+    "case_id": "NORM-P-SeverelyStunted",
+    "mode": "normal",
+    "label": "Severely Stunted",
+    "sex": "P",
+    "model": "Polynomial Degree 2",
+    "mae": 5.055,
+    "rmse": 6.2122,
+    "r2": -7.4084
+  },
+  {
+    "case_id": "NORM-P-SeverelyStunted",
+    "mode": "normal",
+    "label": "Severely Stunted",
+    "sex": "P",
+    "model": "Polynomial Degree 3",
+    "mae": 4.9133,
+    "rmse": 6.5586,
+    "r2": -8.3722
+  },
+  {
+    "case_id": "NORM-P-SeverelyStunted",
+    "mode": "normal",
+    "label": "Severely Stunted",
+    "sex": "P",
+    "model": "Bayesian Ridge",
+    "mae": 5.4767,
+    "rmse": 6.0077,
+    "r2": -6.8639
+  },
+  {
+    "case_id": "NORM-P-SeverelyStunted",
+    "mode": "normal",
+    "label": "Severely Stunted",
+    "sex": "P",
+    "model": "Von Bertalanffy",
+    "mae": 1.5,
+    "rmse": 1.7709,
+    "r2": 0.3167
+  },
+  {
+    "case_id": "NORM-P-SeverelyStunted",
+    "mode": "normal",
+    "label": "Severely Stunted",
+    "sex": "P",
+    "model": "Gompertz",
+    "mae": 1.85,
+    "rmse": 2.1637,
+    "r2": -0.0201
+  },
+  {
+    "case_id": "NORM-P-SeverelyStunted",
+    "mode": "normal",
+    "label": "Severely Stunted",
+    "sex": "P",
+    "model": "GPR WHO Prior",
+    "mae": 0.0633,
+    "rmse": 0.0985,
+    "r2": 0.9979
+  },
+  {
+    "case_id": "NORM-P-SeverelyStunted",
+    "mode": "normal",
+    "label": "Severely Stunted",
+    "sex": "P",
+    "model": "HAZ Weighted Trend",
+    "mae": 0.0083,
+    "rmse": 0.0091,
+    "r2": 1.0
+  }
+]
