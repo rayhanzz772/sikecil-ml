@@ -40,6 +40,10 @@ def create_app() -> Flask:
     app.register_blueprint(prediction_v1_bp)
     app.register_blueprint(prediction_v3_bp)
 
+    @app.route("/")
+    def health():
+        return jsonify({"status": "ok"})
+
     # ----------------------------------------------------------
     # Global Error Handlers
     # ----------------------------------------------------------
