@@ -110,12 +110,24 @@ def run_comparison():
             metrics = evaluate_model(m, last_age, horizon, ground_truth)
             if metrics is None:
                 continue
+
+            try:
+                preds = recursive_predict(m, last_age, horizon)
+                formatted_preds = [
+                    {"age": p["age"], "height": round(p["height"], 2)} for p in preds
+                ]
+            except Exception:
+                formatted_preds = []
+
             results.append({
                 "case_id": case["case_id"],
                 "mode": case["mode"],
                 "label": case["label"],
                 "sex": sex,
                 "model": m["name"],
+                "history": history,
+                "ground_truth": ground_truth,
+                "predictions": formatted_preds,
                 **metrics,
             })
 

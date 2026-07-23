@@ -22,12 +22,17 @@ from services.prediction_service import recursive_predict, build_prediction
 from services.growth_validator import is_growth_realistic
 
 def run_evaluation():
-    with open('simulation_cases.json', 'r') as f:
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    cases_path = os.path.join(base_dir, 'simulation_cases.json')
+    who_csv_path = os.path.join(base_dir, '..', 'data', 'who_lms.csv')
+    
+    with open(cases_path, 'r') as f:
         cases = json.load(f)
         
-    who_lms_df = load_who_lms('../data/who_lms.csv')
+    who_lms_df = load_who_lms(who_csv_path)
     
     results = []
+    test_data_details = []
     
     for case in cases:
         case_id = case['case_id']
@@ -90,21 +95,47 @@ def run_evaluation():
         except Exception:
             r2 = 0.0
             
+        formatted_preds = [
+            {"age": gt["age"], "height": round(p, 2)}
+            for gt, p in zip(ground_truth, y_pred)
+        ]
+
         results.append({
             "case_id": case_id,
             "mode": mode,
             "label": case['label'],
             "sex": sex,
             "model": selected_model,
+            "history": history,
+            "ground_truth": ground_truth,
+            "predictions": formatted_preds,
             "mae": round(mae, 4),
             "rmse": round(rmse, 4),
             "r2": round(r2, 4)
         })
+
+        for gt, p in zip(ground_truth, y_pred):
+            test_data_details.append({
+                "case_id": case_id,
+                "mode": mode,
+                "label": case['label'],
+                "sex": sex,
+                "model": selected_model,
+                "target_age": gt['age'],
+                "ground_truth_height": round(gt['height'], 2),
+                "predicted_height": round(p, 2),
+                "abs_error": round(abs(gt['height'] - p), 4)
+            })
         
-    with open('evaluation_results.json', 'w') as f:
+    res_path = os.path.join(base_dir, 'evaluation_results.json')
+    with open(res_path, 'w') as f:
         json.dump(results, f, indent=4)
         
-    print(f"Evaluated {len(results)} cases.")
+    df_details = pd.DataFrame(test_data_details)
+    csv_path = os.path.join(base_dir, 'test_dataset_predictions.csv')
+    df_details.to_csv(csv_path, index=False)
+
+    print(f"Evaluated {len(results)} cases. Saved test data to evaluation_results.json and test_dataset_predictions.csv.")
 
 if __name__ == '__main__':
     run_evaluation()

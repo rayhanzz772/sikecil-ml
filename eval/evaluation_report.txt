@@ -4,37 +4,37 @@ Metode: WHO-Simulation + LOOCV
 ============================================================
 
 --- SKENARIO 1: EARLY MONTHS (History: 4 bulan, Prediksi: 6 bulan) ---
-Kasus ID             | Kondisi              | Model                | MAE (cm) | RMSE     | R2      
+Kasus ID               | Kondisi            | Model                | MAE (cm) | RMSE     | R2      
 ---------------------------------------------------------------------------------------------------
-EARLY-L-Normal       | Normal               | HAZ Weighted Trend   | 0.008    | 0.009    | 1.000   
-EARLY-L-NormalAtas   | Normal Atas          | HAZ Weighted Trend   | 0.007    | 0.008    | 1.000   
-EARLY-L-AtRisk       | At Risk              | HAZ Weighted Trend   | 0.012    | 0.012    | 1.000   
-EARLY-L-Stunted      | Stunted              | HAZ Weighted Trend   | 0.002    | 0.004    | 1.000   
-EARLY-L-SeverelyStunted | Severely Stunted     | HAZ Weighted Trend   | 0.017    | 0.017    | 1.000   
-EARLY-P-Normal       | Normal               | HAZ Weighted Trend   | 0.008    | 0.009    | 1.000   
-EARLY-P-NormalAtas   | Normal Atas          | HAZ Weighted Trend   | 0.007    | 0.008    | 1.000   
-EARLY-P-AtRisk       | At Risk              | HAZ Weighted Trend   | 0.003    | 0.006    | 1.000   
-EARLY-P-Stunted      | Stunted              | HAZ Weighted Trend   | 0.008    | 0.009    | 1.000   
-EARLY-P-SeverelyStunted | Severely Stunted     | HAZ Weighted Trend   | 0.008    | 0.011    | 1.000   
+EARLY-L-Normal         | Normal             | HAZ Weighted Trend   | 0.008    | 0.009    | 1.000   
+EARLY-L-NormalAtas     | Normal Atas        | HAZ Weighted Trend   | 0.007    | 0.008    | 1.000   
+EARLY-L-AtRisk         | At Risk            | HAZ Weighted Trend   | 0.012    | 0.012    | 1.000   
+EARLY-L-Stunted        | Stunted            | HAZ Weighted Trend   | 0.002    | 0.004    | 1.000   
+EARLY-L-SeverelyStunted | Severely Stunted   | HAZ Weighted Trend   | 0.017    | 0.017    | 1.000   
+EARLY-P-Normal         | Normal             | HAZ Weighted Trend   | 0.008    | 0.009    | 1.000   
+EARLY-P-NormalAtas     | Normal Atas        | HAZ Weighted Trend   | 0.007    | 0.008    | 1.000   
+EARLY-P-AtRisk         | At Risk            | HAZ Weighted Trend   | 0.003    | 0.006    | 1.000   
+EARLY-P-Stunted        | Stunted            | HAZ Weighted Trend   | 0.008    | 0.009    | 1.000   
+EARLY-P-SeverelyStunted | Severely Stunted   | HAZ Weighted Trend   | 0.008    | 0.011    | 1.000   
 ---------------------------------------------------------------------------------------------------
-RATA-RATA            | Semua Kasus          |                      | 0.008    | 0.009    | 1.000   
+RATA-RATA              | Semua Kasus        |                      | 0.008    | 0.009    | 1.000   
 
 
 --- SKENARIO 2: NORMAL MODE (History: 6 bulan, Prediksi: 6 bulan) ---
-Kasus ID             | Kondisi              | Model                | MAE (cm) | RMSE     | R2      
+Kasus ID               | Kondisi            | Model                | MAE (cm) | RMSE     | R2      
 ---------------------------------------------------------------------------------------------------
-NORM-L-Normal        | Normal               | Von Bertalanffy      | 1.333    | 1.627    | 0.525   
-NORM-L-NormalAtas    | Normal Atas          | Von Bertalanffy      | 1.383    | 1.692    | 0.513   
-NORM-L-AtRisk        | At Risk              | Von Bertalanffy      | 1.288    | 1.570    | 0.533   
-NORM-L-Stunted       | Stunted              | Von Bertalanffy      | 1.245    | 1.513    | 0.540   
-NORM-L-SeverelyStunted | Severely Stunted     | Von Bertalanffy      | 1.208    | 1.463    | 0.544   
-NORM-P-Normal        | Normal               | Von Bertalanffy      | 1.665    | 1.974    | 0.324   
-NORM-P-NormalAtas    | Normal Atas          | Von Bertalanffy      | 1.712    | 2.035    | 0.331   
-NORM-P-AtRisk        | At Risk              | Von Bertalanffy      | 1.610    | 1.907    | 0.322   
-NORM-P-Stunted       | Stunted              | Von Bertalanffy      | 1.547    | 1.830    | 0.325   
-NORM-P-SeverelyStunted | Severely Stunted     | Von Bertalanffy      | 1.500    | 1.771    | 0.317   
+NORM-L-Normal          | Normal             | Von Bertalanffy      | 1.333    | 1.627    | 0.525   
+NORM-L-NormalAtas      | Normal Atas        | Von Bertalanffy      | 1.383    | 1.692    | 0.513   
+NORM-L-AtRisk          | At Risk            | Von Bertalanffy      | 1.288    | 1.570    | 0.533   
+NORM-L-Stunted         | Stunted            | Von Bertalanffy      | 1.245    | 1.513    | 0.540   
+NORM-L-SeverelyStunted | Severely Stunted   | Von Bertalanffy      | 1.208    | 1.463    | 0.544   
+NORM-P-Normal          | Normal             | Von Bertalanffy      | 1.665    | 1.974    | 0.324   
+NORM-P-NormalAtas      | Normal Atas        | Von Bertalanffy      | 1.712    | 2.035    | 0.331   
+NORM-P-AtRisk          | At Risk            | Von Bertalanffy      | 1.610    | 1.907    | 0.322   
+NORM-P-Stunted         | Stunted            | Von Bertalanffy      | 1.547    | 1.830    | 0.325   
+NORM-P-SeverelyStunted | Severely Stunted   | Von Bertalanffy      | 1.500    | 1.771    | 0.317   
 ---------------------------------------------------------------------------------------------------
-RATA-RATA            | Semua Kasus          |                      | 1.449    | 1.738    | 0.427   
+RATA-RATA              | Semua Kasus        |                      | 1.449    | 1.738    | 0.427   
 
 
 --- RINGKASAN PERFORMA PER MODEL ---
@@ -42,3 +42,25 @@ Model                | Jumlah Kasus | MAE (cm) | RMSE     | R2
 --------------------------------------------------------------------
 HAZ Weighted Trend   | 10           | 0.008    | 0.009    | 1.000   
 Von Bertalanffy      | 10           | 1.449    | 1.738    | 0.427   
+
+
+--- SAMPLE DETAIL DATA TEST & HASIL PREDIKSI ---
+Case ID: EARLY-L-Normal | Model: HAZ Weighted Trend | MAE: 0.0083 cm
+  History Input (Usia, TB) : [{'age': 0, 'h': 49.88}, {'age': 1, 'h': 54.72}, {'age': 2, 'h': 58.42}, {'age': 3, 'h': 61.43}]
+  Ground Truth (Actual)    : [{'age': 4, 'h': 63.89}, {'age': 5, 'h': 65.9}, {'age': 6, 'h': 67.62}, {'age': 7, 'h': 69.16}, {'age': 8, 'h': 70.6}, {'age': 9, 'h': 71.97}]
+  Predictions (Predicted)  : [{'age': 4, 'h': 63.89}, {'age': 5, 'h': 65.91}, {'age': 6, 'h': 67.63}, {'age': 7, 'h': 69.17}, {'age': 8, 'h': 70.61}, {'age': 9, 'h': 71.98}]
+
+Case ID: NORM-L-Normal | Model: Von Bertalanffy | MAE: 1.3333 cm
+  History Input (Usia, TB) : [{'age': 0, 'h': 49.88}, {'age': 1, 'h': 54.72}, {'age': 2, 'h': 58.42}, {'age': 3, 'h': 61.43}, {'age': 4, 'h': 63.89}, {'age': 5, 'h': 65.9}]
+  Ground Truth (Actual)    : [{'age': 6, 'h': 67.62}, {'age': 7, 'h': 69.16}, {'age': 8, 'h': 70.6}, {'age': 9, 'h': 71.97}, {'age': 10, 'h': 73.28}, {'age': 11, 'h': 74.54}]
+  Predictions (Predicted)  : [{'age': 6, 'h': 67.43}, {'age': 7, 'h': 68.69}, {'age': 8, 'h': 69.7}, {'age': 9, 'h': 70.51}, {'age': 10, 'h': 71.16}, {'age': 11, 'h': 71.68}]
+
+Case ID: EARLY-L-NormalAtas | Model: HAZ Weighted Trend | MAE: 0.0067 cm
+  History Input (Usia, TB) : [{'age': 0, 'h': 51.78}, {'age': 1, 'h': 56.67}, {'age': 2, 'h': 60.43}, {'age': 3, 'h': 63.47}]
+  Ground Truth (Actual)    : [{'age': 4, 'h': 65.97}, {'age': 5, 'h': 68.01}, {'age': 6, 'h': 69.76}, {'age': 7, 'h': 71.34}, {'age': 8, 'h': 72.8}, {'age': 9, 'h': 74.21}]
+  Predictions (Predicted)  : [{'age': 4, 'h': 65.96}, {'age': 5, 'h': 68.01}, {'age': 6, 'h': 69.76}, {'age': 7, 'h': 71.33}, {'age': 8, 'h': 72.79}, {'age': 9, 'h': 74.2}]
+
+Case ID: NORM-L-NormalAtas | Model: Von Bertalanffy | MAE: 1.3833 cm
+  History Input (Usia, TB) : [{'age': 0, 'h': 51.78}, {'age': 1, 'h': 56.67}, {'age': 2, 'h': 60.43}, {'age': 3, 'h': 63.47}, {'age': 4, 'h': 65.97}, {'age': 5, 'h': 68.01}]
+  Ground Truth (Actual)    : [{'age': 6, 'h': 69.76}, {'age': 7, 'h': 71.34}, {'age': 8, 'h': 72.8}, {'age': 9, 'h': 74.21}, {'age': 10, 'h': 75.57}, {'age': 11, 'h': 76.87}]
+  Predictions (Predicted)  : [{'age': 6, 'h': 69.57}, {'age': 7, 'h': 70.85}, {'age': 8, 'h': 71.88}, {'age': 9, 'h': 72.7}, {'age': 10, 'h': 73.36}, {'age': 11, 'h': 73.89}]

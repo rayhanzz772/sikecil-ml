@@ -4,7 +4,9 @@ import pandas as pd
 
 def generate_cases():
     # Load WHO LMS data
-    who_df = pd.read_csv('../data/who_lms.csv')
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    who_csv_path = os.path.join(base_dir, '..', 'data', 'who_lms.csv')
+    who_df = pd.read_csv(who_csv_path)
     
     scenarios = [
         {"name": "Normal", "z_score": 0.0},
@@ -83,7 +85,8 @@ def generate_cases():
             cases.append(case_normal)
             
     # Save to JSON
-    with open('simulation_cases.json', 'w') as f:
+    cases_path = os.path.join(base_dir, 'simulation_cases.json')
+    with open(cases_path, 'w') as f:
         json.dump(cases, f, indent=4)
         
     print(f"Generated {len(cases)} simulation cases.")

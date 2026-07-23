@@ -1,0 +1,421 @@
+case_id,mode,label,sex,model,target_age,ground_truth_height,predicted_height,abs_error
+EARLY-L-Normal,early_months,Normal,L,Linear Regression,4,63.89,65.7,1.81
+EARLY-L-Normal,early_months,Normal,L,Linear Regression,5,65.9,69.53,3.63
+EARLY-L-Normal,early_months,Normal,L,Linear Regression,6,67.62,73.37,5.75
+EARLY-L-Normal,early_months,Normal,L,Linear Regression,7,69.16,77.2,8.04
+EARLY-L-Normal,early_months,Normal,L,Linear Regression,8,70.6,81.04,10.44
+EARLY-L-Normal,early_months,Normal,L,Linear Regression,9,71.97,84.88,12.91
+EARLY-L-Normal,early_months,Normal,L,Polynomial Degree 2,4,63.89,63.41,0.48
+EARLY-L-Normal,early_months,Normal,L,Polynomial Degree 2,5,65.9,64.5,1.4
+EARLY-L-Normal,early_months,Normal,L,Polynomial Degree 2,6,67.62,64.68,2.94
+EARLY-L-Normal,early_months,Normal,L,Polynomial Degree 2,7,69.16,63.94,5.22
+EARLY-L-Normal,early_months,Normal,L,Polynomial Degree 2,8,70.6,62.28,8.32
+EARLY-L-Normal,early_months,Normal,L,Polynomial Degree 2,9,71.97,59.71,12.26
+EARLY-L-Normal,early_months,Normal,L,GPR WHO Prior,4,63.89,63.88,0.01
+EARLY-L-Normal,early_months,Normal,L,GPR WHO Prior,5,65.9,65.9,0.0
+EARLY-L-Normal,early_months,Normal,L,GPR WHO Prior,6,67.62,67.62,0.0
+EARLY-L-Normal,early_months,Normal,L,GPR WHO Prior,7,69.16,69.16,0.0
+EARLY-L-Normal,early_months,Normal,L,GPR WHO Prior,8,70.6,70.6,0.0
+EARLY-L-Normal,early_months,Normal,L,GPR WHO Prior,9,71.97,71.97,0.0
+NORM-L-Normal,normal,Normal,L,Linear Regression,6,67.62,70.1,2.48
+NORM-L-Normal,normal,Normal,L,Linear Regression,7,69.16,73.26,4.1
+NORM-L-Normal,normal,Normal,L,Linear Regression,8,70.6,76.42,5.82
+NORM-L-Normal,normal,Normal,L,Linear Regression,9,71.97,79.58,7.61
+NORM-L-Normal,normal,Normal,L,Linear Regression,10,73.28,82.74,9.46
+NORM-L-Normal,normal,Normal,L,Linear Regression,11,74.54,85.9,11.36
+NORM-L-Normal,normal,Normal,L,Polynomial Degree 2,6,67.62,66.92,0.7
+NORM-L-Normal,normal,Normal,L,Polynomial Degree 2,7,69.16,67.35,1.81
+NORM-L-Normal,normal,Normal,L,Polynomial Degree 2,8,70.6,67.1,3.5
+NORM-L-Normal,normal,Normal,L,Polynomial Degree 2,9,71.97,66.16,5.81
+NORM-L-Normal,normal,Normal,L,Polynomial Degree 2,10,73.28,64.54,8.74
+NORM-L-Normal,normal,Normal,L,Polynomial Degree 2,11,74.54,62.24,12.3
+NORM-L-Normal,normal,Normal,L,Polynomial Degree 3,6,67.62,67.82,0.2
+NORM-L-Normal,normal,Normal,L,Polynomial Degree 3,7,69.16,69.8,0.64
+NORM-L-Normal,normal,Normal,L,Polynomial Degree 3,8,70.6,72.06,1.46
+NORM-L-Normal,normal,Normal,L,Polynomial Degree 3,9,71.97,74.83,2.86
+NORM-L-Normal,normal,Normal,L,Polynomial Degree 3,10,73.28,78.3,5.02
+NORM-L-Normal,normal,Normal,L,Polynomial Degree 3,11,74.54,82.71,8.17
+NORM-L-Normal,normal,Normal,L,GPR WHO Prior,6,67.62,67.62,0.0
+NORM-L-Normal,normal,Normal,L,GPR WHO Prior,7,69.16,69.16,0.0
+NORM-L-Normal,normal,Normal,L,GPR WHO Prior,8,70.6,70.6,0.0
+NORM-L-Normal,normal,Normal,L,GPR WHO Prior,9,71.97,71.97,0.0
+NORM-L-Normal,normal,Normal,L,GPR WHO Prior,10,73.28,73.28,0.0
+NORM-L-Normal,normal,Normal,L,GPR WHO Prior,11,74.54,74.54,0.0
+EARLY-L-NormalAtas,early_months,Normal Atas,L,Linear Regression,4,65.97,67.8,1.83
+EARLY-L-NormalAtas,early_months,Normal Atas,L,Linear Regression,5,68.01,71.68,3.67
+EARLY-L-NormalAtas,early_months,Normal Atas,L,Linear Regression,6,69.76,75.56,5.8
+EARLY-L-NormalAtas,early_months,Normal Atas,L,Linear Regression,7,71.34,79.44,8.1
+EARLY-L-NormalAtas,early_months,Normal Atas,L,Linear Regression,8,72.8,83.33,10.53
+EARLY-L-NormalAtas,early_months,Normal Atas,L,Linear Regression,9,74.21,87.21,13.0
+EARLY-L-NormalAtas,early_months,Normal Atas,L,Polynomial Degree 2,4,65.97,65.48,0.49
+EARLY-L-NormalAtas,early_months,Normal Atas,L,Polynomial Degree 2,5,68.01,66.59,1.42
+EARLY-L-NormalAtas,early_months,Normal Atas,L,Polynomial Degree 2,6,69.76,66.77,2.99
+EARLY-L-NormalAtas,early_months,Normal Atas,L,Polynomial Degree 2,7,71.34,66.03,5.31
+EARLY-L-NormalAtas,early_months,Normal Atas,L,Polynomial Degree 2,8,72.8,64.36,8.44
+EARLY-L-NormalAtas,early_months,Normal Atas,L,Polynomial Degree 2,9,74.21,61.77,12.44
+EARLY-L-NormalAtas,early_months,Normal Atas,L,GPR WHO Prior,4,65.97,65.93,0.04
+EARLY-L-NormalAtas,early_months,Normal Atas,L,GPR WHO Prior,5,68.01,67.92,0.09
+EARLY-L-NormalAtas,early_months,Normal Atas,L,GPR WHO Prior,6,69.76,69.62,0.14
+EARLY-L-NormalAtas,early_months,Normal Atas,L,GPR WHO Prior,7,71.34,71.14,0.2
+EARLY-L-NormalAtas,early_months,Normal Atas,L,GPR WHO Prior,8,72.8,72.57,0.23
+EARLY-L-NormalAtas,early_months,Normal Atas,L,GPR WHO Prior,9,74.21,73.94,0.27
+NORM-L-NormalAtas,normal,Normal Atas,L,Linear Regression,6,69.76,72.26,2.5
+NORM-L-NormalAtas,normal,Normal Atas,L,Linear Regression,7,71.34,75.47,4.13
+NORM-L-NormalAtas,normal,Normal Atas,L,Linear Regression,8,72.8,78.67,5.87
+NORM-L-NormalAtas,normal,Normal Atas,L,Linear Regression,9,74.21,81.87,7.66
+NORM-L-NormalAtas,normal,Normal Atas,L,Linear Regression,10,75.57,85.07,9.5
+NORM-L-NormalAtas,normal,Normal Atas,L,Linear Regression,11,76.87,88.28,11.41
+NORM-L-NormalAtas,normal,Normal Atas,L,Polynomial Degree 2,6,69.76,69.05,0.71
+NORM-L-NormalAtas,normal,Normal Atas,L,Polynomial Degree 2,7,71.34,69.5,1.84
+NORM-L-NormalAtas,normal,Normal Atas,L,Polynomial Degree 2,8,72.8,69.25,3.55
+NORM-L-NormalAtas,normal,Normal Atas,L,Polynomial Degree 2,9,74.21,68.32,5.89
+NORM-L-NormalAtas,normal,Normal Atas,L,Polynomial Degree 2,10,75.57,66.7,8.87
+NORM-L-NormalAtas,normal,Normal Atas,L,Polynomial Degree 2,11,76.87,64.39,12.48
+NORM-L-NormalAtas,normal,Normal Atas,L,Polynomial Degree 3,6,69.76,69.96,0.2
+NORM-L-NormalAtas,normal,Normal Atas,L,Polynomial Degree 3,7,71.34,71.96,0.62
+NORM-L-NormalAtas,normal,Normal Atas,L,Polynomial Degree 3,8,72.8,74.25,1.45
+NORM-L-NormalAtas,normal,Normal Atas,L,Polynomial Degree 3,9,74.21,77.03,2.82
+NORM-L-NormalAtas,normal,Normal Atas,L,Polynomial Degree 3,10,75.57,80.53,4.96
+NORM-L-NormalAtas,normal,Normal Atas,L,Polynomial Degree 3,11,76.87,84.97,8.1
+NORM-L-NormalAtas,normal,Normal Atas,L,GPR WHO Prior,6,69.76,69.75,0.01
+NORM-L-NormalAtas,normal,Normal Atas,L,GPR WHO Prior,7,71.34,71.29,0.05
+NORM-L-NormalAtas,normal,Normal Atas,L,GPR WHO Prior,8,72.8,72.72,0.08
+NORM-L-NormalAtas,normal,Normal Atas,L,GPR WHO Prior,9,74.21,74.08,0.13
+NORM-L-NormalAtas,normal,Normal Atas,L,GPR WHO Prior,10,75.57,75.37,0.2
+NORM-L-NormalAtas,normal,Normal Atas,L,GPR WHO Prior,11,76.87,76.61,0.26
+EARLY-L-AtRisk,early_months,At Risk,L,Linear Regression,4,61.81,63.59,1.78
+EARLY-L-AtRisk,early_months,At Risk,L,Linear Regression,5,63.79,67.38,3.59
+EARLY-L-AtRisk,early_months,At Risk,L,Linear Regression,6,65.48,71.16,5.68
+EARLY-L-AtRisk,early_months,At Risk,L,Linear Regression,7,66.99,74.94,7.95
+EARLY-L-AtRisk,early_months,At Risk,L,Linear Regression,8,68.39,78.72,10.33
+EARLY-L-AtRisk,early_months,At Risk,L,Linear Regression,9,69.73,82.5,12.77
+EARLY-L-AtRisk,early_months,At Risk,L,Polynomial Degree 2,4,61.81,61.31,0.5
+EARLY-L-AtRisk,early_months,At Risk,L,Polynomial Degree 2,5,63.79,62.34,1.45
+EARLY-L-AtRisk,early_months,At Risk,L,Polynomial Degree 2,6,65.48,62.46,3.02
+EARLY-L-AtRisk,early_months,At Risk,L,Polynomial Degree 2,7,66.99,61.67,5.32
+EARLY-L-AtRisk,early_months,At Risk,L,Polynomial Degree 2,8,68.39,59.96,8.43
+EARLY-L-AtRisk,early_months,At Risk,L,Polynomial Degree 2,9,69.73,57.34,12.39
+EARLY-L-AtRisk,early_months,At Risk,L,GPR WHO Prior,4,61.81,61.82,0.01
+EARLY-L-AtRisk,early_months,At Risk,L,GPR WHO Prior,5,63.79,63.86,0.07
+EARLY-L-AtRisk,early_months,At Risk,L,GPR WHO Prior,6,65.48,65.6,0.12
+EARLY-L-AtRisk,early_months,At Risk,L,GPR WHO Prior,7,66.99,67.17,0.18
+EARLY-L-AtRisk,early_months,At Risk,L,GPR WHO Prior,8,68.39,68.62,0.23
+EARLY-L-AtRisk,early_months,At Risk,L,GPR WHO Prior,9,69.73,69.99,0.26
+NORM-L-AtRisk,normal,At Risk,L,Linear Regression,6,65.48,67.93,2.45
+NORM-L-AtRisk,normal,At Risk,L,Linear Regression,7,66.99,71.05,4.06
+NORM-L-AtRisk,normal,At Risk,L,Linear Regression,8,68.39,74.16,5.77
+NORM-L-AtRisk,normal,At Risk,L,Linear Regression,9,69.73,77.28,7.55
+NORM-L-AtRisk,normal,At Risk,L,Linear Regression,10,71.0,80.4,9.4
+NORM-L-AtRisk,normal,At Risk,L,Linear Regression,11,72.21,83.51,11.3
+NORM-L-AtRisk,normal,At Risk,L,Polynomial Degree 2,6,65.48,64.78,0.7
+NORM-L-AtRisk,normal,At Risk,L,Polynomial Degree 2,7,66.99,65.2,1.79
+NORM-L-AtRisk,normal,At Risk,L,Polynomial Degree 2,8,68.39,64.94,3.45
+NORM-L-AtRisk,normal,At Risk,L,Polynomial Degree 2,9,69.73,64.01,5.72
+NORM-L-AtRisk,normal,At Risk,L,Polynomial Degree 2,10,71.0,62.41,8.59
+NORM-L-AtRisk,normal,At Risk,L,Polynomial Degree 2,11,72.21,60.12,12.09
+NORM-L-AtRisk,normal,At Risk,L,Polynomial Degree 3,6,65.48,65.71,0.23
+NORM-L-AtRisk,normal,At Risk,L,Polynomial Degree 3,7,66.99,67.7,0.71
+NORM-L-AtRisk,normal,At Risk,L,Polynomial Degree 3,8,68.39,70.01,1.62
+NORM-L-AtRisk,normal,At Risk,L,Polynomial Degree 3,9,69.73,72.86,3.13
+NORM-L-AtRisk,normal,At Risk,L,Polynomial Degree 3,10,71.0,76.45,5.45
+NORM-L-AtRisk,normal,At Risk,L,Polynomial Degree 3,11,72.21,81.02,8.81
+NORM-L-AtRisk,normal,At Risk,L,GPR WHO Prior,6,65.48,65.5,0.02
+NORM-L-AtRisk,normal,At Risk,L,GPR WHO Prior,7,66.99,67.03,0.04
+NORM-L-AtRisk,normal,At Risk,L,GPR WHO Prior,8,68.39,68.47,0.08
+NORM-L-AtRisk,normal,At Risk,L,GPR WHO Prior,9,69.73,69.85,0.12
+NORM-L-AtRisk,normal,At Risk,L,GPR WHO Prior,10,71.0,71.17,0.17
+NORM-L-AtRisk,normal,At Risk,L,GPR WHO Prior,11,72.21,72.44,0.23
+EARLY-L-Stunted,early_months,Stunted,L,Linear Regression,4,59.72,61.5,1.78
+EARLY-L-Stunted,early_months,Stunted,L,Linear Regression,5,61.68,65.23,3.55
+EARLY-L-Stunted,early_months,Stunted,L,Linear Regression,6,63.34,68.96,5.62
+EARLY-L-Stunted,early_months,Stunted,L,Linear Regression,7,64.82,72.69,7.87
+EARLY-L-Stunted,early_months,Stunted,L,Linear Regression,8,66.19,76.42,10.23
+EARLY-L-Stunted,early_months,Stunted,L,Linear Regression,9,67.48,80.16,12.68
+EARLY-L-Stunted,early_months,Stunted,L,Polynomial Degree 2,4,59.72,59.24,0.48
+EARLY-L-Stunted,early_months,Stunted,L,Polynomial Degree 2,5,61.68,60.25,1.43
+EARLY-L-Stunted,early_months,Stunted,L,Polynomial Degree 2,6,63.34,60.36,2.98
+EARLY-L-Stunted,early_months,Stunted,L,Polynomial Degree 2,7,64.82,59.57,5.25
+EARLY-L-Stunted,early_months,Stunted,L,Polynomial Degree 2,8,66.19,57.87,8.32
+EARLY-L-Stunted,early_months,Stunted,L,Polynomial Degree 2,9,67.48,55.27,12.21
+EARLY-L-Stunted,early_months,Stunted,L,GPR WHO Prior,4,59.72,59.75,0.03
+EARLY-L-Stunted,early_months,Stunted,L,GPR WHO Prior,5,61.68,61.77,0.09
+EARLY-L-Stunted,early_months,Stunted,L,GPR WHO Prior,6,63.34,63.53,0.19
+EARLY-L-Stunted,early_months,Stunted,L,GPR WHO Prior,7,64.82,65.11,0.29
+EARLY-L-Stunted,early_months,Stunted,L,GPR WHO Prior,8,66.19,66.59,0.4
+EARLY-L-Stunted,early_months,Stunted,L,GPR WHO Prior,9,67.48,68.0,0.52
+NORM-L-Stunted,normal,Stunted,L,Linear Regression,6,63.34,65.76,2.42
+NORM-L-Stunted,normal,Stunted,L,Linear Regression,7,64.82,68.84,4.02
+NORM-L-Stunted,normal,Stunted,L,Linear Regression,8,66.19,71.91,5.72
+NORM-L-Stunted,normal,Stunted,L,Linear Regression,9,67.48,74.98,7.5
+NORM-L-Stunted,normal,Stunted,L,Linear Regression,10,68.71,78.05,9.34
+NORM-L-Stunted,normal,Stunted,L,Linear Regression,11,69.88,81.12,11.24
+NORM-L-Stunted,normal,Stunted,L,Polynomial Degree 2,6,63.34,62.65,0.69
+NORM-L-Stunted,normal,Stunted,L,Polynomial Degree 2,7,64.82,63.05,1.77
+NORM-L-Stunted,normal,Stunted,L,Polynomial Degree 2,8,66.19,62.78,3.41
+NORM-L-Stunted,normal,Stunted,L,Polynomial Degree 2,9,67.48,61.85,5.63
+NORM-L-Stunted,normal,Stunted,L,Polynomial Degree 2,10,68.71,60.25,8.46
+NORM-L-Stunted,normal,Stunted,L,Polynomial Degree 2,11,69.88,57.98,11.9
+NORM-L-Stunted,normal,Stunted,L,Polynomial Degree 3,6,63.34,63.58,0.24
+NORM-L-Stunted,normal,Stunted,L,Polynomial Degree 3,7,64.82,65.58,0.76
+NORM-L-Stunted,normal,Stunted,L,Polynomial Degree 3,8,66.19,67.9,1.71
+NORM-L-Stunted,normal,Stunted,L,Polynomial Degree 3,9,67.48,70.78,3.3
+NORM-L-Stunted,normal,Stunted,L,Polynomial Degree 3,10,68.71,74.44,5.73
+NORM-L-Stunted,normal,Stunted,L,Polynomial Degree 3,11,69.88,79.08,9.2
+NORM-L-Stunted,normal,Stunted,L,GPR WHO Prior,6,63.34,63.36,0.02
+NORM-L-Stunted,normal,Stunted,L,GPR WHO Prior,7,64.82,64.89,0.07
+NORM-L-Stunted,normal,Stunted,L,GPR WHO Prior,8,66.19,66.32,0.13
+NORM-L-Stunted,normal,Stunted,L,GPR WHO Prior,9,67.48,67.69,0.21
+NORM-L-Stunted,normal,Stunted,L,GPR WHO Prior,10,68.71,69.03,0.32
+NORM-L-Stunted,normal,Stunted,L,GPR WHO Prior,11,69.88,70.31,0.43
+EARLY-L-SeverelyStunted,early_months,Severely Stunted,L,Linear Regression,4,57.64,59.41,1.77
+EARLY-L-SeverelyStunted,early_months,Severely Stunted,L,Linear Regression,5,59.57,63.09,3.52
+EARLY-L-SeverelyStunted,early_months,Severely Stunted,L,Linear Regression,6,61.2,66.78,5.58
+EARLY-L-SeverelyStunted,early_months,Severely Stunted,L,Linear Regression,7,62.65,70.46,7.81
+EARLY-L-SeverelyStunted,early_months,Severely Stunted,L,Linear Regression,8,63.98,74.15,10.17
+EARLY-L-SeverelyStunted,early_months,Severely Stunted,L,Linear Regression,9,65.24,77.83,12.59
+EARLY-L-SeverelyStunted,early_months,Severely Stunted,L,Polynomial Degree 2,4,57.64,57.16,0.48
+EARLY-L-SeverelyStunted,early_months,Severely Stunted,L,Polynomial Degree 2,5,59.57,58.14,1.43
+EARLY-L-SeverelyStunted,early_months,Severely Stunted,L,Polynomial Degree 2,6,61.2,58.23,2.97
+EARLY-L-SeverelyStunted,early_months,Severely Stunted,L,Polynomial Degree 2,7,62.65,57.41,5.24
+EARLY-L-SeverelyStunted,early_months,Severely Stunted,L,Polynomial Degree 2,8,63.98,55.7,8.28
+EARLY-L-SeverelyStunted,early_months,Severely Stunted,L,Polynomial Degree 2,9,65.24,53.08,12.16
+EARLY-L-SeverelyStunted,early_months,Severely Stunted,L,GPR WHO Prior,4,57.64,57.69,0.05
+EARLY-L-SeverelyStunted,early_months,Severely Stunted,L,GPR WHO Prior,5,59.57,59.7,0.13
+EARLY-L-SeverelyStunted,early_months,Severely Stunted,L,GPR WHO Prior,6,61.2,61.47,0.27
+EARLY-L-SeverelyStunted,early_months,Severely Stunted,L,GPR WHO Prior,7,62.65,63.08,0.43
+EARLY-L-SeverelyStunted,early_months,Severely Stunted,L,GPR WHO Prior,8,63.98,64.58,0.6
+EARLY-L-SeverelyStunted,early_months,Severely Stunted,L,GPR WHO Prior,9,65.24,66.0,0.76
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,Linear Regression,6,61.2,63.6,2.4
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,Linear Regression,7,62.65,66.63,3.98
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,Linear Regression,8,63.98,69.66,5.68
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,Linear Regression,9,65.24,72.69,7.45
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,Linear Regression,10,66.43,75.72,9.29
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,Linear Regression,11,67.55,78.75,11.2
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,Polynomial Degree 2,6,61.2,60.51,0.69
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,Polynomial Degree 2,7,62.65,60.89,1.76
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,Polynomial Degree 2,8,63.98,60.61,3.37
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,Polynomial Degree 2,9,65.24,59.66,5.58
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,Polynomial Degree 2,10,66.43,58.05,8.38
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,Polynomial Degree 2,11,67.55,55.78,11.77
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,Polynomial Degree 3,6,61.2,61.45,0.25
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,Polynomial Degree 3,7,62.65,63.43,0.78
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,Polynomial Degree 3,8,63.98,65.75,1.77
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,Polynomial Degree 3,9,65.24,68.64,3.4
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,Polynomial Degree 3,10,66.43,72.31,5.88
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,Polynomial Degree 3,11,67.55,76.99,9.44
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,GPR WHO Prior,6,61.2,61.23,0.03
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,GPR WHO Prior,7,62.65,62.74,0.09
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,GPR WHO Prior,8,63.98,64.16,0.18
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,GPR WHO Prior,9,65.24,65.54,0.3
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,GPR WHO Prior,10,66.43,66.87,0.44
+NORM-L-SeverelyStunted,normal,Severely Stunted,L,GPR WHO Prior,11,67.55,68.16,0.61
+EARLY-P-Normal,early_months,Normal,P,Linear Regression,4,62.09,63.76,1.67
+EARLY-P-Normal,early_months,Normal,P,Linear Regression,5,64.03,67.29,3.26
+EARLY-P-Normal,early_months,Normal,P,Linear Regression,6,65.73,70.83,5.1
+EARLY-P-Normal,early_months,Normal,P,Linear Regression,7,67.29,74.36,7.07
+EARLY-P-Normal,early_months,Normal,P,Linear Regression,8,68.75,77.89,9.14
+EARLY-P-Normal,early_months,Normal,P,Linear Regression,9,70.14,81.42,11.28
+EARLY-P-Normal,early_months,Normal,P,Polynomial Degree 2,4,62.09,61.5,0.59
+EARLY-P-Normal,early_months,Normal,P,Polynomial Degree 2,5,64.03,62.32,1.71
+EARLY-P-Normal,early_months,Normal,P,Polynomial Degree 2,6,65.73,62.23,3.5
+EARLY-P-Normal,early_months,Normal,P,Polynomial Degree 2,7,67.29,61.24,6.05
+EARLY-P-Normal,early_months,Normal,P,Polynomial Degree 2,8,68.75,59.34,9.41
+EARLY-P-Normal,early_months,Normal,P,Polynomial Degree 2,9,70.14,56.54,13.6
+EARLY-P-Normal,early_months,Normal,P,GPR WHO Prior,4,62.09,62.09,0.0
+EARLY-P-Normal,early_months,Normal,P,GPR WHO Prior,5,64.03,64.03,0.0
+EARLY-P-Normal,early_months,Normal,P,GPR WHO Prior,6,65.73,65.73,0.0
+EARLY-P-Normal,early_months,Normal,P,GPR WHO Prior,7,67.29,67.29,0.0
+EARLY-P-Normal,early_months,Normal,P,GPR WHO Prior,8,68.75,68.75,0.0
+EARLY-P-Normal,early_months,Normal,P,GPR WHO Prior,9,70.14,70.14,0.0
+NORM-P-Normal,normal,Normal,P,Linear Regression,6,65.73,67.87,2.14
+NORM-P-Normal,normal,Normal,P,Linear Regression,7,67.29,70.8,3.51
+NORM-P-Normal,normal,Normal,P,Linear Regression,8,68.75,73.72,4.97
+NORM-P-Normal,normal,Normal,P,Linear Regression,9,70.14,76.64,6.5
+NORM-P-Normal,normal,Normal,P,Linear Regression,10,71.48,79.57,8.09
+NORM-P-Normal,normal,Normal,P,Linear Regression,11,72.77,82.49,9.72
+NORM-P-Normal,normal,Normal,P,Polynomial Degree 2,6,65.73,64.98,0.75
+NORM-P-Normal,normal,Normal,P,Polynomial Degree 2,7,67.29,65.42,1.87
+NORM-P-Normal,normal,Normal,P,Polynomial Degree 2,8,68.75,65.25,3.5
+NORM-P-Normal,normal,Normal,P,Polynomial Degree 2,9,70.14,64.45,5.69
+NORM-P-Normal,normal,Normal,P,Polynomial Degree 2,10,71.48,63.03,8.45
+NORM-P-Normal,normal,Normal,P,Polynomial Degree 2,11,72.77,61.0,11.77
+NORM-P-Normal,normal,Normal,P,Polynomial Degree 3,6,65.73,66.07,0.34
+NORM-P-Normal,normal,Normal,P,Polynomial Degree 3,7,67.29,68.39,1.1
+NORM-P-Normal,normal,Normal,P,Polynomial Degree 3,8,68.75,71.25,2.5
+NORM-P-Normal,normal,Normal,P,Polynomial Degree 3,9,70.14,74.93,4.79
+NORM-P-Normal,normal,Normal,P,Polynomial Degree 3,10,71.48,79.67,8.19
+NORM-P-Normal,normal,Normal,P,Polynomial Degree 3,11,72.77,85.75,12.98
+NORM-P-Normal,normal,Normal,P,GPR WHO Prior,6,65.73,65.73,0.0
+NORM-P-Normal,normal,Normal,P,GPR WHO Prior,7,67.29,67.29,0.0
+NORM-P-Normal,normal,Normal,P,GPR WHO Prior,8,68.75,68.75,0.0
+NORM-P-Normal,normal,Normal,P,GPR WHO Prior,9,70.14,70.14,0.0
+NORM-P-Normal,normal,Normal,P,GPR WHO Prior,10,71.48,71.48,0.0
+NORM-P-Normal,normal,Normal,P,GPR WHO Prior,11,72.77,72.77,0.0
+EARLY-P-NormalAtas,early_months,Normal Atas,P,Linear Regression,4,64.25,65.95,1.7
+EARLY-P-NormalAtas,early_months,Normal Atas,P,Linear Regression,5,66.25,69.57,3.32
+EARLY-P-NormalAtas,early_months,Normal Atas,P,Linear Regression,6,68.0,73.19,5.19
+EARLY-P-NormalAtas,early_months,Normal Atas,P,Linear Regression,7,69.6,76.8,7.2
+EARLY-P-NormalAtas,early_months,Normal Atas,P,Linear Regression,8,71.11,80.42,9.31
+EARLY-P-NormalAtas,early_months,Normal Atas,P,Linear Regression,9,72.56,84.03,11.47
+EARLY-P-NormalAtas,early_months,Normal Atas,P,Polynomial Degree 2,4,64.25,63.68,0.57
+EARLY-P-NormalAtas,early_months,Normal Atas,P,Polynomial Degree 2,5,66.25,64.57,1.68
+EARLY-P-NormalAtas,early_months,Normal Atas,P,Polynomial Degree 2,6,68.0,64.54,3.46
+EARLY-P-NormalAtas,early_months,Normal Atas,P,Polynomial Degree 2,7,69.6,63.61,5.99
+EARLY-P-NormalAtas,early_months,Normal Atas,P,Polynomial Degree 2,8,71.11,61.76,9.35
+EARLY-P-NormalAtas,early_months,Normal Atas,P,Polynomial Degree 2,9,72.56,59.01,13.55
+EARLY-P-NormalAtas,early_months,Normal Atas,P,GPR WHO Prior,4,64.25,64.25,0.0
+EARLY-P-NormalAtas,early_months,Normal Atas,P,GPR WHO Prior,5,66.25,66.24,0.01
+EARLY-P-NormalAtas,early_months,Normal Atas,P,GPR WHO Prior,6,68.0,67.96,0.04
+EARLY-P-NormalAtas,early_months,Normal Atas,P,GPR WHO Prior,7,69.6,69.52,0.08
+EARLY-P-NormalAtas,early_months,Normal Atas,P,GPR WHO Prior,8,71.11,70.98,0.13
+EARLY-P-NormalAtas,early_months,Normal Atas,P,GPR WHO Prior,9,72.56,72.36,0.2
+NORM-P-NormalAtas,normal,Normal Atas,P,Linear Regression,6,68.0,70.18,2.18
+NORM-P-NormalAtas,normal,Normal Atas,P,Linear Regression,7,69.6,73.17,3.57
+NORM-P-NormalAtas,normal,Normal Atas,P,Linear Regression,8,71.11,76.17,5.06
+NORM-P-NormalAtas,normal,Normal Atas,P,Linear Regression,9,72.56,79.16,6.6
+NORM-P-NormalAtas,normal,Normal Atas,P,Linear Regression,10,73.95,82.16,8.21
+NORM-P-NormalAtas,normal,Normal Atas,P,Linear Regression,11,75.29,85.15,9.86
+NORM-P-NormalAtas,normal,Normal Atas,P,Polynomial Degree 2,6,68.0,67.24,0.76
+NORM-P-NormalAtas,normal,Normal Atas,P,Polynomial Degree 2,7,69.6,67.72,1.88
+NORM-P-NormalAtas,normal,Normal Atas,P,Polynomial Degree 2,8,71.11,67.56,3.55
+NORM-P-NormalAtas,normal,Normal Atas,P,Polynomial Degree 2,9,72.56,66.78,5.78
+NORM-P-NormalAtas,normal,Normal Atas,P,Polynomial Degree 2,10,73.95,65.37,8.58
+NORM-P-NormalAtas,normal,Normal Atas,P,Polynomial Degree 2,11,75.29,63.33,11.96
+NORM-P-NormalAtas,normal,Normal Atas,P,Polynomial Degree 3,6,68.0,68.33,0.33
+NORM-P-NormalAtas,normal,Normal Atas,P,Polynomial Degree 3,7,69.6,70.69,1.09
+NORM-P-NormalAtas,normal,Normal Atas,P,Polynomial Degree 3,8,71.11,73.58,2.47
+NORM-P-NormalAtas,normal,Normal Atas,P,Polynomial Degree 3,9,72.56,77.28,4.72
+NORM-P-NormalAtas,normal,Normal Atas,P,Polynomial Degree 3,10,73.95,82.04,8.09
+NORM-P-NormalAtas,normal,Normal Atas,P,Polynomial Degree 3,11,75.29,88.13,12.84
+NORM-P-NormalAtas,normal,Normal Atas,P,GPR WHO Prior,6,68.0,67.99,0.01
+NORM-P-NormalAtas,normal,Normal Atas,P,GPR WHO Prior,7,69.6,69.57,0.03
+NORM-P-NormalAtas,normal,Normal Atas,P,GPR WHO Prior,8,71.11,71.05,0.06
+NORM-P-NormalAtas,normal,Normal Atas,P,GPR WHO Prior,9,72.56,72.45,0.11
+NORM-P-NormalAtas,normal,Normal Atas,P,GPR WHO Prior,10,73.95,73.78,0.17
+NORM-P-NormalAtas,normal,Normal Atas,P,GPR WHO Prior,11,75.29,75.07,0.22
+EARLY-P-AtRisk,early_months,At Risk,P,Linear Regression,4,59.93,61.57,1.64
+EARLY-P-AtRisk,early_months,At Risk,P,Linear Regression,5,61.81,65.02,3.21
+EARLY-P-AtRisk,early_months,At Risk,P,Linear Regression,6,63.46,68.48,5.02
+EARLY-P-AtRisk,early_months,At Risk,P,Linear Regression,7,64.97,71.93,6.96
+EARLY-P-AtRisk,early_months,At Risk,P,Linear Regression,8,66.38,75.38,9.0
+EARLY-P-AtRisk,early_months,At Risk,P,Linear Regression,9,67.73,78.84,11.11
+EARLY-P-AtRisk,early_months,At Risk,P,Polynomial Degree 2,4,59.93,59.36,0.57
+EARLY-P-AtRisk,early_months,At Risk,P,Polynomial Degree 2,5,61.81,60.16,1.65
+EARLY-P-AtRisk,early_months,At Risk,P,Polynomial Degree 2,6,63.46,60.07,3.39
+EARLY-P-AtRisk,early_months,At Risk,P,Polynomial Degree 2,7,64.97,59.1,5.87
+EARLY-P-AtRisk,early_months,At Risk,P,Polynomial Degree 2,8,66.38,57.24,9.14
+EARLY-P-AtRisk,early_months,At Risk,P,Polynomial Degree 2,9,67.73,54.5,13.23
+EARLY-P-AtRisk,early_months,At Risk,P,GPR WHO Prior,4,59.93,59.95,0.02
+EARLY-P-AtRisk,early_months,At Risk,P,GPR WHO Prior,5,61.81,61.87,0.06
+EARLY-P-AtRisk,early_months,At Risk,P,GPR WHO Prior,6,63.46,63.57,0.11
+EARLY-P-AtRisk,early_months,At Risk,P,GPR WHO Prior,7,64.97,65.14,0.17
+EARLY-P-AtRisk,early_months,At Risk,P,GPR WHO Prior,8,66.38,66.63,0.25
+EARLY-P-AtRisk,early_months,At Risk,P,GPR WHO Prior,9,67.73,68.05,0.32
+NORM-P-AtRisk,normal,At Risk,P,Linear Regression,6,63.46,65.57,2.11
+NORM-P-AtRisk,normal,At Risk,P,Linear Regression,7,64.97,68.42,3.45
+NORM-P-AtRisk,normal,At Risk,P,Linear Regression,8,66.38,71.28,4.9
+NORM-P-AtRisk,normal,At Risk,P,Linear Regression,9,67.73,74.13,6.4
+NORM-P-AtRisk,normal,At Risk,P,Linear Regression,10,69.01,76.98,7.97
+NORM-P-AtRisk,normal,At Risk,P,Linear Regression,11,70.25,79.84,9.59
+NORM-P-AtRisk,normal,At Risk,P,Polynomial Degree 2,6,63.46,62.72,0.74
+NORM-P-AtRisk,normal,At Risk,P,Polynomial Degree 2,7,64.97,63.14,1.83
+NORM-P-AtRisk,normal,At Risk,P,Polynomial Degree 2,8,66.38,62.94,3.44
+NORM-P-AtRisk,normal,At Risk,P,Polynomial Degree 2,9,67.73,62.13,5.6
+NORM-P-AtRisk,normal,At Risk,P,Polynomial Degree 2,10,69.01,60.72,8.29
+NORM-P-AtRisk,normal,At Risk,P,Polynomial Degree 2,11,70.25,58.69,11.56
+NORM-P-AtRisk,normal,At Risk,P,Polynomial Degree 3,6,63.46,63.78,0.32
+NORM-P-AtRisk,normal,At Risk,P,Polynomial Degree 3,7,64.97,66.0,1.03
+NORM-P-AtRisk,normal,At Risk,P,Polynomial Degree 3,8,66.38,68.74,2.36
+NORM-P-AtRisk,normal,At Risk,P,Polynomial Degree 3,9,67.73,72.25,4.52
+NORM-P-AtRisk,normal,At Risk,P,Polynomial Degree 3,10,69.01,76.79,7.78
+NORM-P-AtRisk,normal,At Risk,P,Polynomial Degree 3,11,70.25,82.59,12.34
+NORM-P-AtRisk,normal,At Risk,P,GPR WHO Prior,6,63.46,63.44,0.02
+NORM-P-AtRisk,normal,At Risk,P,GPR WHO Prior,7,64.97,64.92,0.05
+NORM-P-AtRisk,normal,At Risk,P,GPR WHO Prior,8,66.38,66.31,0.07
+NORM-P-AtRisk,normal,At Risk,P,GPR WHO Prior,9,67.73,67.64,0.09
+NORM-P-AtRisk,normal,At Risk,P,GPR WHO Prior,10,69.01,68.94,0.07
+NORM-P-AtRisk,normal,At Risk,P,GPR WHO Prior,11,70.25,70.21,0.04
+EARLY-P-Stunted,early_months,Stunted,P,Linear Regression,4,57.76,59.38,1.62
+EARLY-P-Stunted,early_months,Stunted,P,Linear Regression,5,59.6,62.75,3.15
+EARLY-P-Stunted,early_months,Stunted,P,Linear Regression,6,61.2,66.12,4.92
+EARLY-P-Stunted,early_months,Stunted,P,Linear Regression,7,62.66,69.49,6.83
+EARLY-P-Stunted,early_months,Stunted,P,Linear Regression,8,64.02,72.86,8.84
+EARLY-P-Stunted,early_months,Stunted,P,Linear Regression,9,65.31,76.23,10.92
+EARLY-P-Stunted,early_months,Stunted,P,Polynomial Degree 2,4,57.76,57.18,0.58
+EARLY-P-Stunted,early_months,Stunted,P,Polynomial Degree 2,5,59.6,57.91,1.69
+EARLY-P-Stunted,early_months,Stunted,P,Polynomial Degree 2,6,61.2,57.76,3.44
+EARLY-P-Stunted,early_months,Stunted,P,Polynomial Degree 2,7,62.66,56.73,5.93
+EARLY-P-Stunted,early_months,Stunted,P,Polynomial Degree 2,8,64.02,54.82,9.2
+EARLY-P-Stunted,early_months,Stunted,P,Polynomial Degree 2,9,65.31,52.04,13.27
+EARLY-P-Stunted,early_months,Stunted,P,GPR WHO Prior,4,57.76,57.79,0.03
+EARLY-P-Stunted,early_months,Stunted,P,GPR WHO Prior,5,59.6,59.7,0.1
+EARLY-P-Stunted,early_months,Stunted,P,GPR WHO Prior,6,61.2,61.42,0.22
+EARLY-P-Stunted,early_months,Stunted,P,GPR WHO Prior,7,62.66,63.03,0.37
+EARLY-P-Stunted,early_months,Stunted,P,GPR WHO Prior,8,64.02,64.56,0.54
+EARLY-P-Stunted,early_months,Stunted,P,GPR WHO Prior,9,65.31,66.03,0.72
+NORM-P-Stunted,normal,Stunted,P,Linear Regression,6,61.2,63.27,2.07
+NORM-P-Stunted,normal,Stunted,P,Linear Regression,7,62.66,66.05,3.39
+NORM-P-Stunted,normal,Stunted,P,Linear Regression,8,64.02,68.84,4.82
+NORM-P-Stunted,normal,Stunted,P,Linear Regression,9,65.31,71.62,6.31
+NORM-P-Stunted,normal,Stunted,P,Linear Regression,10,66.55,74.4,7.85
+NORM-P-Stunted,normal,Stunted,P,Linear Regression,11,67.73,77.19,9.46
+NORM-P-Stunted,normal,Stunted,P,Polynomial Degree 2,6,61.2,60.47,0.73
+NORM-P-Stunted,normal,Stunted,P,Polynomial Degree 2,7,62.66,60.86,1.8
+NORM-P-Stunted,normal,Stunted,P,Polynomial Degree 2,8,64.02,60.65,3.37
+NORM-P-Stunted,normal,Stunted,P,Polynomial Degree 2,9,65.31,59.85,5.46
+NORM-P-Stunted,normal,Stunted,P,Polynomial Degree 2,10,66.55,58.44,8.11
+NORM-P-Stunted,normal,Stunted,P,Polynomial Degree 2,11,67.73,56.44,11.29
+NORM-P-Stunted,normal,Stunted,P,Polynomial Degree 3,6,61.2,61.56,0.36
+NORM-P-Stunted,normal,Stunted,P,Polynomial Degree 3,7,62.66,63.8,1.14
+NORM-P-Stunted,normal,Stunted,P,Polynomial Degree 3,8,64.02,66.61,2.59
+NORM-P-Stunted,normal,Stunted,P,Polynomial Degree 3,9,65.31,70.24,4.93
+NORM-P-Stunted,normal,Stunted,P,Polynomial Degree 3,10,66.55,74.94,8.39
+NORM-P-Stunted,normal,Stunted,P,Polynomial Degree 3,11,67.73,80.98,13.25
+NORM-P-Stunted,normal,Stunted,P,GPR WHO Prior,6,61.2,61.23,0.03
+NORM-P-Stunted,normal,Stunted,P,GPR WHO Prior,7,62.66,62.72,0.06
+NORM-P-Stunted,normal,Stunted,P,GPR WHO Prior,8,64.02,64.13,0.11
+NORM-P-Stunted,normal,Stunted,P,GPR WHO Prior,9,65.31,65.49,0.18
+NORM-P-Stunted,normal,Stunted,P,GPR WHO Prior,10,66.55,66.8,0.25
+NORM-P-Stunted,normal,Stunted,P,GPR WHO Prior,11,67.73,68.07,0.34
+EARLY-P-SeverelyStunted,early_months,Severely Stunted,P,Linear Regression,4,55.6,57.19,1.59
+EARLY-P-SeverelyStunted,early_months,Severely Stunted,P,Linear Regression,5,57.38,60.48,3.1
+EARLY-P-SeverelyStunted,early_months,Severely Stunted,P,Linear Regression,6,58.93,63.78,4.85
+EARLY-P-SeverelyStunted,early_months,Severely Stunted,P,Linear Regression,7,60.34,67.07,6.73
+EARLY-P-SeverelyStunted,early_months,Severely Stunted,P,Linear Regression,8,61.65,70.36,8.71
+EARLY-P-SeverelyStunted,early_months,Severely Stunted,P,Linear Regression,9,62.9,73.66,10.76
+EARLY-P-SeverelyStunted,early_months,Severely Stunted,P,Polynomial Degree 2,4,55.6,55.03,0.57
+EARLY-P-SeverelyStunted,early_months,Severely Stunted,P,Polynomial Degree 2,5,57.38,55.73,1.65
+EARLY-P-SeverelyStunted,early_months,Severely Stunted,P,Polynomial Degree 2,6,58.93,55.56,3.37
+EARLY-P-SeverelyStunted,early_months,Severely Stunted,P,Polynomial Degree 2,7,60.34,54.53,5.81
+EARLY-P-SeverelyStunted,early_months,Severely Stunted,P,Polynomial Degree 2,8,61.65,52.63,9.02
+EARLY-P-SeverelyStunted,early_months,Severely Stunted,P,Polynomial Degree 2,9,62.9,49.87,13.03
+EARLY-P-SeverelyStunted,early_months,Severely Stunted,P,GPR WHO Prior,4,55.6,55.63,0.03
+EARLY-P-SeverelyStunted,early_months,Severely Stunted,P,GPR WHO Prior,5,57.38,57.48,0.1
+EARLY-P-SeverelyStunted,early_months,Severely Stunted,P,GPR WHO Prior,6,58.93,59.15,0.22
+EARLY-P-SeverelyStunted,early_months,Severely Stunted,P,GPR WHO Prior,7,60.34,60.71,0.37
+EARLY-P-SeverelyStunted,early_months,Severely Stunted,P,GPR WHO Prior,8,61.65,62.22,0.57
+EARLY-P-SeverelyStunted,early_months,Severely Stunted,P,GPR WHO Prior,9,62.9,63.67,0.77
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,Linear Regression,6,58.93,60.97,2.04
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,Linear Regression,7,60.34,63.68,3.34
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,Linear Regression,8,61.65,66.39,4.74
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,Linear Regression,9,62.9,69.11,6.21
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,Linear Regression,10,64.08,71.82,7.74
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,Linear Regression,11,65.21,74.53,9.32
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,Polynomial Degree 2,6,58.93,58.21,0.72
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,Polynomial Degree 2,7,60.34,58.57,1.77
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,Polynomial Degree 2,8,61.65,58.33,3.32
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,Polynomial Degree 2,9,62.9,57.5,5.4
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,Polynomial Degree 2,10,64.08,56.09,7.99
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,Polynomial Degree 2,11,65.21,54.08,11.13
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,Polynomial Degree 3,6,58.93,59.27,0.34
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,Polynomial Degree 3,7,60.34,61.43,1.09
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,Polynomial Degree 3,8,61.65,64.13,2.48
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,Polynomial Degree 3,9,62.9,67.62,4.72
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,Polynomial Degree 3,10,64.08,72.16,8.08
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,Polynomial Degree 3,11,65.21,77.98,12.77
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,GPR WHO Prior,6,58.93,58.93,0.0
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,GPR WHO Prior,7,60.34,60.34,0.0
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,GPR WHO Prior,8,61.65,61.67,0.02
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,GPR WHO Prior,9,62.9,62.94,0.04
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,GPR WHO Prior,10,64.08,64.19,0.11
+NORM-P-SeverelyStunted,normal,Severely Stunted,P,GPR WHO Prior,11,65.21,65.42,0.21
