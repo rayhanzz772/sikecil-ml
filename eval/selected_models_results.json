@@ -1748,32 +1748,32 @@
     "predictions": [
       {
         "age": 6,
-        "height": 65.5
+        "height": 65.46
       },
       {
         "age": 7,
-        "height": 67.03
+        "height": 66.96
       },
       {
         "age": 8,
-        "height": 68.47
+        "height": 68.4
       },
       {
         "age": 9,
-        "height": 69.85
+        "height": 69.81
       },
       {
         "age": 10,
-        "height": 71.17
+        "height": 71.18
       },
       {
         "age": 11,
-        "height": 72.44
+        "height": 72.48
       }
     ],
-    "mae": 0.11,
-    "rmse": 0.132,
-    "r2": 0.9967
+    "mae": 0.0983,
+    "rmse": 0.1373,
+    "r2": 0.9964
   },
   {
     "case_id": "EARLY-L-Stunted",
