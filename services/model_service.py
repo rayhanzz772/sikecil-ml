@@ -186,6 +186,24 @@ def gpr_predict_with_who(
 
 
 # ==========================================================
+# TRAIN FUNCTIONS (SKLEARN & REGRESSION MODELS)
+# ==========================================================
+
+def train_bayesian_ridge(X: np.ndarray, y: np.ndarray) -> dict:
+    """
+    Melatih model Bayesian Ridge Regression.
+    Robust terhadap data sedikit karena regularisasi otomatis.
+    """
+    model = BayesianRidge()
+    model.fit(X, y)
+    return {
+        "name": "Bayesian Ridge",
+        "model": model,
+        "type": "bayesian_ridge"
+    }
+
+
+# ==========================================================
 # EVALUATE MODELS
 # ==========================================================
 
@@ -217,40 +235,6 @@ def evaluate_models(
                     model = BayesianRidge()
                     model.fit(X_train, y_train)
                     pred = model.predict(X_test)[0]
-
-                elif m_type == "von_bertalanffy":
-                    x_flat = X_train.flatten()
-                    A_init = float(np.max(y_train)) * 1.5
-                    K_init = 0.05
-                    B_init = A_init - float(np.min(y_train))
-                    p0 = [A_init, K_init, B_init]
-                    bounds = ([0, 0, 0], [np.inf, np.inf, np.inf])
-                    
-                    params, _ = curve_fit(
-                        _von_bertalanffy_func,
-                        x_flat,
-                        y_train,
-                        p0=p0,
-                        bounds=bounds,
-                        maxfev=10000
-                    )
-                    pred = _von_bertalanffy_func(X_test.flatten()[0], *params)
-
-                elif m_type == "gompertz":
-                    x_flat = X_train.flatten()
-                    A_init = float(np.max(y_train)) * 1.5
-                    p0 = [A_init, 5.0, 0.1]
-                    bounds = ([0, 0, 0], [np.inf, np.inf, np.inf])
-                    
-                    params, _ = curve_fit(
-                        _gompertz_func,
-                        x_flat,
-                        y_train,
-                        p0=p0,
-                        bounds=bounds,
-                        maxfev=10000
-                    )
-                    pred = _gompertz_func(X_test.flatten()[0], *params)
 
                 elif m_type == "linear":
                     model = LinearRegression()

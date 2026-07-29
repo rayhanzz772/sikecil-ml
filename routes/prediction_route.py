@@ -3,6 +3,7 @@ from flask import Blueprint, request, jsonify
 
 from services.preprocessing_service import build_feature
 from services.model_service import (
+    train_bayesian_ridge,
     evaluate_models,
     get_sorted_models
 )
@@ -165,6 +166,7 @@ def predict():
         prediction_mode = "normal"
         
         trained_models = [
+            train_bayesian_ridge(X, y),             # Fallback robust dengan regularisasi
         ]
 
         try:
@@ -238,6 +240,6 @@ def _get_skipped_models(trained_models: list) -> list[str]:
 
     Digunakan untuk transparansi pada response.
     """
-    all_names = ["Bayesian Ridge", "Von Bertalanffy", "Gompertz"]
+    all_names = ["Bayesian Ridge"]
     active_names = {m["name"] for m in trained_models if m is not None}
     return [name for name in all_names if name not in active_names]

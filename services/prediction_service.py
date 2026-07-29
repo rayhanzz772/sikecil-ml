@@ -26,7 +26,7 @@ def recursive_predict(
     Parameters
     ----------
     best_model_dict : dict
-        Salah satu dari output train_linear / train_polynomial / train_gompertz.
+        Salah satu dari output train_linear / train_polynomial.
         Harus memiliki key 'model' (objek dengan method .predict).
     last_age : int
         Usia terakhir dari data historis (dalam bulan).
