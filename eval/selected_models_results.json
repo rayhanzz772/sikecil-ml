@@ -4,6 +4,86 @@
     "mode": "early_months",
     "label": "Normal",
     "sex": "L",
+    "model": "GPR WHO Prior",
+    "history": [
+      {
+        "age": 0,
+        "height": 49.88
+      },
+      {
+        "age": 1,
+        "height": 54.72
+      },
+      {
+        "age": 2,
+        "height": 58.42
+      },
+      {
+        "age": 3,
+        "height": 61.43
+      }
+    ],
+    "ground_truth": [
+      {
+        "age": 4,
+        "height": 63.89
+      },
+      {
+        "age": 5,
+        "height": 65.9
+      },
+      {
+        "age": 6,
+        "height": 67.62
+      },
+      {
+        "age": 7,
+        "height": 69.16
+      },
+      {
+        "age": 8,
+        "height": 70.6
+      },
+      {
+        "age": 9,
+        "height": 71.97
+      }
+    ],
+    "predictions": [
+      {
+        "age": 4,
+        "height": 63.93
+      },
+      {
+        "age": 5,
+        "height": 66.01
+      },
+      {
+        "age": 6,
+        "height": 67.82
+      },
+      {
+        "age": 7,
+        "height": 69.45
+      },
+      {
+        "age": 8,
+        "height": 70.97
+      },
+      {
+        "age": 9,
+        "height": 72.41
+      }
+    ],
+    "mae": 0.2417,
+    "rmse": 0.2794,
+    "r2": 0.9896
+  },
+  {
+    "case_id": "EARLY-L-Normal",
+    "mode": "early_months",
+    "label": "Normal",
+    "sex": "L",
     "model": "Linear Regression",
     "history": [
       {
@@ -56,7 +136,7 @@
       },
       {
         "age": 5,
-        "height": 69.53
+        "height": 69.54
       },
       {
         "age": 6,
@@ -75,16 +155,16 @@
         "height": 84.88
       }
     ],
-    "mae": 7.0967,
-    "rmse": 8.0604,
-    "r2": -7.6441
+    "mae": 7.0975,
+    "rmse": 8.0603,
+    "r2": -7.6438
   },
   {
     "case_id": "EARLY-L-Normal",
     "mode": "early_months",
     "label": "Normal",
     "sex": "L",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -132,39 +212,39 @@
     "predictions": [
       {
         "age": 4,
-        "height": 63.41
+        "height": 66.48
       },
       {
         "age": 5,
-        "height": 64.5
+        "height": 71.23
       },
       {
         "age": 6,
-        "height": 64.68
+        "height": 76.32
       },
       {
         "age": 7,
-        "height": 63.94
+        "height": 81.78
       },
       {
         "age": 8,
-        "height": 62.28
+        "height": 87.62
       },
       {
         "age": 9,
-        "height": 59.71
+        "height": 93.88
       }
     ],
-    "mae": 5.1033,
-    "rmse": 6.5525,
-    "r2": -4.7125
+    "mae": 11.3628,
+    "rmse": 13.1654,
+    "r2": -22.0611
   },
   {
-    "case_id": "EARLY-L-Normal",
-    "mode": "early_months",
+    "case_id": "NORM-L-Normal",
+    "mode": "normal",
     "label": "Normal",
     "sex": "L",
-    "model": "GPR (Trend Mean Function)",
+    "model": "GPR WHO Prior",
     "history": [
       {
         "age": 0,
@@ -181,9 +261,7 @@
       {
         "age": 3,
         "height": 61.43
-      }
-    ],
-    "ground_truth": [
+      },
       {
         "age": 4,
         "height": 63.89
@@ -191,7 +269,9 @@
       {
         "age": 5,
         "height": 65.9
-      },
+      }
+    ],
+    "ground_truth": [
       {
         "age": 6,
         "height": 67.62
@@ -207,37 +287,45 @@
       {
         "age": 9,
         "height": 71.97
+      },
+      {
+        "age": 10,
+        "height": 73.28
+      },
+      {
+        "age": 11,
+        "height": 74.54
       }
     ],
     "predictions": [
       {
-        "age": 4,
-        "height": 65.7
-      },
-      {
-        "age": 5,
-        "height": 69.53
-      },
-      {
         "age": 6,
-        "height": 73.37
+        "height": 67.68
       },
       {
         "age": 7,
-        "height": 77.2
+        "height": 69.25
       },
       {
         "age": 8,
-        "height": 81.04
+        "height": 70.71
       },
       {
         "age": 9,
-        "height": 84.87
+        "height": 72.09
+      },
+      {
+        "age": 10,
+        "height": 73.41
+      },
+      {
+        "age": 11,
+        "height": 74.66
       }
     ],
-    "mae": 7.095,
-    "rmse": 8.0577,
-    "r2": -7.6384
+    "mae": 0.105,
+    "rmse": 0.1076,
+    "r2": 0.9979
   },
   {
     "case_id": "NORM-L-Normal",
@@ -323,16 +411,16 @@
         "height": 85.9
       }
     ],
-    "mae": 6.805,
-    "rmse": 7.453,
-    "r2": -8.9748
+    "mae": 6.8084,
+    "rmse": 7.4566,
+    "r2": -8.9843
   },
   {
     "case_id": "NORM-L-Normal",
     "mode": "normal",
     "label": "Normal",
     "sex": "L",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -388,208 +476,112 @@
     "predictions": [
       {
         "age": 6,
-        "height": 66.92
+        "height": 71.13
       },
       {
         "age": 7,
-        "height": 67.35
+        "height": 75.12
       },
       {
         "age": 8,
-        "height": 67.1
+        "height": 79.33
       },
       {
         "age": 9,
-        "height": 66.16
+        "height": 83.77
       },
       {
         "age": 10,
-        "height": 64.54
+        "height": 88.46
       },
       {
         "age": 11,
-        "height": 62.24
+        "height": 93.42
       }
     ],
-    "mae": 5.4767,
-    "rmse": 6.8001,
-    "r2": -7.3037
+    "mae": 10.6752,
+    "rmse": 11.902,
+    "r2": -24.4379
   },
   {
-    "case_id": "NORM-L-Normal",
-    "mode": "normal",
-    "label": "Normal",
+    "case_id": "EARLY-L-NormalAtas",
+    "mode": "early_months",
+    "label": "Normal Atas",
     "sex": "L",
-    "model": "Polynomial Degree 3",
+    "model": "GPR WHO Prior",
     "history": [
       {
         "age": 0,
-        "height": 49.88
+        "height": 51.78
       },
       {
         "age": 1,
-        "height": 54.72
+        "height": 56.67
       },
       {
         "age": 2,
-        "height": 58.42
+        "height": 60.43
       },
       {
         "age": 3,
-        "height": 61.43
-      },
-      {
-        "age": 4,
-        "height": 63.89
-      },
-      {
-        "age": 5,
-        "height": 65.9
+        "height": 63.47
       }
     ],
     "ground_truth": [
       {
-        "age": 6,
-        "height": 67.62
-      },
-      {
-        "age": 7,
-        "height": 69.16
-      },
-      {
-        "age": 8,
-        "height": 70.6
-      },
-      {
-        "age": 9,
-        "height": 71.97
-      },
-      {
-        "age": 10,
-        "height": 73.28
-      },
-      {
-        "age": 11,
-        "height": 74.54
-      }
-    ],
-    "predictions": [
-      {
-        "age": 6,
-        "height": 67.82
-      },
-      {
-        "age": 7,
-        "height": 69.8
-      },
-      {
-        "age": 8,
-        "height": 72.06
-      },
-      {
-        "age": 9,
-        "height": 74.83
-      },
-      {
-        "age": 10,
-        "height": 78.3
-      },
-      {
-        "age": 11,
-        "height": 82.71
-      }
-    ],
-    "mae": 3.0583,
-    "rmse": 4.1374,
-    "r2": -2.074
-  },
-  {
-    "case_id": "NORM-L-Normal",
-    "mode": "normal",
-    "label": "Normal",
-    "sex": "L",
-    "model": "GPR (Trend Mean Function)",
-    "history": [
-      {
-        "age": 0,
-        "height": 49.88
-      },
-      {
-        "age": 1,
-        "height": 54.72
-      },
-      {
-        "age": 2,
-        "height": 58.42
-      },
-      {
-        "age": 3,
-        "height": 61.43
-      },
-      {
         "age": 4,
-        "height": 63.89
+        "height": 65.97
       },
       {
         "age": 5,
-        "height": 65.9
-      }
-    ],
-    "ground_truth": [
+        "height": 68.01
+      },
       {
         "age": 6,
-        "height": 67.62
+        "height": 69.76
       },
       {
         "age": 7,
-        "height": 69.16
+        "height": 71.34
       },
       {
         "age": 8,
-        "height": 70.6
+        "height": 72.8
       },
       {
         "age": 9,
-        "height": 71.97
-      },
-      {
-        "age": 10,
-        "height": 73.28
-      },
-      {
-        "age": 11,
-        "height": 74.54
+        "height": 74.21
       }
     ],
     "predictions": [
       {
+        "age": 4,
+        "height": 66.02
+      },
+      {
+        "age": 5,
+        "height": 68.15
+      },
+      {
         "age": 6,
-        "height": 66.92
+        "height": 70.0
       },
       {
         "age": 7,
-        "height": 67.35
+        "height": 71.68
       },
       {
         "age": 8,
-        "height": 67.1
+        "height": 73.24
       },
       {
         "age": 9,
-        "height": 66.16
-      },
-      {
-        "age": 10,
-        "height": 64.54
-      },
-      {
-        "age": 11,
-        "height": 62.24
+        "height": 74.72
       }
     ],
-    "mae": 5.4767,
-    "rmse": 6.8001,
-    "r2": -7.3037
+    "mae": 0.2867,
+    "rmse": 0.3289,
+    "r2": 0.9862
   },
   {
     "case_id": "EARLY-L-NormalAtas",
@@ -667,16 +659,16 @@
         "height": 87.21
       }
     ],
-    "mae": 7.155,
-    "rmse": 8.1235,
-    "r2": -7.4442
+    "mae": 7.1542,
+    "rmse": 8.1233,
+    "r2": -7.4437
   },
   {
     "case_id": "EARLY-L-NormalAtas",
     "mode": "early_months",
     "label": "Normal Atas",
     "sex": "L",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -724,39 +716,39 @@
     "predictions": [
       {
         "age": 4,
-        "height": 65.48
+        "height": 68.57
       },
       {
         "age": 5,
-        "height": 66.59
+        "height": 73.35
       },
       {
         "age": 6,
-        "height": 66.77
+        "height": 78.48
       },
       {
         "age": 7,
-        "height": 66.03
+        "height": 83.96
       },
       {
         "age": 8,
-        "height": 64.36
+        "height": 89.82
       },
       {
         "age": 9,
-        "height": 61.77
+        "height": 96.09
       }
     ],
-    "mae": 5.1817,
-    "rmse": 6.6506,
-    "r2": -4.6596
+    "mae": 11.3615,
+    "rmse": 13.1574,
+    "r2": -21.1519
   },
   {
-    "case_id": "EARLY-L-NormalAtas",
-    "mode": "early_months",
+    "case_id": "NORM-L-NormalAtas",
+    "mode": "normal",
     "label": "Normal Atas",
     "sex": "L",
-    "model": "GPR (Trend Mean Function)",
+    "model": "GPR WHO Prior",
     "history": [
       {
         "age": 0,
@@ -773,9 +765,7 @@
       {
         "age": 3,
         "height": 63.47
-      }
-    ],
-    "ground_truth": [
+      },
       {
         "age": 4,
         "height": 65.97
@@ -783,7 +773,9 @@
       {
         "age": 5,
         "height": 68.01
-      },
+      }
+    ],
+    "ground_truth": [
       {
         "age": 6,
         "height": 69.76
@@ -799,37 +791,45 @@
       {
         "age": 9,
         "height": 74.21
+      },
+      {
+        "age": 10,
+        "height": 75.57
+      },
+      {
+        "age": 11,
+        "height": 76.87
       }
     ],
     "predictions": [
       {
-        "age": 4,
-        "height": 67.79
-      },
-      {
-        "age": 5,
-        "height": 71.68
-      },
-      {
         "age": 6,
-        "height": 75.56
+        "height": 69.83
       },
       {
         "age": 7,
-        "height": 79.44
+        "height": 71.45
       },
       {
         "age": 8,
-        "height": 83.33
+        "height": 72.95
       },
       {
         "age": 9,
-        "height": 87.21
+        "height": 74.37
+      },
+      {
+        "age": 10,
+        "height": 75.72
+      },
+      {
+        "age": 11,
+        "height": 77.01
       }
     ],
-    "mae": 7.1533,
-    "rmse": 8.1231,
-    "r2": -7.4434
+    "mae": 0.13,
+    "rmse": 0.1337,
+    "r2": 0.997
   },
   {
     "case_id": "NORM-L-NormalAtas",
@@ -915,16 +915,16 @@
         "height": 88.28
       }
     ],
-    "mae": 6.845,
-    "rmse": 7.4931,
-    "r2": -8.5554
+    "mae": 6.8454,
+    "rmse": 7.4933,
+    "r2": -8.5559
   },
   {
     "case_id": "NORM-L-NormalAtas",
     "mode": "normal",
     "label": "Normal Atas",
     "sex": "L",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -980,208 +980,112 @@
     "predictions": [
       {
         "age": 6,
-        "height": 69.05
+        "height": 73.28
       },
       {
         "age": 7,
-        "height": 69.5
+        "height": 77.3
       },
       {
         "age": 8,
-        "height": 69.25
+        "height": 81.54
       },
       {
         "age": 9,
-        "height": 68.32
+        "height": 86.01
       },
       {
         "age": 10,
-        "height": 66.7
+        "height": 90.73
       },
       {
         "age": 11,
-        "height": 64.39
+        "height": 95.7
       }
     ],
-    "mae": 5.5567,
-    "rmse": 6.8994,
-    "r2": -7.1012
+    "mae": 10.6694,
+    "rmse": 11.8883,
+    "r2": -23.0528
   },
   {
-    "case_id": "NORM-L-NormalAtas",
-    "mode": "normal",
-    "label": "Normal Atas",
+    "case_id": "EARLY-L-AtRisk",
+    "mode": "early_months",
+    "label": "At Risk",
     "sex": "L",
-    "model": "Polynomial Degree 3",
+    "model": "GPR WHO Prior",
     "history": [
       {
         "age": 0,
-        "height": 51.78
+        "height": 47.99
       },
       {
         "age": 1,
-        "height": 56.67
+        "height": 52.78
       },
       {
         "age": 2,
-        "height": 60.43
+        "height": 56.42
       },
       {
         "age": 3,
-        "height": 63.47
-      },
-      {
-        "age": 4,
-        "height": 65.97
-      },
-      {
-        "age": 5,
-        "height": 68.01
+        "height": 59.38
       }
     ],
     "ground_truth": [
       {
-        "age": 6,
-        "height": 69.76
-      },
-      {
-        "age": 7,
-        "height": 71.34
-      },
-      {
-        "age": 8,
-        "height": 72.8
-      },
-      {
-        "age": 9,
-        "height": 74.21
-      },
-      {
-        "age": 10,
-        "height": 75.57
-      },
-      {
-        "age": 11,
-        "height": 76.87
-      }
-    ],
-    "predictions": [
-      {
-        "age": 6,
-        "height": 69.96
-      },
-      {
-        "age": 7,
-        "height": 71.96
-      },
-      {
-        "age": 8,
-        "height": 74.25
-      },
-      {
-        "age": 9,
-        "height": 77.03
-      },
-      {
-        "age": 10,
-        "height": 80.53
-      },
-      {
-        "age": 11,
-        "height": 84.97
-      }
-    ],
-    "mae": 3.025,
-    "rmse": 4.0966,
-    "r2": -1.856
-  },
-  {
-    "case_id": "NORM-L-NormalAtas",
-    "mode": "normal",
-    "label": "Normal Atas",
-    "sex": "L",
-    "model": "GPR (Trend Mean Function)",
-    "history": [
-      {
-        "age": 0,
-        "height": 51.78
-      },
-      {
-        "age": 1,
-        "height": 56.67
-      },
-      {
-        "age": 2,
-        "height": 60.43
-      },
-      {
-        "age": 3,
-        "height": 63.47
-      },
-      {
         "age": 4,
-        "height": 65.97
+        "height": 61.81
       },
       {
         "age": 5,
-        "height": 68.01
-      }
-    ],
-    "ground_truth": [
+        "height": 63.79
+      },
       {
         "age": 6,
-        "height": 69.76
+        "height": 65.48
       },
       {
         "age": 7,
-        "height": 71.34
+        "height": 66.99
       },
       {
         "age": 8,
-        "height": 72.8
+        "height": 68.39
       },
       {
         "age": 9,
-        "height": 74.21
-      },
-      {
-        "age": 10,
-        "height": 75.57
-      },
-      {
-        "age": 11,
-        "height": 76.87
+        "height": 69.73
       }
     ],
     "predictions": [
       {
+        "age": 4,
+        "height": 61.82
+      },
+      {
+        "age": 5,
+        "height": 63.85
+      },
+      {
         "age": 6,
-        "height": 69.05
+        "height": 65.61
       },
       {
         "age": 7,
-        "height": 69.5
+        "height": 67.18
       },
       {
         "age": 8,
-        "height": 69.25
+        "height": 68.64
       },
       {
         "age": 9,
-        "height": 68.32
-      },
-      {
-        "age": 10,
-        "height": 66.7
-      },
-      {
-        "age": 11,
-        "height": 64.39
+        "height": 70.03
       }
     ],
-    "mae": 5.5567,
-    "rmse": 6.8994,
-    "r2": -7.1012
+    "mae": 0.1567,
+    "rmse": 0.1867,
+    "r2": 0.9952
   },
   {
     "case_id": "EARLY-L-AtRisk",
@@ -1236,7 +1140,7 @@
     "predictions": [
       {
         "age": 4,
-        "height": 63.59
+        "height": 63.6
       },
       {
         "age": 5,
@@ -1259,16 +1163,16 @@
         "height": 82.5
       }
     ],
-    "mae": 7.0167,
-    "rmse": 7.9719,
-    "r2": -7.8041
+    "mae": 7.0158,
+    "rmse": 7.9708,
+    "r2": -7.8019
   },
   {
     "case_id": "EARLY-L-AtRisk",
     "mode": "early_months",
     "label": "At Risk",
     "sex": "L",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -1316,39 +1220,39 @@
     "predictions": [
       {
         "age": 4,
-        "height": 61.31
+        "height": 64.38
       },
       {
         "age": 5,
-        "height": 62.34
+        "height": 69.09
       },
       {
         "age": 6,
-        "height": 62.46
+        "height": 74.14
       },
       {
         "age": 7,
-        "height": 61.67
+        "height": 79.56
       },
       {
         "age": 8,
-        "height": 59.96
+        "height": 85.38
       },
       {
         "age": 9,
-        "height": 57.34
+        "height": 91.62
       }
     ],
-    "mae": 5.185,
-    "rmse": 6.6377,
-    "r2": -5.1038
+    "mae": 11.3321,
+    "rmse": 13.1386,
+    "r2": -22.9147
   },
   {
-    "case_id": "EARLY-L-AtRisk",
-    "mode": "early_months",
+    "case_id": "NORM-L-AtRisk",
+    "mode": "normal",
     "label": "At Risk",
     "sex": "L",
-    "model": "GPR (Trend Mean Function)",
+    "model": "GPR WHO Prior",
     "history": [
       {
         "age": 0,
@@ -1365,9 +1269,7 @@
       {
         "age": 3,
         "height": 59.38
-      }
-    ],
-    "ground_truth": [
+      },
       {
         "age": 4,
         "height": 61.81
@@ -1375,7 +1277,9 @@
       {
         "age": 5,
         "height": 63.79
-      },
+      }
+    ],
+    "ground_truth": [
       {
         "age": 6,
         "height": 65.48
@@ -1391,37 +1295,45 @@
       {
         "age": 9,
         "height": 69.73
+      },
+      {
+        "age": 10,
+        "height": 71.0
+      },
+      {
+        "age": 11,
+        "height": 72.21
       }
     ],
     "predictions": [
       {
-        "age": 4,
-        "height": 63.59
-      },
-      {
-        "age": 5,
-        "height": 67.38
-      },
-      {
         "age": 6,
-        "height": 71.16
+        "height": 65.51
       },
       {
         "age": 7,
-        "height": 74.94
+        "height": 67.05
       },
       {
         "age": 8,
-        "height": 78.72
+        "height": 68.47
       },
       {
         "age": 9,
-        "height": 82.5
+        "height": 69.81
+      },
+      {
+        "age": 10,
+        "height": 71.08
+      },
+      {
+        "age": 11,
+        "height": 72.29
       }
     ],
-    "mae": 7.0167,
-    "rmse": 7.9719,
-    "r2": -7.8041
+    "mae": 0.0683,
+    "rmse": 0.0708,
+    "r2": 0.999
   },
   {
     "case_id": "NORM-L-AtRisk",
@@ -1507,16 +1419,16 @@
         "height": 83.51
       }
     ],
-    "mae": 6.755,
-    "rmse": 7.4031,
-    "r2": -9.3952
+    "mae": 6.756,
+    "rmse": 7.4035,
+    "r2": -9.3966
   },
   {
     "case_id": "NORM-L-AtRisk",
     "mode": "normal",
     "label": "At Risk",
     "sex": "L",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -1572,208 +1484,112 @@
     "predictions": [
       {
         "age": 6,
-        "height": 64.78
+        "height": 68.97
       },
       {
         "age": 7,
-        "height": 65.2
+        "height": 72.92
       },
       {
         "age": 8,
-        "height": 64.94
+        "height": 77.09
       },
       {
         "age": 9,
-        "height": 64.01
+        "height": 81.51
       },
       {
         "age": 10,
-        "height": 62.41
+        "height": 86.17
       },
       {
         "age": 11,
-        "height": 60.12
+        "height": 91.1
       }
     ],
-    "mae": 5.39,
-    "rmse": 6.6867,
-    "r2": -7.4808
+    "mae": 10.6621,
+    "rmse": 11.8956,
+    "r2": -25.8401
   },
   {
-    "case_id": "NORM-L-AtRisk",
-    "mode": "normal",
-    "label": "At Risk",
+    "case_id": "EARLY-L-Stunted",
+    "mode": "early_months",
+    "label": "Stunted",
     "sex": "L",
-    "model": "Polynomial Degree 3",
+    "model": "GPR WHO Prior",
     "history": [
       {
         "age": 0,
-        "height": 47.99
+        "height": 46.1
       },
       {
         "age": 1,
-        "height": 52.78
+        "height": 50.83
       },
       {
         "age": 2,
-        "height": 56.42
+        "height": 54.42
       },
       {
         "age": 3,
-        "height": 59.38
-      },
-      {
-        "age": 4,
-        "height": 61.81
-      },
-      {
-        "age": 5,
-        "height": 63.79
+        "height": 57.34
       }
     ],
     "ground_truth": [
       {
-        "age": 6,
-        "height": 65.48
-      },
-      {
-        "age": 7,
-        "height": 66.99
-      },
-      {
-        "age": 8,
-        "height": 68.39
-      },
-      {
-        "age": 9,
-        "height": 69.73
-      },
-      {
-        "age": 10,
-        "height": 71.0
-      },
-      {
-        "age": 11,
-        "height": 72.21
-      }
-    ],
-    "predictions": [
-      {
-        "age": 6,
-        "height": 65.71
-      },
-      {
-        "age": 7,
-        "height": 67.7
-      },
-      {
-        "age": 8,
-        "height": 70.01
-      },
-      {
-        "age": 9,
-        "height": 72.86
-      },
-      {
-        "age": 10,
-        "height": 76.45
-      },
-      {
-        "age": 11,
-        "height": 81.02
-      }
-    ],
-    "mae": 3.325,
-    "rmse": 4.4777,
-    "r2": -2.8029
-  },
-  {
-    "case_id": "NORM-L-AtRisk",
-    "mode": "normal",
-    "label": "At Risk",
-    "sex": "L",
-    "model": "GPR (Trend Mean Function)",
-    "history": [
-      {
-        "age": 0,
-        "height": 47.99
-      },
-      {
-        "age": 1,
-        "height": 52.78
-      },
-      {
-        "age": 2,
-        "height": 56.42
-      },
-      {
-        "age": 3,
-        "height": 59.38
-      },
-      {
         "age": 4,
-        "height": 61.81
+        "height": 59.72
       },
       {
         "age": 5,
-        "height": 63.79
-      }
-    ],
-    "ground_truth": [
+        "height": 61.68
+      },
       {
         "age": 6,
-        "height": 65.48
+        "height": 63.34
       },
       {
         "age": 7,
-        "height": 66.99
+        "height": 64.82
       },
       {
         "age": 8,
-        "height": 68.39
+        "height": 66.19
       },
       {
         "age": 9,
-        "height": 69.73
-      },
-      {
-        "age": 10,
-        "height": 71.0
-      },
-      {
-        "age": 11,
-        "height": 72.21
+        "height": 67.48
       }
     ],
     "predictions": [
       {
+        "age": 4,
+        "height": 59.73
+      },
+      {
+        "age": 5,
+        "height": 61.71
+      },
+      {
         "age": 6,
-        "height": 64.79
+        "height": 63.42
       },
       {
         "age": 7,
-        "height": 65.2
+        "height": 64.95
       },
       {
         "age": 8,
-        "height": 64.94
+        "height": 66.37
       },
       {
         "age": 9,
-        "height": 64.01
-      },
-      {
-        "age": 10,
-        "height": 62.41
-      },
-      {
-        "age": 11,
-        "height": 60.12
+        "height": 67.71
       }
     ],
-    "mae": 5.3883,
-    "rmse": 6.6865,
-    "r2": -7.4803
+    "mae": 0.11,
+    "rmse": 0.1352,
+    "r2": 0.9974
   },
   {
     "case_id": "EARLY-L-Stunted",
@@ -1851,16 +1667,16 @@
         "height": 80.16
       }
     ],
-    "mae": 6.955,
-    "rmse": 7.9028,
-    "r2": -8.0043
+    "mae": 6.9558,
+    "rmse": 7.9032,
+    "r2": -8.0051
   },
   {
     "case_id": "EARLY-L-Stunted",
     "mode": "early_months",
     "label": "Stunted",
     "sex": "L",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -1908,39 +1724,39 @@
     "predictions": [
       {
         "age": 4,
-        "height": 59.24
+        "height": 62.3
       },
       {
         "age": 5,
-        "height": 60.25
+        "height": 66.97
       },
       {
         "age": 6,
-        "height": 60.36
+        "height": 71.99
       },
       {
         "age": 7,
-        "height": 59.57
+        "height": 77.39
       },
       {
         "age": 8,
-        "height": 57.87
+        "height": 83.19
       },
       {
         "age": 9,
-        "height": 55.27
+        "height": 89.42
       }
     ],
-    "mae": 5.1117,
-    "rmse": 6.545,
-    "r2": -5.176
+    "mae": 11.3369,
+    "rmse": 13.1505,
+    "r2": -23.9328
   },
   {
-    "case_id": "EARLY-L-Stunted",
-    "mode": "early_months",
+    "case_id": "NORM-L-Stunted",
+    "mode": "normal",
     "label": "Stunted",
     "sex": "L",
-    "model": "GPR (Trend Mean Function)",
+    "model": "GPR WHO Prior",
     "history": [
       {
         "age": 0,
@@ -1957,9 +1773,7 @@
       {
         "age": 3,
         "height": 57.34
-      }
-    ],
-    "ground_truth": [
+      },
       {
         "age": 4,
         "height": 59.72
@@ -1967,7 +1781,9 @@
       {
         "age": 5,
         "height": 61.68
-      },
+      }
+    ],
+    "ground_truth": [
       {
         "age": 6,
         "height": 63.34
@@ -1983,37 +1799,45 @@
       {
         "age": 9,
         "height": 67.48
+      },
+      {
+        "age": 10,
+        "height": 68.71
+      },
+      {
+        "age": 11,
+        "height": 69.88
       }
     ],
     "predictions": [
       {
-        "age": 4,
-        "height": 61.5
-      },
-      {
-        "age": 5,
-        "height": 65.23
-      },
-      {
         "age": 6,
-        "height": 68.96
+        "height": 63.35
       },
       {
         "age": 7,
-        "height": 72.69
+        "height": 64.84
       },
       {
         "age": 8,
-        "height": 76.42
+        "height": 66.22
       },
       {
         "age": 9,
-        "height": 80.15
+        "height": 67.52
+      },
+      {
+        "age": 10,
+        "height": 68.75
+      },
+      {
+        "age": 11,
+        "height": 69.92
       }
     ],
-    "mae": 6.9533,
-    "rmse": 7.9001,
-    "r2": -7.9982
+    "mae": 0.03,
+    "rmse": 0.0321,
+    "r2": 0.9998
   },
   {
     "case_id": "NORM-L-Stunted",
@@ -2099,16 +1923,16 @@
         "height": 81.12
       }
     ],
-    "mae": 6.7067,
-    "rmse": 7.3548,
-    "r2": -9.8777
+    "mae": 6.7052,
+    "rmse": 7.3533,
+    "r2": -9.8733
   },
   {
     "case_id": "NORM-L-Stunted",
     "mode": "normal",
     "label": "Stunted",
     "sex": "L",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -2164,208 +1988,112 @@
     "predictions": [
       {
         "age": 6,
+        "height": 66.82
+      },
+      {
+        "age": 7,
+        "height": 70.73
+      },
+      {
+        "age": 8,
+        "height": 74.87
+      },
+      {
+        "age": 9,
+        "height": 79.25
+      },
+      {
+        "age": 10,
+        "height": 83.89
+      },
+      {
+        "age": 11,
+        "height": 88.8
+      }
+    ],
+    "mae": 10.6566,
+    "rmse": 11.8989,
+    "r2": -27.4717
+  },
+  {
+    "case_id": "EARLY-L-SeverelyStunted",
+    "mode": "early_months",
+    "label": "Severely Stunted",
+    "sex": "L",
+    "model": "GPR WHO Prior",
+    "history": [
+      {
+        "age": 0,
+        "height": 44.2
+      },
+      {
+        "age": 1,
+        "height": 48.88
+      },
+      {
+        "age": 2,
+        "height": 52.42
+      },
+      {
+        "age": 3,
+        "height": 55.3
+      }
+    ],
+    "ground_truth": [
+      {
+        "age": 4,
+        "height": 57.64
+      },
+      {
+        "age": 5,
+        "height": 59.57
+      },
+      {
+        "age": 6,
+        "height": 61.2
+      },
+      {
+        "age": 7,
         "height": 62.65
       },
       {
-        "age": 7,
-        "height": 63.05
-      },
-      {
         "age": 8,
-        "height": 62.78
+        "height": 63.98
       },
       {
         "age": 9,
-        "height": 61.85
-      },
-      {
-        "age": 10,
-        "height": 60.25
-      },
-      {
-        "age": 11,
-        "height": 57.98
-      }
-    ],
-    "mae": 5.31,
-    "rmse": 6.5843,
-    "r2": -7.7179
-  },
-  {
-    "case_id": "NORM-L-Stunted",
-    "mode": "normal",
-    "label": "Stunted",
-    "sex": "L",
-    "model": "Polynomial Degree 3",
-    "history": [
-      {
-        "age": 0,
-        "height": 46.1
-      },
-      {
-        "age": 1,
-        "height": 50.83
-      },
-      {
-        "age": 2,
-        "height": 54.42
-      },
-      {
-        "age": 3,
-        "height": 57.34
-      },
-      {
-        "age": 4,
-        "height": 59.72
-      },
-      {
-        "age": 5,
-        "height": 61.68
-      }
-    ],
-    "ground_truth": [
-      {
-        "age": 6,
-        "height": 63.34
-      },
-      {
-        "age": 7,
-        "height": 64.82
-      },
-      {
-        "age": 8,
-        "height": 66.19
-      },
-      {
-        "age": 9,
-        "height": 67.48
-      },
-      {
-        "age": 10,
-        "height": 68.71
-      },
-      {
-        "age": 11,
-        "height": 69.88
+        "height": 65.24
       }
     ],
     "predictions": [
       {
-        "age": 6,
-        "height": 63.58
-      },
-      {
-        "age": 7,
-        "height": 65.58
-      },
-      {
-        "age": 8,
-        "height": 67.9
-      },
-      {
-        "age": 9,
-        "height": 70.78
-      },
-      {
-        "age": 10,
-        "height": 74.44
-      },
-      {
-        "age": 11,
-        "height": 79.08
-      }
-    ],
-    "mae": 3.49,
-    "rmse": 4.689,
-    "r2": -3.4214
-  },
-  {
-    "case_id": "NORM-L-Stunted",
-    "mode": "normal",
-    "label": "Stunted",
-    "sex": "L",
-    "model": "GPR (Trend Mean Function)",
-    "history": [
-      {
-        "age": 0,
-        "height": 46.1
-      },
-      {
-        "age": 1,
-        "height": 50.83
-      },
-      {
-        "age": 2,
-        "height": 54.42
-      },
-      {
-        "age": 3,
-        "height": 57.34
-      },
-      {
         "age": 4,
-        "height": 59.72
+        "height": 57.64
       },
       {
         "age": 5,
-        "height": 61.68
-      }
-    ],
-    "ground_truth": [
+        "height": 59.58
+      },
       {
         "age": 6,
-        "height": 63.34
+        "height": 61.24
       },
       {
         "age": 7,
-        "height": 64.82
+        "height": 62.73
       },
       {
         "age": 8,
-        "height": 66.19
+        "height": 64.1
       },
       {
         "age": 9,
-        "height": 67.48
-      },
-      {
-        "age": 10,
-        "height": 68.71
-      },
-      {
-        "age": 11,
-        "height": 69.88
+        "height": 65.39
       }
     ],
-    "predictions": [
-      {
-        "age": 6,
-        "height": 62.65
-      },
-      {
-        "age": 7,
-        "height": 63.05
-      },
-      {
-        "age": 8,
-        "height": 62.78
-      },
-      {
-        "age": 9,
-        "height": 61.85
-      },
-      {
-        "age": 10,
-        "height": 60.25
-      },
-      {
-        "age": 11,
-        "height": 57.98
-      }
-    ],
-    "mae": 5.31,
-    "rmse": 6.5843,
-    "r2": -7.7179
+    "mae": 0.0667,
+    "rmse": 0.0866,
+    "r2": 0.9989
   },
   {
     "case_id": "EARLY-L-SeverelyStunted",
@@ -2444,15 +2172,15 @@
       }
     ],
     "mae": 6.9067,
-    "rmse": 7.8485,
-    "r2": -8.2625
+    "rmse": 7.848,
+    "r2": -8.2614
   },
   {
     "case_id": "EARLY-L-SeverelyStunted",
     "mode": "early_months",
     "label": "Severely Stunted",
     "sex": "L",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -2500,39 +2228,39 @@
     "predictions": [
       {
         "age": 4,
-        "height": 57.16
+        "height": 60.22
       },
       {
         "age": 5,
-        "height": 58.14
+        "height": 64.86
       },
       {
         "age": 6,
-        "height": 58.23
+        "height": 69.86
       },
       {
         "age": 7,
-        "height": 57.41
+        "height": 75.24
       },
       {
         "age": 8,
-        "height": 55.7
+        "height": 81.03
       },
       {
         "age": 9,
-        "height": 53.08
+        "height": 87.28
       }
     ],
-    "mae": 5.0933,
-    "rmse": 6.5189,
-    "r2": -5.3901
+    "mae": 11.3691,
+    "rmse": 13.1949,
+    "r2": -25.18
   },
   {
-    "case_id": "EARLY-L-SeverelyStunted",
-    "mode": "early_months",
+    "case_id": "NORM-L-SeverelyStunted",
+    "mode": "normal",
     "label": "Severely Stunted",
     "sex": "L",
-    "model": "GPR (Trend Mean Function)",
+    "model": "GPR WHO Prior",
     "history": [
       {
         "age": 0,
@@ -2549,9 +2277,7 @@
       {
         "age": 3,
         "height": 55.3
-      }
-    ],
-    "ground_truth": [
+      },
       {
         "age": 4,
         "height": 57.64
@@ -2559,7 +2285,9 @@
       {
         "age": 5,
         "height": 59.57
-      },
+      }
+    ],
+    "ground_truth": [
       {
         "age": 6,
         "height": 61.2
@@ -2575,37 +2303,45 @@
       {
         "age": 9,
         "height": 65.24
+      },
+      {
+        "age": 10,
+        "height": 66.43
+      },
+      {
+        "age": 11,
+        "height": 67.55
       }
     ],
     "predictions": [
       {
-        "age": 4,
-        "height": 59.41
-      },
-      {
-        "age": 5,
-        "height": 63.09
-      },
-      {
         "age": 6,
-        "height": 66.78
+        "height": 61.19
       },
       {
         "age": 7,
-        "height": 70.46
+        "height": 62.64
       },
       {
         "age": 8,
-        "height": 74.15
+        "height": 63.98
       },
       {
         "age": 9,
-        "height": 77.83
+        "height": 65.24
+      },
+      {
+        "age": 10,
+        "height": 66.43
+      },
+      {
+        "age": 11,
+        "height": 67.56
       }
     ],
-    "mae": 6.9067,
-    "rmse": 7.8485,
-    "r2": -8.2625
+    "mae": 0.005,
+    "rmse": 0.0071,
+    "r2": 1.0
   },
   {
     "case_id": "NORM-L-SeverelyStunted",
@@ -2691,16 +2427,16 @@
         "height": 78.75
       }
     ],
-    "mae": 6.6667,
-    "rmse": 7.3156,
-    "r2": -10.4041
+    "mae": 6.6665,
+    "rmse": 7.3146,
+    "r2": -10.401
   },
   {
     "case_id": "NORM-L-SeverelyStunted",
     "mode": "normal",
     "label": "Severely Stunted",
     "sex": "L",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -2756,208 +2492,112 @@
     "predictions": [
       {
         "age": 6,
-        "height": 60.51
+        "height": 64.67
       },
       {
         "age": 7,
-        "height": 60.89
+        "height": 68.55
       },
       {
         "age": 8,
-        "height": 60.61
+        "height": 72.66
       },
       {
         "age": 9,
-        "height": 59.66
+        "height": 77.03
       },
       {
         "age": 10,
-        "height": 58.05
+        "height": 81.65
       },
       {
         "age": 11,
-        "height": 55.78
+        "height": 86.55
       }
     ],
-    "mae": 5.2583,
-    "rmse": 6.517,
-    "r2": -8.05
+    "mae": 10.6763,
+    "rmse": 11.9289,
+    "r2": -29.322
   },
   {
-    "case_id": "NORM-L-SeverelyStunted",
-    "mode": "normal",
-    "label": "Severely Stunted",
-    "sex": "L",
-    "model": "Polynomial Degree 3",
+    "case_id": "EARLY-P-Normal",
+    "mode": "early_months",
+    "label": "Normal",
+    "sex": "P",
+    "model": "GPR WHO Prior",
     "history": [
       {
         "age": 0,
-        "height": 44.2
+        "height": 49.15
       },
       {
         "age": 1,
-        "height": 48.88
+        "height": 53.69
       },
       {
         "age": 2,
-        "height": 52.42
+        "height": 57.07
       },
       {
         "age": 3,
-        "height": 55.3
-      },
-      {
-        "age": 4,
-        "height": 57.64
-      },
-      {
-        "age": 5,
-        "height": 59.57
+        "height": 59.8
       }
     ],
     "ground_truth": [
       {
-        "age": 6,
-        "height": 61.2
-      },
-      {
-        "age": 7,
-        "height": 62.65
-      },
-      {
-        "age": 8,
-        "height": 63.98
-      },
-      {
-        "age": 9,
-        "height": 65.24
-      },
-      {
-        "age": 10,
-        "height": 66.43
-      },
-      {
-        "age": 11,
-        "height": 67.55
-      }
-    ],
-    "predictions": [
-      {
-        "age": 6,
-        "height": 61.45
-      },
-      {
-        "age": 7,
-        "height": 63.43
-      },
-      {
-        "age": 8,
-        "height": 65.75
-      },
-      {
-        "age": 9,
-        "height": 68.64
-      },
-      {
-        "age": 10,
-        "height": 72.31
-      },
-      {
-        "age": 11,
-        "height": 76.99
-      }
-    ],
-    "mae": 3.5867,
-    "rmse": 4.8141,
-    "r2": -3.9384
-  },
-  {
-    "case_id": "NORM-L-SeverelyStunted",
-    "mode": "normal",
-    "label": "Severely Stunted",
-    "sex": "L",
-    "model": "GPR (Trend Mean Function)",
-    "history": [
-      {
-        "age": 0,
-        "height": 44.2
-      },
-      {
-        "age": 1,
-        "height": 48.88
-      },
-      {
-        "age": 2,
-        "height": 52.42
-      },
-      {
-        "age": 3,
-        "height": 55.3
-      },
-      {
         "age": 4,
-        "height": 57.64
+        "height": 62.09
       },
       {
         "age": 5,
-        "height": 59.57
-      }
-    ],
-    "ground_truth": [
+        "height": 64.03
+      },
       {
         "age": 6,
-        "height": 61.2
+        "height": 65.73
       },
       {
         "age": 7,
-        "height": 62.65
+        "height": 67.29
       },
       {
         "age": 8,
-        "height": 63.98
+        "height": 68.75
       },
       {
         "age": 9,
-        "height": 65.24
-      },
-      {
-        "age": 10,
-        "height": 66.43
-      },
-      {
-        "age": 11,
-        "height": 67.55
+        "height": 70.14
       }
     ],
     "predictions": [
       {
+        "age": 4,
+        "height": 62.1
+      },
+      {
+        "age": 5,
+        "height": 64.07
+      },
+      {
         "age": 6,
-        "height": 60.51
+        "height": 65.8
       },
       {
         "age": 7,
-        "height": 60.89
+        "height": 67.38
       },
       {
         "age": 8,
-        "height": 60.61
+        "height": 68.86
       },
       {
         "age": 9,
-        "height": 59.66
-      },
-      {
-        "age": 10,
-        "height": 58.05
-      },
-      {
-        "age": 11,
-        "height": 55.78
+        "height": 70.26
       }
     ],
-    "mae": 5.2583,
-    "rmse": 6.517,
-    "r2": -8.05
+    "mae": 0.0733,
+    "rmse": 0.0829,
+    "r2": 0.9991
   },
   {
     "case_id": "EARLY-P-Normal",
@@ -3035,16 +2675,16 @@
         "height": 81.42
       }
     ],
-    "mae": 6.2533,
-    "rmse": 7.0733,
-    "r2": -5.6826
+    "mae": 6.2542,
+    "rmse": 7.0746,
+    "r2": -5.6851
   },
   {
     "case_id": "EARLY-P-Normal",
     "mode": "early_months",
     "label": "Normal",
     "sex": "P",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -3092,39 +2732,39 @@
     "predictions": [
       {
         "age": 4,
-        "height": 61.5
+        "height": 64.44
       },
       {
         "age": 5,
-        "height": 62.32
+        "height": 68.76
       },
       {
         "age": 6,
-        "height": 62.23
+        "height": 73.38
       },
       {
         "age": 7,
-        "height": 61.24
+        "height": 78.3
       },
       {
         "age": 8,
-        "height": 59.34
+        "height": 83.55
       },
       {
         "age": 9,
-        "height": 56.54
+        "height": 89.16
       }
     ],
-    "mae": 5.81,
-    "rmse": 7.367,
-    "r2": -6.249
+    "mae": 9.9263,
+    "rmse": 11.4632,
+    "r2": -16.5515
   },
   {
-    "case_id": "EARLY-P-Normal",
-    "mode": "early_months",
+    "case_id": "NORM-P-Normal",
+    "mode": "normal",
     "label": "Normal",
     "sex": "P",
-    "model": "GPR (Trend Mean Function)",
+    "model": "GPR WHO Prior",
     "history": [
       {
         "age": 0,
@@ -3141,9 +2781,7 @@
       {
         "age": 3,
         "height": 59.8
-      }
-    ],
-    "ground_truth": [
+      },
       {
         "age": 4,
         "height": 62.09
@@ -3151,7 +2789,9 @@
       {
         "age": 5,
         "height": 64.03
-      },
+      }
+    ],
+    "ground_truth": [
       {
         "age": 6,
         "height": 65.73
@@ -3167,37 +2807,45 @@
       {
         "age": 9,
         "height": 70.14
+      },
+      {
+        "age": 10,
+        "height": 71.48
+      },
+      {
+        "age": 11,
+        "height": 72.77
       }
     ],
     "predictions": [
       {
-        "age": 4,
-        "height": 63.76
-      },
-      {
-        "age": 5,
-        "height": 67.29
-      },
-      {
         "age": 6,
-        "height": 70.83
+        "height": 65.75
       },
       {
         "age": 7,
-        "height": 74.36
+        "height": 67.31
       },
       {
         "age": 8,
-        "height": 77.89
+        "height": 68.77
       },
       {
         "age": 9,
-        "height": 81.42
+        "height": 70.15
+      },
+      {
+        "age": 10,
+        "height": 71.47
+      },
+      {
+        "age": 11,
+        "height": 72.73
       }
     ],
-    "mae": 6.2533,
-    "rmse": 7.0733,
-    "r2": -5.6826
+    "mae": 0.02,
+    "rmse": 0.0224,
+    "r2": 0.9999
   },
   {
     "case_id": "NORM-P-Normal",
@@ -3283,16 +2931,16 @@
         "height": 82.49
       }
     ],
-    "mae": 5.8217,
-    "rmse": 6.3741,
-    "r2": -6.0528
+    "mae": 5.8206,
+    "rmse": 6.3732,
+    "r2": -6.0507
   },
   {
     "case_id": "NORM-P-Normal",
     "mode": "normal",
     "label": "Normal",
     "sex": "P",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -3348,208 +2996,112 @@
     "predictions": [
       {
         "age": 6,
-        "height": 64.98
+        "height": 68.77
       },
       {
         "age": 7,
-        "height": 65.42
+        "height": 72.41
       },
       {
         "age": 8,
-        "height": 65.25
+        "height": 76.24
       },
       {
         "age": 9,
-        "height": 64.45
+        "height": 80.28
       },
       {
         "age": 10,
-        "height": 63.03
+        "height": 84.52
       },
       {
         "age": 11,
-        "height": 61.0
+        "height": 89.0
       }
     ],
-    "mae": 5.3383,
-    "rmse": 6.5653,
-    "r2": -6.4822
+    "mae": 9.1759,
+    "rmse": 10.229,
+    "r2": -17.1628
   },
   {
-    "case_id": "NORM-P-Normal",
-    "mode": "normal",
-    "label": "Normal",
+    "case_id": "EARLY-P-NormalAtas",
+    "mode": "early_months",
+    "label": "Normal Atas",
     "sex": "P",
-    "model": "Polynomial Degree 3",
+    "model": "GPR WHO Prior",
     "history": [
       {
         "age": 0,
-        "height": 49.15
+        "height": 51.01
       },
       {
         "age": 1,
-        "height": 53.69
+        "height": 55.64
       },
       {
         "age": 2,
-        "height": 57.07
+        "height": 59.1
       },
       {
         "age": 3,
-        "height": 59.8
-      },
-      {
-        "age": 4,
-        "height": 62.09
-      },
-      {
-        "age": 5,
-        "height": 64.03
+        "height": 61.91
       }
     ],
     "ground_truth": [
       {
-        "age": 6,
-        "height": 65.73
-      },
-      {
-        "age": 7,
-        "height": 67.29
-      },
-      {
-        "age": 8,
-        "height": 68.75
-      },
-      {
-        "age": 9,
-        "height": 70.14
-      },
-      {
-        "age": 10,
-        "height": 71.48
-      },
-      {
-        "age": 11,
-        "height": 72.77
-      }
-    ],
-    "predictions": [
-      {
-        "age": 6,
-        "height": 66.07
-      },
-      {
-        "age": 7,
-        "height": 68.39
-      },
-      {
-        "age": 8,
-        "height": 71.25
-      },
-      {
-        "age": 9,
-        "height": 74.93
-      },
-      {
-        "age": 10,
-        "height": 79.67
-      },
-      {
-        "age": 11,
-        "height": 85.75
-      }
-    ],
-    "mae": 4.9833,
-    "rmse": 6.6593,
-    "r2": -6.6979
-  },
-  {
-    "case_id": "NORM-P-Normal",
-    "mode": "normal",
-    "label": "Normal",
-    "sex": "P",
-    "model": "GPR (Trend Mean Function)",
-    "history": [
-      {
-        "age": 0,
-        "height": 49.15
-      },
-      {
-        "age": 1,
-        "height": 53.69
-      },
-      {
-        "age": 2,
-        "height": 57.07
-      },
-      {
-        "age": 3,
-        "height": 59.8
-      },
-      {
         "age": 4,
-        "height": 62.09
+        "height": 64.25
       },
       {
         "age": 5,
-        "height": 64.03
-      }
-    ],
-    "ground_truth": [
+        "height": 66.25
+      },
       {
         "age": 6,
-        "height": 65.73
+        "height": 68.0
       },
       {
         "age": 7,
-        "height": 67.29
+        "height": 69.6
       },
       {
         "age": 8,
-        "height": 68.75
+        "height": 71.11
       },
       {
         "age": 9,
-        "height": 70.14
-      },
-      {
-        "age": 10,
-        "height": 71.48
-      },
-      {
-        "age": 11,
-        "height": 72.77
+        "height": 72.56
       }
     ],
     "predictions": [
       {
+        "age": 4,
+        "height": 64.29
+      },
+      {
+        "age": 5,
+        "height": 66.34
+      },
+      {
         "age": 6,
-        "height": 64.98
+        "height": 68.15
       },
       {
         "age": 7,
-        "height": 65.42
+        "height": 69.82
       },
       {
         "age": 8,
-        "height": 65.25
+        "height": 71.38
       },
       {
         "age": 9,
-        "height": 64.45
-      },
-      {
-        "age": 10,
-        "height": 63.03
-      },
-      {
-        "age": 11,
-        "height": 61.0
+        "height": 72.86
       }
     ],
-    "mae": 5.3383,
-    "rmse": 6.5653,
-    "r2": -6.4822
+    "mae": 0.1783,
+    "rmse": 0.2015,
+    "r2": 0.9949
   },
   {
     "case_id": "EARLY-P-NormalAtas",
@@ -3604,7 +3156,7 @@
     "predictions": [
       {
         "age": 4,
-        "height": 65.95
+        "height": 65.96
       },
       {
         "age": 5,
@@ -3624,19 +3176,19 @@
       },
       {
         "age": 9,
-        "height": 84.03
+        "height": 84.04
       }
     ],
-    "mae": 6.365,
-    "rmse": 7.1987,
-    "r2": -5.5072
+    "mae": 6.3667,
+    "rmse": 7.2002,
+    "r2": -5.5099
   },
   {
     "case_id": "EARLY-P-NormalAtas",
     "mode": "early_months",
     "label": "Normal Atas",
     "sex": "P",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -3684,39 +3236,39 @@
     "predictions": [
       {
         "age": 4,
-        "height": 63.68
+        "height": 66.64
       },
       {
         "age": 5,
-        "height": 64.57
+        "height": 71.05
       },
       {
         "age": 6,
-        "height": 64.54
+        "height": 75.76
       },
       {
         "age": 7,
-        "height": 63.61
+        "height": 80.78
       },
       {
         "age": 8,
-        "height": 61.76
+        "height": 86.13
       },
       {
         "age": 9,
-        "height": 59.01
+        "height": 91.83
       }
     ],
-    "mae": 5.7667,
-    "rmse": 7.326,
-    "r2": -5.7395
+    "mae": 10.0686,
+    "rmse": 11.6238,
+    "r2": -15.9662
   },
   {
-    "case_id": "EARLY-P-NormalAtas",
-    "mode": "early_months",
+    "case_id": "NORM-P-NormalAtas",
+    "mode": "normal",
     "label": "Normal Atas",
     "sex": "P",
-    "model": "GPR (Trend Mean Function)",
+    "model": "GPR WHO Prior",
     "history": [
       {
         "age": 0,
@@ -3733,9 +3285,7 @@
       {
         "age": 3,
         "height": 61.91
-      }
-    ],
-    "ground_truth": [
+      },
       {
         "age": 4,
         "height": 64.25
@@ -3743,7 +3293,9 @@
       {
         "age": 5,
         "height": 66.25
-      },
+      }
+    ],
+    "ground_truth": [
       {
         "age": 6,
         "height": 68.0
@@ -3759,37 +3311,45 @@
       {
         "age": 9,
         "height": 72.56
+      },
+      {
+        "age": 10,
+        "height": 73.95
+      },
+      {
+        "age": 11,
+        "height": 75.29
       }
     ],
     "predictions": [
       {
-        "age": 4,
-        "height": 65.95
-      },
-      {
-        "age": 5,
-        "height": 69.57
-      },
-      {
         "age": 6,
-        "height": 73.19
+        "height": 68.05
       },
       {
         "age": 7,
-        "height": 76.8
+        "height": 69.68
       },
       {
         "age": 8,
-        "height": 80.42
+        "height": 71.21
       },
       {
         "age": 9,
-        "height": 84.03
+        "height": 72.66
+      },
+      {
+        "age": 10,
+        "height": 74.04
+      },
+      {
+        "age": 11,
+        "height": 75.36
       }
     ],
-    "mae": 6.365,
-    "rmse": 7.1987,
-    "r2": -5.5072
+    "mae": 0.0817,
+    "rmse": 0.0836,
+    "r2": 0.9989
   },
   {
     "case_id": "NORM-P-NormalAtas",
@@ -3875,16 +3435,16 @@
         "height": 85.15
       }
     ],
-    "mae": 5.9133,
-    "rmse": 6.4715,
-    "r2": -5.7691
+    "mae": 5.9142,
+    "rmse": 6.473,
+    "r2": -5.7721
   },
   {
     "case_id": "NORM-P-NormalAtas",
     "mode": "normal",
     "label": "Normal Atas",
     "sex": "P",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -3940,208 +3500,112 @@
     "predictions": [
       {
         "age": 6,
-        "height": 67.24
+        "height": 71.08
       },
       {
         "age": 7,
+        "height": 74.8
+      },
+      {
+        "age": 8,
+        "height": 78.72
+      },
+      {
+        "age": 9,
+        "height": 82.84
+      },
+      {
+        "age": 10,
+        "height": 87.17
+      },
+      {
+        "age": 11,
+        "height": 91.73
+      }
+    ],
+    "mae": 9.3059,
+    "rmse": 10.3702,
+    "r2": -16.3816
+  },
+  {
+    "case_id": "EARLY-P-AtRisk",
+    "mode": "early_months",
+    "label": "At Risk",
+    "sex": "P",
+    "model": "GPR WHO Prior",
+    "history": [
+      {
+        "age": 0,
+        "height": 47.29
+      },
+      {
+        "age": 1,
+        "height": 51.73
+      },
+      {
+        "age": 2,
+        "height": 55.03
+      },
+      {
+        "age": 3,
+        "height": 57.7
+      }
+    ],
+    "ground_truth": [
+      {
+        "age": 4,
+        "height": 59.93
+      },
+      {
+        "age": 5,
+        "height": 61.81
+      },
+      {
+        "age": 6,
+        "height": 63.46
+      },
+      {
+        "age": 7,
+        "height": 64.97
+      },
+      {
+        "age": 8,
+        "height": 66.38
+      },
+      {
+        "age": 9,
+        "height": 67.73
+      }
+    ],
+    "predictions": [
+      {
+        "age": 4,
+        "height": 59.92
+      },
+      {
+        "age": 5,
+        "height": 61.81
+      },
+      {
+        "age": 6,
+        "height": 63.47
+      },
+      {
+        "age": 7,
+        "height": 64.98
+      },
+      {
+        "age": 8,
+        "height": 66.39
+      },
+      {
+        "age": 9,
         "height": 67.72
-      },
-      {
-        "age": 8,
-        "height": 67.56
-      },
-      {
-        "age": 9,
-        "height": 66.78
-      },
-      {
-        "age": 10,
-        "height": 65.37
-      },
-      {
-        "age": 11,
-        "height": 63.33
       }
     ],
-    "mae": 5.4183,
-    "rmse": 6.6681,
-    "r2": -6.1865
-  },
-  {
-    "case_id": "NORM-P-NormalAtas",
-    "mode": "normal",
-    "label": "Normal Atas",
-    "sex": "P",
-    "model": "Polynomial Degree 3",
-    "history": [
-      {
-        "age": 0,
-        "height": 51.01
-      },
-      {
-        "age": 1,
-        "height": 55.64
-      },
-      {
-        "age": 2,
-        "height": 59.1
-      },
-      {
-        "age": 3,
-        "height": 61.91
-      },
-      {
-        "age": 4,
-        "height": 64.25
-      },
-      {
-        "age": 5,
-        "height": 66.25
-      }
-    ],
-    "ground_truth": [
-      {
-        "age": 6,
-        "height": 68.0
-      },
-      {
-        "age": 7,
-        "height": 69.6
-      },
-      {
-        "age": 8,
-        "height": 71.11
-      },
-      {
-        "age": 9,
-        "height": 72.56
-      },
-      {
-        "age": 10,
-        "height": 73.95
-      },
-      {
-        "age": 11,
-        "height": 75.29
-      }
-    ],
-    "predictions": [
-      {
-        "age": 6,
-        "height": 68.33
-      },
-      {
-        "age": 7,
-        "height": 70.69
-      },
-      {
-        "age": 8,
-        "height": 73.58
-      },
-      {
-        "age": 9,
-        "height": 77.28
-      },
-      {
-        "age": 10,
-        "height": 82.04
-      },
-      {
-        "age": 11,
-        "height": 88.13
-      }
-    ],
-    "mae": 4.9233,
-    "rmse": 6.5827,
-    "r2": -6.0036
-  },
-  {
-    "case_id": "NORM-P-NormalAtas",
-    "mode": "normal",
-    "label": "Normal Atas",
-    "sex": "P",
-    "model": "GPR (Trend Mean Function)",
-    "history": [
-      {
-        "age": 0,
-        "height": 51.01
-      },
-      {
-        "age": 1,
-        "height": 55.64
-      },
-      {
-        "age": 2,
-        "height": 59.1
-      },
-      {
-        "age": 3,
-        "height": 61.91
-      },
-      {
-        "age": 4,
-        "height": 64.25
-      },
-      {
-        "age": 5,
-        "height": 66.25
-      }
-    ],
-    "ground_truth": [
-      {
-        "age": 6,
-        "height": 68.0
-      },
-      {
-        "age": 7,
-        "height": 69.6
-      },
-      {
-        "age": 8,
-        "height": 71.11
-      },
-      {
-        "age": 9,
-        "height": 72.56
-      },
-      {
-        "age": 10,
-        "height": 73.95
-      },
-      {
-        "age": 11,
-        "height": 75.29
-      }
-    ],
-    "predictions": [
-      {
-        "age": 6,
-        "height": 67.24
-      },
-      {
-        "age": 7,
-        "height": 67.72
-      },
-      {
-        "age": 8,
-        "height": 67.56
-      },
-      {
-        "age": 9,
-        "height": 66.78
-      },
-      {
-        "age": 10,
-        "height": 65.37
-      },
-      {
-        "age": 11,
-        "height": 63.33
-      }
-    ],
-    "mae": 5.4183,
-    "rmse": 6.6681,
-    "r2": -6.1865
+    "mae": 0.0083,
+    "rmse": 0.0091,
+    "r2": 1.0
   },
   {
     "case_id": "EARLY-P-AtRisk",
@@ -4219,16 +3683,16 @@
         "height": 78.84
       }
     ],
-    "mae": 6.1567,
-    "rmse": 6.965,
-    "r2": -5.9043
+    "mae": 6.1558,
+    "rmse": 6.9637,
+    "r2": -5.9017
   },
   {
     "case_id": "EARLY-P-AtRisk",
     "mode": "early_months",
     "label": "At Risk",
     "sex": "P",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -4276,39 +3740,39 @@
     "predictions": [
       {
         "age": 4,
-        "height": 59.36
+        "height": 62.24
       },
       {
         "age": 5,
-        "height": 60.16
+        "height": 66.48
       },
       {
         "age": 6,
-        "height": 60.07
+        "height": 71.01
       },
       {
         "age": 7,
-        "height": 59.1
+        "height": 75.84
       },
       {
         "age": 8,
-        "height": 57.24
+        "height": 81.01
       },
       {
         "age": 9,
-        "height": 54.5
+        "height": 86.52
       }
     ],
-    "mae": 5.6417,
-    "rmse": 7.1597,
-    "r2": -6.2957
+    "mae": 9.804,
+    "rmse": 11.3244,
+    "r2": -17.2519
   },
   {
-    "case_id": "EARLY-P-AtRisk",
-    "mode": "early_months",
+    "case_id": "NORM-P-AtRisk",
+    "mode": "normal",
     "label": "At Risk",
     "sex": "P",
-    "model": "GPR (Trend Mean Function)",
+    "model": "GPR WHO Prior",
     "history": [
       {
         "age": 0,
@@ -4325,9 +3789,7 @@
       {
         "age": 3,
         "height": 57.7
-      }
-    ],
-    "ground_truth": [
+      },
       {
         "age": 4,
         "height": 59.93
@@ -4335,7 +3797,9 @@
       {
         "age": 5,
         "height": 61.81
-      },
+      }
+    ],
+    "ground_truth": [
       {
         "age": 6,
         "height": 63.46
@@ -4351,37 +3815,45 @@
       {
         "age": 9,
         "height": 67.73
+      },
+      {
+        "age": 10,
+        "height": 69.01
+      },
+      {
+        "age": 11,
+        "height": 70.25
       }
     ],
     "predictions": [
       {
-        "age": 4,
-        "height": 61.57
-      },
-      {
-        "age": 5,
-        "height": 65.02
-      },
-      {
         "age": 6,
-        "height": 68.48
+        "height": 63.45
       },
       {
         "age": 7,
-        "height": 71.93
+        "height": 64.95
       },
       {
         "age": 8,
-        "height": 75.38
+        "height": 66.35
       },
       {
         "age": 9,
-        "height": 78.83
+        "height": 67.66
+      },
+      {
+        "age": 10,
+        "height": 68.91
+      },
+      {
+        "age": 11,
+        "height": 70.11
       }
     ],
-    "mae": 6.155,
-    "rmse": 6.9623,
-    "r2": -5.899
+    "mae": 0.0617,
+    "rmse": 0.0774,
+    "r2": 0.9989
   },
   {
     "case_id": "NORM-P-AtRisk",
@@ -4467,16 +3939,16 @@
         "height": 79.84
       }
     ],
-    "mae": 5.7367,
-    "rmse": 6.2824,
-    "r2": -6.3623
+    "mae": 5.7356,
+    "rmse": 6.2812,
+    "r2": -6.3595
   },
   {
     "case_id": "NORM-P-AtRisk",
     "mode": "normal",
     "label": "At Risk",
     "sex": "P",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -4532,208 +4004,112 @@
     "predictions": [
       {
         "age": 6,
-        "height": 62.72
+        "height": 66.46
       },
       {
         "age": 7,
-        "height": 63.14
+        "height": 70.02
       },
       {
         "age": 8,
-        "height": 62.94
+        "height": 73.77
       },
       {
         "age": 9,
-        "height": 62.13
+        "height": 77.73
       },
       {
         "age": 10,
-        "height": 60.72
+        "height": 81.89
       },
       {
         "age": 11,
-        "height": 58.69
+        "height": 86.28
       }
     ],
-    "mae": 5.2433,
-    "rmse": 6.4478,
-    "r2": -6.7551
+    "mae": 9.0587,
+    "rmse": 10.1005,
+    "r2": -18.0301
   },
   {
-    "case_id": "NORM-P-AtRisk",
-    "mode": "normal",
-    "label": "At Risk",
+    "case_id": "EARLY-P-Stunted",
+    "mode": "early_months",
+    "label": "Stunted",
     "sex": "P",
-    "model": "Polynomial Degree 3",
+    "model": "GPR WHO Prior",
     "history": [
       {
         "age": 0,
-        "height": 47.29
+        "height": 45.42
       },
       {
         "age": 1,
-        "height": 51.73
+        "height": 49.78
       },
       {
         "age": 2,
-        "height": 55.03
+        "height": 52.99
       },
       {
         "age": 3,
-        "height": 57.7
-      },
-      {
-        "age": 4,
-        "height": 59.93
-      },
-      {
-        "age": 5,
-        "height": 61.81
+        "height": 55.59
       }
     ],
     "ground_truth": [
       {
-        "age": 6,
-        "height": 63.46
-      },
-      {
-        "age": 7,
-        "height": 64.97
-      },
-      {
-        "age": 8,
-        "height": 66.38
-      },
-      {
-        "age": 9,
-        "height": 67.73
-      },
-      {
-        "age": 10,
-        "height": 69.01
-      },
-      {
-        "age": 11,
-        "height": 70.25
-      }
-    ],
-    "predictions": [
-      {
-        "age": 6,
-        "height": 63.78
-      },
-      {
-        "age": 7,
-        "height": 66.0
-      },
-      {
-        "age": 8,
-        "height": 68.74
-      },
-      {
-        "age": 9,
-        "height": 72.25
-      },
-      {
-        "age": 10,
-        "height": 76.79
-      },
-      {
-        "age": 11,
-        "height": 82.59
-      }
-    ],
-    "mae": 4.725,
-    "rmse": 6.3241,
-    "r2": -6.4603
-  },
-  {
-    "case_id": "NORM-P-AtRisk",
-    "mode": "normal",
-    "label": "At Risk",
-    "sex": "P",
-    "model": "GPR (Trend Mean Function)",
-    "history": [
-      {
-        "age": 0,
-        "height": 47.29
-      },
-      {
-        "age": 1,
-        "height": 51.73
-      },
-      {
-        "age": 2,
-        "height": 55.03
-      },
-      {
-        "age": 3,
-        "height": 57.7
-      },
-      {
         "age": 4,
-        "height": 59.93
+        "height": 57.76
       },
       {
         "age": 5,
-        "height": 61.81
-      }
-    ],
-    "ground_truth": [
+        "height": 59.6
+      },
       {
         "age": 6,
-        "height": 63.46
+        "height": 61.2
       },
       {
         "age": 7,
-        "height": 64.97
+        "height": 62.66
       },
       {
         "age": 8,
-        "height": 66.38
+        "height": 64.02
       },
       {
         "age": 9,
-        "height": 67.73
-      },
-      {
-        "age": 10,
-        "height": 69.01
-      },
-      {
-        "age": 11,
-        "height": 70.25
+        "height": 65.31
       }
     ],
     "predictions": [
       {
+        "age": 4,
+        "height": 57.72
+      },
+      {
+        "age": 5,
+        "height": 59.54
+      },
+      {
         "age": 6,
-        "height": 62.72
+        "height": 61.12
       },
       {
         "age": 7,
-        "height": 63.14
+        "height": 62.55
       },
       {
         "age": 8,
-        "height": 62.94
+        "height": 63.87
       },
       {
         "age": 9,
-        "height": 62.13
-      },
-      {
-        "age": 10,
-        "height": 60.72
-      },
-      {
-        "age": 11,
-        "height": 58.69
+        "height": 65.13
       }
     ],
-    "mae": 5.2433,
-    "rmse": 6.4478,
-    "r2": -6.7551
+    "mae": 0.1033,
+    "rmse": 0.1145,
+    "r2": 0.998
   },
   {
     "case_id": "EARLY-P-Stunted",
@@ -4808,19 +4184,19 @@
       },
       {
         "age": 9,
-        "height": 76.23
+        "height": 76.24
       }
     ],
     "mae": 6.0467,
-    "rmse": 6.841,
-    "r2": -6.1088
+    "rmse": 6.8426,
+    "r2": -6.1122
   },
   {
     "case_id": "EARLY-P-Stunted",
     "mode": "early_months",
     "label": "Stunted",
     "sex": "P",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -4868,39 +4244,39 @@
     "predictions": [
       {
         "age": 4,
-        "height": 57.18
+        "height": 60.04
       },
       {
         "age": 5,
-        "height": 57.91
+        "height": 64.2
       },
       {
         "age": 6,
-        "height": 57.76
+        "height": 68.64
       },
       {
         "age": 7,
-        "height": 56.73
+        "height": 73.38
       },
       {
         "age": 8,
-        "height": 54.82
+        "height": 78.46
       },
       {
         "age": 9,
-        "height": 52.04
+        "height": 83.88
       }
     ],
-    "mae": 5.685,
-    "rmse": 7.1987,
-    "r2": -6.8716
+    "mae": 9.674,
+    "rmse": 11.1792,
+    "r2": -17.9839
   },
   {
-    "case_id": "EARLY-P-Stunted",
-    "mode": "early_months",
+    "case_id": "NORM-P-Stunted",
+    "mode": "normal",
     "label": "Stunted",
     "sex": "P",
-    "model": "GPR (Trend Mean Function)",
+    "model": "GPR WHO Prior",
     "history": [
       {
         "age": 0,
@@ -4917,9 +4293,7 @@
       {
         "age": 3,
         "height": 55.59
-      }
-    ],
-    "ground_truth": [
+      },
       {
         "age": 4,
         "height": 57.76
@@ -4927,7 +4301,9 @@
       {
         "age": 5,
         "height": 59.6
-      },
+      }
+    ],
+    "ground_truth": [
       {
         "age": 6,
         "height": 61.2
@@ -4943,37 +4319,45 @@
       {
         "age": 9,
         "height": 65.31
+      },
+      {
+        "age": 10,
+        "height": 66.55
+      },
+      {
+        "age": 11,
+        "height": 67.73
       }
     ],
     "predictions": [
       {
-        "age": 4,
-        "height": 59.37
-      },
-      {
-        "age": 5,
-        "height": 62.75
-      },
-      {
         "age": 6,
-        "height": 66.12
+        "height": 61.16
       },
       {
         "age": 7,
-        "height": 69.49
+        "height": 62.59
       },
       {
         "age": 8,
-        "height": 72.86
+        "height": 63.92
       },
       {
         "age": 9,
-        "height": 76.23
+        "height": 65.17
+      },
+      {
+        "age": 10,
+        "height": 66.36
+      },
+      {
+        "age": 11,
+        "height": 67.49
       }
     ],
-    "mae": 6.045,
-    "rmse": 6.8406,
-    "r2": -6.108
+    "mae": 0.13,
+    "rmse": 0.1471,
+    "r2": 0.9956
   },
   {
     "case_id": "NORM-P-Stunted",
@@ -5059,16 +4443,16 @@
         "height": 77.19
       }
     ],
-    "mae": 5.65,
-    "rmse": 6.1906,
-    "r2": -6.7263
+    "mae": 5.649,
+    "rmse": 6.1899,
+    "r2": -6.7245
   },
   {
     "case_id": "NORM-P-Stunted",
     "mode": "normal",
     "label": "Stunted",
     "sex": "P",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -5124,208 +4508,112 @@
     "predictions": [
       {
         "age": 6,
-        "height": 60.47
+        "height": 64.15
       },
       {
         "age": 7,
-        "height": 60.86
+        "height": 67.63
       },
       {
         "age": 8,
-        "height": 60.65
+        "height": 71.31
       },
       {
         "age": 9,
-        "height": 59.85
+        "height": 75.19
       },
       {
         "age": 10,
-        "height": 58.44
+        "height": 79.27
       },
       {
         "age": 11,
-        "height": 56.44
+        "height": 83.58
       }
     ],
-    "mae": 5.1267,
-    "rmse": 6.3005,
-    "r2": -7.0031
+    "mae": 8.9437,
+    "rmse": 9.9771,
+    "r2": -19.0684
   },
   {
-    "case_id": "NORM-P-Stunted",
-    "mode": "normal",
-    "label": "Stunted",
+    "case_id": "EARLY-P-SeverelyStunted",
+    "mode": "early_months",
+    "label": "Severely Stunted",
     "sex": "P",
-    "model": "Polynomial Degree 3",
+    "model": "GPR WHO Prior",
     "history": [
       {
         "age": 0,
-        "height": 45.42
+        "height": 43.56
       },
       {
         "age": 1,
-        "height": 49.78
+        "height": 47.82
       },
       {
         "age": 2,
-        "height": 52.99
+        "height": 50.96
       },
       {
         "age": 3,
-        "height": 55.59
-      },
-      {
-        "age": 4,
-        "height": 57.76
-      },
-      {
-        "age": 5,
-        "height": 59.6
+        "height": 53.49
       }
     ],
     "ground_truth": [
       {
-        "age": 6,
-        "height": 61.2
-      },
-      {
-        "age": 7,
-        "height": 62.66
-      },
-      {
-        "age": 8,
-        "height": 64.02
-      },
-      {
-        "age": 9,
-        "height": 65.31
-      },
-      {
-        "age": 10,
-        "height": 66.55
-      },
-      {
-        "age": 11,
-        "height": 67.73
-      }
-    ],
-    "predictions": [
-      {
-        "age": 6,
-        "height": 61.56
-      },
-      {
-        "age": 7,
-        "height": 63.8
-      },
-      {
-        "age": 8,
-        "height": 66.61
-      },
-      {
-        "age": 9,
-        "height": 70.24
-      },
-      {
-        "age": 10,
-        "height": 74.94
-      },
-      {
-        "age": 11,
-        "height": 80.98
-      }
-    ],
-    "mae": 5.11,
-    "rmse": 6.8117,
-    "r2": -8.3545
-  },
-  {
-    "case_id": "NORM-P-Stunted",
-    "mode": "normal",
-    "label": "Stunted",
-    "sex": "P",
-    "model": "GPR (Trend Mean Function)",
-    "history": [
-      {
-        "age": 0,
-        "height": 45.42
-      },
-      {
-        "age": 1,
-        "height": 49.78
-      },
-      {
-        "age": 2,
-        "height": 52.99
-      },
-      {
-        "age": 3,
-        "height": 55.59
-      },
-      {
         "age": 4,
-        "height": 57.76
+        "height": 55.6
       },
       {
         "age": 5,
-        "height": 59.6
-      }
-    ],
-    "ground_truth": [
+        "height": 57.38
+      },
       {
         "age": 6,
-        "height": 61.2
+        "height": 58.93
       },
       {
         "age": 7,
-        "height": 62.66
+        "height": 60.34
       },
       {
         "age": 8,
-        "height": 64.02
+        "height": 61.65
       },
       {
         "age": 9,
-        "height": 65.31
-      },
-      {
-        "age": 10,
-        "height": 66.55
-      },
-      {
-        "age": 11,
-        "height": 67.73
+        "height": 62.9
       }
     ],
     "predictions": [
       {
+        "age": 4,
+        "height": 55.54
+      },
+      {
+        "age": 5,
+        "height": 57.28
+      },
+      {
         "age": 6,
-        "height": 60.47
+        "height": 58.79
       },
       {
         "age": 7,
-        "height": 60.86
+        "height": 60.15
       },
       {
         "age": 8,
-        "height": 60.65
+        "height": 61.4
       },
       {
         "age": 9,
-        "height": 59.85
-      },
-      {
-        "age": 10,
-        "height": 58.44
-      },
-      {
-        "age": 11,
-        "height": 56.44
+        "height": 62.58
       }
     ],
-    "mae": 5.1267,
-    "rmse": 6.3005,
-    "r2": -7.0031
+    "mae": 0.1767,
+    "rmse": 0.1976,
+    "r2": 0.9937
   },
   {
     "case_id": "EARLY-P-SeverelyStunted",
@@ -5403,16 +4691,16 @@
         "height": 73.66
       }
     ],
-    "mae": 5.9567,
-    "rmse": 6.7404,
-    "r2": -6.3853
+    "mae": 5.9558,
+    "rmse": 6.7391,
+    "r2": -6.3824
   },
   {
     "case_id": "EARLY-P-SeverelyStunted",
     "mode": "early_months",
     "label": "Severely Stunted",
     "sex": "P",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -5460,39 +4748,39 @@
     "predictions": [
       {
         "age": 4,
-        "height": 55.03
+        "height": 57.86
       },
       {
         "age": 5,
-        "height": 55.73
+        "height": 61.92
       },
       {
         "age": 6,
-        "height": 55.56
+        "height": 66.28
       },
       {
         "age": 7,
-        "height": 54.53
+        "height": 70.94
       },
       {
         "age": 8,
-        "height": 52.63
+        "height": 75.93
       },
       {
         "age": 9,
-        "height": 49.87
+        "height": 81.27
       }
     ],
-    "mae": 5.575,
-    "rmse": 7.0628,
-    "r2": -7.1088
+    "mae": 9.5666,
+    "rmse": 11.0567,
+    "r2": -18.8722
   },
   {
-    "case_id": "EARLY-P-SeverelyStunted",
-    "mode": "early_months",
+    "case_id": "NORM-P-SeverelyStunted",
+    "mode": "normal",
     "label": "Severely Stunted",
     "sex": "P",
-    "model": "GPR (Trend Mean Function)",
+    "model": "GPR WHO Prior",
     "history": [
       {
         "age": 0,
@@ -5509,9 +4797,7 @@
       {
         "age": 3,
         "height": 53.49
-      }
-    ],
-    "ground_truth": [
+      },
       {
         "age": 4,
         "height": 55.6
@@ -5519,7 +4805,9 @@
       {
         "age": 5,
         "height": 57.38
-      },
+      }
+    ],
+    "ground_truth": [
       {
         "age": 6,
         "height": 58.93
@@ -5535,37 +4823,45 @@
       {
         "age": 9,
         "height": 62.9
+      },
+      {
+        "age": 10,
+        "height": 64.08
+      },
+      {
+        "age": 11,
+        "height": 65.21
       }
     ],
     "predictions": [
       {
-        "age": 4,
-        "height": 57.19
-      },
-      {
-        "age": 5,
-        "height": 60.48
-      },
-      {
         "age": 6,
-        "height": 63.78
+        "height": 58.86
       },
       {
         "age": 7,
-        "height": 67.07
+        "height": 60.23
       },
       {
         "age": 8,
-        "height": 70.36
+        "height": 61.49
       },
       {
         "age": 9,
-        "height": 73.65
+        "height": 62.68
+      },
+      {
+        "age": 10,
+        "height": 63.8
+      },
+      {
+        "age": 11,
+        "height": 64.87
       }
     ],
-    "mae": 5.955,
-    "rmse": 6.7377,
-    "r2": -6.3794
+    "mae": 0.1967,
+    "rmse": 0.2179,
+    "r2": 0.9897
   },
   {
     "case_id": "NORM-P-SeverelyStunted",
@@ -5651,16 +4947,16 @@
         "height": 74.53
       }
     ],
-    "mae": 5.565,
-    "rmse": 6.0981,
-    "r2": -7.1022
+    "mae": 5.5639,
+    "rmse": 6.0977,
+    "r2": -7.1011
   },
   {
     "case_id": "NORM-P-SeverelyStunted",
     "mode": "normal",
     "label": "Severely Stunted",
     "sex": "P",
-    "model": "Polynomial Degree 2",
+    "model": "Exponential Regression",
     "history": [
       {
         "age": 0,
@@ -5716,207 +5012,31 @@
     "predictions": [
       {
         "age": 6,
-        "height": 58.21
+        "height": 61.84
       },
       {
         "age": 7,
-        "height": 58.57
+        "height": 65.25
       },
       {
         "age": 8,
-        "height": 58.33
+        "height": 68.84
       },
       {
         "age": 9,
-        "height": 57.5
+        "height": 72.64
       },
       {
         "age": 10,
-        "height": 56.09
+        "height": 76.65
       },
       {
         "age": 11,
-        "height": 54.08
+        "height": 80.87
       }
     ],
-    "mae": 5.055,
-    "rmse": 6.2122,
-    "r2": -7.4084
-  },
-  {
-    "case_id": "NORM-P-SeverelyStunted",
-    "mode": "normal",
-    "label": "Severely Stunted",
-    "sex": "P",
-    "model": "Polynomial Degree 3",
-    "history": [
-      {
-        "age": 0,
-        "height": 43.56
-      },
-      {
-        "age": 1,
-        "height": 47.82
-      },
-      {
-        "age": 2,
-        "height": 50.96
-      },
-      {
-        "age": 3,
-        "height": 53.49
-      },
-      {
-        "age": 4,
-        "height": 55.6
-      },
-      {
-        "age": 5,
-        "height": 57.38
-      }
-    ],
-    "ground_truth": [
-      {
-        "age": 6,
-        "height": 58.93
-      },
-      {
-        "age": 7,
-        "height": 60.34
-      },
-      {
-        "age": 8,
-        "height": 61.65
-      },
-      {
-        "age": 9,
-        "height": 62.9
-      },
-      {
-        "age": 10,
-        "height": 64.08
-      },
-      {
-        "age": 11,
-        "height": 65.21
-      }
-    ],
-    "predictions": [
-      {
-        "age": 6,
-        "height": 59.27
-      },
-      {
-        "age": 7,
-        "height": 61.43
-      },
-      {
-        "age": 8,
-        "height": 64.13
-      },
-      {
-        "age": 9,
-        "height": 67.62
-      },
-      {
-        "age": 10,
-        "height": 72.16
-      },
-      {
-        "age": 11,
-        "height": 77.98
-      }
-    ],
-    "mae": 4.9133,
-    "rmse": 6.5586,
-    "r2": -8.3722
-  },
-  {
-    "case_id": "NORM-P-SeverelyStunted",
-    "mode": "normal",
-    "label": "Severely Stunted",
-    "sex": "P",
-    "model": "GPR (Trend Mean Function)",
-    "history": [
-      {
-        "age": 0,
-        "height": 43.56
-      },
-      {
-        "age": 1,
-        "height": 47.82
-      },
-      {
-        "age": 2,
-        "height": 50.96
-      },
-      {
-        "age": 3,
-        "height": 53.49
-      },
-      {
-        "age": 4,
-        "height": 55.6
-      },
-      {
-        "age": 5,
-        "height": 57.38
-      }
-    ],
-    "ground_truth": [
-      {
-        "age": 6,
-        "height": 58.93
-      },
-      {
-        "age": 7,
-        "height": 60.34
-      },
-      {
-        "age": 8,
-        "height": 61.65
-      },
-      {
-        "age": 9,
-        "height": 62.9
-      },
-      {
-        "age": 10,
-        "height": 64.08
-      },
-      {
-        "age": 11,
-        "height": 65.21
-      }
-    ],
-    "predictions": [
-      {
-        "age": 6,
-        "height": 58.21
-      },
-      {
-        "age": 7,
-        "height": 58.57
-      },
-      {
-        "age": 8,
-        "height": 58.33
-      },
-      {
-        "age": 9,
-        "height": 57.5
-      },
-      {
-        "age": 10,
-        "height": 56.09
-      },
-      {
-        "age": 11,
-        "height": 54.08
-      }
-    ],
-    "mae": 5.055,
-    "rmse": 6.2122,
-    "r2": -7.4084
+    "mae": 8.8295,
+    "rmse": 9.8518,
+    "r2": -20.1471
   }
 ]

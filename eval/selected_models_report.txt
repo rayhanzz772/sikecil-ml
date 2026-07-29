@@ -7,131 +7,119 @@ TABEL 1: RATA-RATA METRIK PER MODEL (SEMUA KASUS)
 ---------------------------------------------------------------------------
 Model                            MAE (cm)    RMSE (cm)           R2
 --------------------------------------------------------------------
-Polynomial Degree 3                4.1140       5.5151      -4.9981
-Polynomial Degree 2                5.3663       6.7350      -6.4398
-GPR (Trend Mean Function)          5.9535       7.0198      -7.0106
-Linear Regression                  6.4187       7.1581      -7.3984
+GPR WHO Prior                      0.1115       0.1261       0.9965
+Linear Regression                  6.4187       7.1581      -7.3983
+Exponential Regression            10.2228      11.6248     -21.1390
 
 ---------------------------------------------------------------------------
 TABEL 2: EARLY MONTHS (riwayat 4 bulan)
 ---------------------------------------------------------------------------
 Model                            MAE (cm)    RMSE (cm)           R2
 --------------------------------------------------------------------
-Polynomial Degree 2                5.4153       6.9019      -5.7307
-GPR (Trend Mean Function)          6.5898       7.4714      -6.8723
+GPR WHO Prior                      0.1402       0.1622       0.9953
 Linear Regression                  6.5909       7.4726      -6.8747
+Exponential Regression            10.5802      12.2454     -20.1866
 
 ---------------------------------------------------------------------------
 TABEL 2: NORMAL MODE (riwayat 6 bulan)
 ---------------------------------------------------------------------------
 Model                            MAE (cm)    RMSE (cm)           R2
 --------------------------------------------------------------------
-Polynomial Degree 3                4.1140       5.5151      -4.9981
-GPR (Trend Mean Function)          5.3172       6.5681      -7.1488
-Polynomial Degree 2                5.3173       6.5681      -7.1489
-Linear Regression                  6.2465       6.8436      -7.9220
+GPR WHO Prior                      0.0828       0.0900       0.9977
+Linear Regression                  6.2465       6.8436      -7.9219
+Exponential Regression             9.8653      11.0042     -22.0915
 
 ---------------------------------------------------------------------------
 TABEL 3: MODEL TERBAIK PER KASUS (RMSE TERENDAH)
 ---------------------------------------------------------------------------
 Case ID                      Best Model                      RMSE (cm)
 ----------------------------------------------------------------------
-EARLY-L-AtRisk               Polynomial Degree 2                6.6377
-EARLY-L-Normal               Polynomial Degree 2                6.5525
-EARLY-L-NormalAtas           Polynomial Degree 2                6.6506
-EARLY-L-SeverelyStunted      Polynomial Degree 2                6.5189
-EARLY-L-Stunted              Polynomial Degree 2                6.5450
-EARLY-P-AtRisk               GPR (Trend Mean Function)          6.9623
-EARLY-P-Normal               Linear Regression                  7.0733
-EARLY-P-NormalAtas           Linear Regression                  7.1987
-EARLY-P-SeverelyStunted      GPR (Trend Mean Function)          6.7377
-EARLY-P-Stunted              GPR (Trend Mean Function)          6.8406
-NORM-L-AtRisk                Polynomial Degree 3                4.4777
-NORM-L-Normal                Polynomial Degree 3                4.1374
-NORM-L-NormalAtas            Polynomial Degree 3                4.0966
-NORM-L-SeverelyStunted       Polynomial Degree 3                4.8141
-NORM-L-Stunted               Polynomial Degree 3                4.6890
-NORM-P-AtRisk                Linear Regression                  6.2824
-NORM-P-Normal                Linear Regression                  6.3741
-NORM-P-NormalAtas            Linear Regression                  6.4715
-NORM-P-SeverelyStunted       Linear Regression                  6.0981
-NORM-P-Stunted               Linear Regression                  6.1906
+EARLY-L-AtRisk               GPR WHO Prior                      0.1867
+EARLY-L-Normal               GPR WHO Prior                      0.2794
+EARLY-L-NormalAtas           GPR WHO Prior                      0.3289
+EARLY-L-SeverelyStunted      GPR WHO Prior                      0.0866
+EARLY-L-Stunted              GPR WHO Prior                      0.1352
+EARLY-P-AtRisk               GPR WHO Prior                      0.0091
+EARLY-P-Normal               GPR WHO Prior                      0.0829
+EARLY-P-NormalAtas           GPR WHO Prior                      0.2015
+EARLY-P-SeverelyStunted      GPR WHO Prior                      0.1976
+EARLY-P-Stunted              GPR WHO Prior                      0.1145
+NORM-L-AtRisk                GPR WHO Prior                      0.0708
+NORM-L-Normal                GPR WHO Prior                      0.1076
+NORM-L-NormalAtas            GPR WHO Prior                      0.1337
+NORM-L-SeverelyStunted       GPR WHO Prior                      0.0071
+NORM-L-Stunted               GPR WHO Prior                      0.0321
+NORM-P-AtRisk                GPR WHO Prior                      0.0774
+NORM-P-Normal                GPR WHO Prior                      0.0224
+NORM-P-NormalAtas            GPR WHO Prior                      0.0836
+NORM-P-SeverelyStunted       GPR WHO Prior                      0.2179
+NORM-P-Stunted               GPR WHO Prior                      0.1471
 
 ---------------------------------------------------------------------------
 TABEL 4: DETAIL HASIL PER KASUS & MODEL
 ---------------------------------------------------------------------------
 Case ID                    Model                           MAE       RMSE         R2
 ----------------------------------------------------------------------------------
-EARLY-L-AtRisk             Polynomial Degree 2          5.1850     6.6377    -5.1038
-EARLY-L-AtRisk             Linear Regression            7.0167     7.9719    -7.8041
-EARLY-L-AtRisk             GPR (Trend Mean Function)     7.0167     7.9719    -7.8041
-EARLY-L-Normal             Polynomial Degree 2          5.1033     6.5525    -4.7125
-EARLY-L-Normal             GPR (Trend Mean Function)     7.0950     8.0577    -7.6384
-EARLY-L-Normal             Linear Regression            7.0967     8.0604    -7.6441
-EARLY-L-NormalAtas         Polynomial Degree 2          5.1817     6.6506    -4.6596
-EARLY-L-NormalAtas         GPR (Trend Mean Function)     7.1533     8.1231    -7.4434
-EARLY-L-NormalAtas         Linear Regression            7.1550     8.1235    -7.4442
-EARLY-L-SeverelyStunted    Polynomial Degree 2          5.0933     6.5189    -5.3901
-EARLY-L-SeverelyStunted    Linear Regression            6.9067     7.8485    -8.2625
-EARLY-L-SeverelyStunted    GPR (Trend Mean Function)     6.9067     7.8485    -8.2625
-EARLY-L-Stunted            Polynomial Degree 2          5.1117     6.5450    -5.1760
-EARLY-L-Stunted            GPR (Trend Mean Function)     6.9533     7.9001    -7.9982
-EARLY-L-Stunted            Linear Regression            6.9550     7.9028    -8.0043
-EARLY-P-AtRisk             GPR (Trend Mean Function)     6.1550     6.9623    -5.8990
-EARLY-P-AtRisk             Linear Regression            6.1567     6.9650    -5.9043
-EARLY-P-AtRisk             Polynomial Degree 2          5.6417     7.1597    -6.2957
-EARLY-P-Normal             Linear Regression            6.2533     7.0733    -5.6826
-EARLY-P-Normal             GPR (Trend Mean Function)     6.2533     7.0733    -5.6826
-EARLY-P-Normal             Polynomial Degree 2          5.8100     7.3670    -6.2490
-EARLY-P-NormalAtas         Linear Regression            6.3650     7.1987    -5.5072
-EARLY-P-NormalAtas         GPR (Trend Mean Function)     6.3650     7.1987    -5.5072
-EARLY-P-NormalAtas         Polynomial Degree 2          5.7667     7.3260    -5.7395
-EARLY-P-SeverelyStunted    GPR (Trend Mean Function)     5.9550     6.7377    -6.3794
-EARLY-P-SeverelyStunted    Linear Regression            5.9567     6.7404    -6.3853
-EARLY-P-SeverelyStunted    Polynomial Degree 2          5.5750     7.0628    -7.1088
-EARLY-P-Stunted            GPR (Trend Mean Function)     6.0450     6.8406    -6.1080
-EARLY-P-Stunted            Linear Regression            6.0467     6.8410    -6.1088
-EARLY-P-Stunted            Polynomial Degree 2          5.6850     7.1987    -6.8716
-NORM-L-AtRisk              Polynomial Degree 3          3.3250     4.4777    -2.8029
-NORM-L-AtRisk              GPR (Trend Mean Function)     5.3883     6.6865    -7.4803
-NORM-L-AtRisk              Polynomial Degree 2          5.3900     6.6867    -7.4808
-NORM-L-AtRisk              Linear Regression            6.7550     7.4031    -9.3952
-NORM-L-Normal              Polynomial Degree 3          3.0583     4.1374    -2.0740
-NORM-L-Normal              Polynomial Degree 2          5.4767     6.8001    -7.3037
-NORM-L-Normal              GPR (Trend Mean Function)     5.4767     6.8001    -7.3037
-NORM-L-Normal              Linear Regression            6.8050     7.4530    -8.9748
-NORM-L-NormalAtas          Polynomial Degree 3          3.0250     4.0966    -1.8560
-NORM-L-NormalAtas          Polynomial Degree 2          5.5567     6.8994    -7.1012
-NORM-L-NormalAtas          GPR (Trend Mean Function)     5.5567     6.8994    -7.1012
-NORM-L-NormalAtas          Linear Regression            6.8450     7.4931    -8.5554
-NORM-L-SeverelyStunted     Polynomial Degree 3          3.5867     4.8141    -3.9384
-NORM-L-SeverelyStunted     Polynomial Degree 2          5.2583     6.5170    -8.0500
-NORM-L-SeverelyStunted     GPR (Trend Mean Function)     5.2583     6.5170    -8.0500
-NORM-L-SeverelyStunted     Linear Regression            6.6667     7.3156   -10.4041
-NORM-L-Stunted             Polynomial Degree 3          3.4900     4.6890    -3.4214
-NORM-L-Stunted             Polynomial Degree 2          5.3100     6.5843    -7.7179
-NORM-L-Stunted             GPR (Trend Mean Function)     5.3100     6.5843    -7.7179
-NORM-L-Stunted             Linear Regression            6.7067     7.3548    -9.8777
-NORM-P-AtRisk              Linear Regression            5.7367     6.2824    -6.3623
-NORM-P-AtRisk              Polynomial Degree 3          4.7250     6.3241    -6.4603
-NORM-P-AtRisk              Polynomial Degree 2          5.2433     6.4478    -6.7551
-NORM-P-AtRisk              GPR (Trend Mean Function)     5.2433     6.4478    -6.7551
-NORM-P-Normal              Linear Regression            5.8217     6.3741    -6.0528
-NORM-P-Normal              Polynomial Degree 2          5.3383     6.5653    -6.4822
-NORM-P-Normal              GPR (Trend Mean Function)     5.3383     6.5653    -6.4822
-NORM-P-Normal              Polynomial Degree 3          4.9833     6.6593    -6.6979
-NORM-P-NormalAtas          Linear Regression            5.9133     6.4715    -5.7691
-NORM-P-NormalAtas          Polynomial Degree 3          4.9233     6.5827    -6.0036
-NORM-P-NormalAtas          Polynomial Degree 2          5.4183     6.6681    -6.1865
-NORM-P-NormalAtas          GPR (Trend Mean Function)     5.4183     6.6681    -6.1865
-NORM-P-SeverelyStunted     Linear Regression            5.5650     6.0981    -7.1022
-NORM-P-SeverelyStunted     Polynomial Degree 2          5.0550     6.2122    -7.4084
-NORM-P-SeverelyStunted     GPR (Trend Mean Function)     5.0550     6.2122    -7.4084
-NORM-P-SeverelyStunted     Polynomial Degree 3          4.9133     6.5586    -8.3722
-NORM-P-Stunted             Linear Regression            5.6500     6.1906    -6.7263
-NORM-P-Stunted             Polynomial Degree 2          5.1267     6.3005    -7.0031
-NORM-P-Stunted             GPR (Trend Mean Function)     5.1267     6.3005    -7.0031
-NORM-P-Stunted             Polynomial Degree 3          5.1100     6.8117    -8.3545
+EARLY-L-AtRisk             GPR WHO Prior                0.1567     0.1867     0.9952
+EARLY-L-AtRisk             Linear Regression            7.0158     7.9708    -7.8019
+EARLY-L-AtRisk             Exponential Regression      11.3321    13.1386   -22.9147
+EARLY-L-Normal             GPR WHO Prior                0.2417     0.2794     0.9896
+EARLY-L-Normal             Linear Regression            7.0975     8.0603    -7.6438
+EARLY-L-Normal             Exponential Regression      11.3628    13.1654   -22.0611
+EARLY-L-NormalAtas         GPR WHO Prior                0.2867     0.3289     0.9862
+EARLY-L-NormalAtas         Linear Regression            7.1542     8.1233    -7.4437
+EARLY-L-NormalAtas         Exponential Regression      11.3615    13.1574   -21.1519
+EARLY-L-SeverelyStunted    GPR WHO Prior                0.0667     0.0866     0.9989
+EARLY-L-SeverelyStunted    Linear Regression            6.9067     7.8480    -8.2614
+EARLY-L-SeverelyStunted    Exponential Regression      11.3691    13.1949   -25.1800
+EARLY-L-Stunted            GPR WHO Prior                0.1100     0.1352     0.9974
+EARLY-L-Stunted            Linear Regression            6.9558     7.9032    -8.0051
+EARLY-L-Stunted            Exponential Regression      11.3369    13.1505   -23.9328
+EARLY-P-AtRisk             GPR WHO Prior                0.0083     0.0091     1.0000
+EARLY-P-AtRisk             Linear Regression            6.1558     6.9637    -5.9017
+EARLY-P-AtRisk             Exponential Regression       9.8040    11.3244   -17.2519
+EARLY-P-Normal             GPR WHO Prior                0.0733     0.0829     0.9991
+EARLY-P-Normal             Linear Regression            6.2542     7.0746    -5.6851
+EARLY-P-Normal             Exponential Regression       9.9263    11.4632   -16.5515
+EARLY-P-NormalAtas         GPR WHO Prior                0.1783     0.2015     0.9949
+EARLY-P-NormalAtas         Linear Regression            6.3667     7.2002    -5.5099
+EARLY-P-NormalAtas         Exponential Regression      10.0686    11.6238   -15.9662
+EARLY-P-SeverelyStunted    GPR WHO Prior                0.1767     0.1976     0.9937
+EARLY-P-SeverelyStunted    Linear Regression            5.9558     6.7391    -6.3824
+EARLY-P-SeverelyStunted    Exponential Regression       9.5666    11.0567   -18.8722
+EARLY-P-Stunted            GPR WHO Prior                0.1033     0.1145     0.9980
+EARLY-P-Stunted            Linear Regression            6.0467     6.8426    -6.1122
+EARLY-P-Stunted            Exponential Regression       9.6740    11.1792   -17.9839
+NORM-L-AtRisk              GPR WHO Prior                0.0683     0.0708     0.9990
+NORM-L-AtRisk              Linear Regression            6.7560     7.4035    -9.3966
+NORM-L-AtRisk              Exponential Regression      10.6621    11.8956   -25.8401
+NORM-L-Normal              GPR WHO Prior                0.1050     0.1076     0.9979
+NORM-L-Normal              Linear Regression            6.8084     7.4566    -8.9843
+NORM-L-Normal              Exponential Regression      10.6752    11.9020   -24.4379
+NORM-L-NormalAtas          GPR WHO Prior                0.1300     0.1337     0.9970
+NORM-L-NormalAtas          Linear Regression            6.8454     7.4933    -8.5559
+NORM-L-NormalAtas          Exponential Regression      10.6694    11.8883   -23.0528
+NORM-L-SeverelyStunted     GPR WHO Prior                0.0050     0.0071     1.0000
+NORM-L-SeverelyStunted     Linear Regression            6.6665     7.3146   -10.4010
+NORM-L-SeverelyStunted     Exponential Regression      10.6763    11.9289   -29.3220
+NORM-L-Stunted             GPR WHO Prior                0.0300     0.0321     0.9998
+NORM-L-Stunted             Linear Regression            6.7052     7.3533    -9.8733
+NORM-L-Stunted             Exponential Regression      10.6566    11.8989   -27.4717
+NORM-P-AtRisk              GPR WHO Prior                0.0617     0.0774     0.9989
+NORM-P-AtRisk              Linear Regression            5.7356     6.2812    -6.3595
+NORM-P-AtRisk              Exponential Regression       9.0587    10.1005   -18.0301
+NORM-P-Normal              GPR WHO Prior                0.0200     0.0224     0.9999
+NORM-P-Normal              Linear Regression            5.8206     6.3732    -6.0507
+NORM-P-Normal              Exponential Regression       9.1759    10.2290   -17.1628
+NORM-P-NormalAtas          GPR WHO Prior                0.0817     0.0836     0.9989
+NORM-P-NormalAtas          Linear Regression            5.9142     6.4730    -5.7721
+NORM-P-NormalAtas          Exponential Regression       9.3059    10.3702   -16.3816
+NORM-P-SeverelyStunted     GPR WHO Prior                0.1967     0.2179     0.9897
+NORM-P-SeverelyStunted     Linear Regression            5.5639     6.0977    -7.1011
+NORM-P-SeverelyStunted     Exponential Regression       8.8295     9.8518   -20.1471
+NORM-P-Stunted             GPR WHO Prior                0.1300     0.1471     0.9956
+NORM-P-Stunted             Linear Regression            5.6490     6.1899    -6.7245
+NORM-P-Stunted             Exponential Regression       8.9437     9.9771   -19.0684
 
 ---------------------------------------------------------------------------
 TABEL 5: CONTOH DATA INPUT, TARGET (GROUND TRUTH), DAN HASIL PREDIKSI
@@ -140,24 +128,22 @@ Kasus ID  : EARLY-L-Normal (Mode: early_months, Label: Normal, Sex: L)
   Data Input (History)   : [Bln 0: 49.88cm, Bln 1: 54.72cm, Bln 2: 58.42cm, Bln 3: 61.43cm]
   Target Actual (GT)     : [Bln 4: 63.89cm, Bln 5: 65.9cm, Bln 6: 67.62cm, Bln 7: 69.16cm, Bln 8: 70.6cm, Bln 9: 71.97cm]
   Hasil Prediksi Model   :
-    - Linear Regression       : [Bln 4: 65.7cm, Bln 5: 69.53cm, Bln 6: 73.37cm, Bln 7: 77.2cm, Bln 8: 81.04cm, Bln 9: 84.88cm] (MAE: 7.0967 cm, RMSE: 8.0604 cm)
-    - Polynomial Degree 2     : [Bln 4: 63.41cm, Bln 5: 64.5cm, Bln 6: 64.68cm, Bln 7: 63.94cm, Bln 8: 62.28cm, Bln 9: 59.71cm] (MAE: 5.1033 cm, RMSE: 6.5525 cm)
-    - GPR (Trend Mean Function): [Bln 4: 65.7cm, Bln 5: 69.53cm, Bln 6: 73.37cm, Bln 7: 77.2cm, Bln 8: 81.04cm, Bln 9: 84.87cm] (MAE: 7.095 cm, RMSE: 8.0577 cm)
+    - GPR WHO Prior           : [Bln 4: 63.93cm, Bln 5: 66.01cm, Bln 6: 67.82cm, Bln 7: 69.45cm, Bln 8: 70.97cm, Bln 9: 72.41cm] (MAE: 0.2417 cm, RMSE: 0.2794 cm)
+    - Linear Regression       : [Bln 4: 65.7cm, Bln 5: 69.54cm, Bln 6: 73.37cm, Bln 7: 77.2cm, Bln 8: 81.04cm, Bln 9: 84.88cm] (MAE: 7.0975 cm, RMSE: 8.0603 cm)
+    - Exponential Regression  : [Bln 4: 66.48cm, Bln 5: 71.23cm, Bln 6: 76.32cm, Bln 7: 81.78cm, Bln 8: 87.62cm, Bln 9: 93.88cm] (MAE: 11.3628 cm, RMSE: 13.1654 cm)
 
 Kasus ID  : NORM-L-Normal (Mode: normal, Label: Normal, Sex: L)
   Data Input (History)   : [Bln 0: 49.88cm, Bln 1: 54.72cm, Bln 2: 58.42cm, Bln 3: 61.43cm, Bln 4: 63.89cm, Bln 5: 65.9cm]
   Target Actual (GT)     : [Bln 6: 67.62cm, Bln 7: 69.16cm, Bln 8: 70.6cm, Bln 9: 71.97cm, Bln 10: 73.28cm, Bln 11: 74.54cm]
   Hasil Prediksi Model   :
-    - Linear Regression       : [Bln 6: 70.1cm, Bln 7: 73.26cm, Bln 8: 76.42cm, Bln 9: 79.58cm, Bln 10: 82.74cm, Bln 11: 85.9cm] (MAE: 6.805 cm, RMSE: 7.453 cm)
-    - Polynomial Degree 2     : [Bln 6: 66.92cm, Bln 7: 67.35cm, Bln 8: 67.1cm, Bln 9: 66.16cm, Bln 10: 64.54cm, Bln 11: 62.24cm] (MAE: 5.4767 cm, RMSE: 6.8001 cm)
-    - Polynomial Degree 3     : [Bln 6: 67.82cm, Bln 7: 69.8cm, Bln 8: 72.06cm, Bln 9: 74.83cm, Bln 10: 78.3cm, Bln 11: 82.71cm] (MAE: 3.0583 cm, RMSE: 4.1374 cm)
-    - GPR (Trend Mean Function): [Bln 6: 66.92cm, Bln 7: 67.35cm, Bln 8: 67.1cm, Bln 9: 66.16cm, Bln 10: 64.54cm, Bln 11: 62.24cm] (MAE: 5.4767 cm, RMSE: 6.8001 cm)
+    - GPR WHO Prior           : [Bln 6: 67.68cm, Bln 7: 69.25cm, Bln 8: 70.71cm, Bln 9: 72.09cm, Bln 10: 73.41cm, Bln 11: 74.66cm] (MAE: 0.105 cm, RMSE: 0.1076 cm)
+    - Linear Regression       : [Bln 6: 70.1cm, Bln 7: 73.26cm, Bln 8: 76.42cm, Bln 9: 79.58cm, Bln 10: 82.74cm, Bln 11: 85.9cm] (MAE: 6.8084 cm, RMSE: 7.4566 cm)
+    - Exponential Regression  : [Bln 6: 71.13cm, Bln 7: 75.12cm, Bln 8: 79.33cm, Bln 9: 83.77cm, Bln 10: 88.46cm, Bln 11: 93.42cm] (MAE: 10.6752 cm, RMSE: 11.902 cm)
 
 Kasus ID  : NORM-L-Stunted (Mode: normal, Label: Stunted, Sex: L)
   Data Input (History)   : [Bln 0: 46.1cm, Bln 1: 50.83cm, Bln 2: 54.42cm, Bln 3: 57.34cm, Bln 4: 59.72cm, Bln 5: 61.68cm]
   Target Actual (GT)     : [Bln 6: 63.34cm, Bln 7: 64.82cm, Bln 8: 66.19cm, Bln 9: 67.48cm, Bln 10: 68.71cm, Bln 11: 69.88cm]
   Hasil Prediksi Model   :
-    - Linear Regression       : [Bln 6: 65.76cm, Bln 7: 68.84cm, Bln 8: 71.91cm, Bln 9: 74.98cm, Bln 10: 78.05cm, Bln 11: 81.12cm] (MAE: 6.7067 cm, RMSE: 7.3548 cm)
-    - Polynomial Degree 2     : [Bln 6: 62.65cm, Bln 7: 63.05cm, Bln 8: 62.78cm, Bln 9: 61.85cm, Bln 10: 60.25cm, Bln 11: 57.98cm] (MAE: 5.31 cm, RMSE: 6.5843 cm)
-    - Polynomial Degree 3     : [Bln 6: 63.58cm, Bln 7: 65.58cm, Bln 8: 67.9cm, Bln 9: 70.78cm, Bln 10: 74.44cm, Bln 11: 79.08cm] (MAE: 3.49 cm, RMSE: 4.689 cm)
-    - GPR (Trend Mean Function): [Bln 6: 62.65cm, Bln 7: 63.05cm, Bln 8: 62.78cm, Bln 9: 61.85cm, Bln 10: 60.25cm, Bln 11: 57.98cm] (MAE: 5.31 cm, RMSE: 6.5843 cm)
+    - GPR WHO Prior           : [Bln 6: 63.35cm, Bln 7: 64.84cm, Bln 8: 66.22cm, Bln 9: 67.52cm, Bln 10: 68.75cm, Bln 11: 69.92cm] (MAE: 0.03 cm, RMSE: 0.0321 cm)
+    - Linear Regression       : [Bln 6: 65.76cm, Bln 7: 68.84cm, Bln 8: 71.91cm, Bln 9: 74.98cm, Bln 10: 78.05cm, Bln 11: 81.12cm] (MAE: 6.7052 cm, RMSE: 7.3533 cm)
+    - Exponential Regression  : [Bln 6: 66.82cm, Bln 7: 70.73cm, Bln 8: 74.87cm, Bln 9: 79.25cm, Bln 10: 83.89cm, Bln 11: 88.8cm] (MAE: 10.6566 cm, RMSE: 11.8989 cm)

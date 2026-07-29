@@ -30,22 +30,21 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from services.who_service import load_who_lms
 from services.preprocessing_service import build_feature
 from services.model_service import (
+    train_gpr_who,
     train_linear,
-    train_polynomial,
-    train_gpr_trend,
+    train_exponential,
+    gpr_predict_with_who
 )
-from services.prediction_service import recursive_predict
 
 
 def run_target_models(history, sex, who_lms_df):
-    """Train ONLY Linear, Polynomial (Deg 2 & 3), dan GPR (Trend Mean Function)."""
+    """Train GPR WHO Prior, Linear Regression, dan Exponential Regression."""
     X, y = build_feature(history)
 
     candidates = [
+        lambda: train_gpr_who(X, y, sex, who_lms_df),
         lambda: train_linear(X, y),
-        lambda: train_polynomial(X, y, degree=2),
-        lambda: train_polynomial(X, y, degree=3),
-        lambda: train_gpr_trend(X, y),
+        lambda: train_exponential(X, y),
     ]
 
     models = []
@@ -62,8 +61,13 @@ def run_target_models(history, sex, who_lms_df):
 def evaluate_model(model_dict, last_age, horizon, ground_truth):
     """Run one model, return metrics dict and raw predictions."""
     try:
-        preds = recursive_predict(model_dict, last_age, horizon)
-        y_pred = [p["height"] for p in preds]
+        if model_dict.get("type") == "gpr_who":
+            preds = gpr_predict_with_who(model_dict, last_age, horizon)
+            y_pred = [p["height"] for p in preds]
+        else:
+            predictor = model_dict["model"]
+            future_ages = np.array([[last_age + i] for i in range(1, horizon + 1)], dtype=float)
+            y_pred = list(predictor.predict(future_ages))
     except Exception:
         return None, []
 
