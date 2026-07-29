@@ -7,12 +7,7 @@ from sklearn.model_selection import LeaveOneOut
 from sklearn.gaussian_process import GaussianProcessRegressor
 from sklearn.gaussian_process.kernels import RBF, ConstantKernel, WhiteKernel
 from scipy.optimize import curve_fit
-
-# CATATAN REVISI:
-# `from services.who_service import get_who_median` DIHAPUS.
-# WHO tidak lagi dipakai di tahap prediksi/training. WHO hanya dipakai
-# di tahap klasifikasi (who_service.py: compute_haz, classify_status, dst),
-# yang dipanggil SETELAH prediksi ini selesai (lihat prediction_service.py).
+from services.who_service import get_who_median
 
 
 # ==========================================================
@@ -57,101 +52,77 @@ def train_polynomial(X: np.ndarray, y: np.ndarray, degree: int) -> dict | None:
 
 
 # ==========================================================
-# GAUSSIAN PROCESS REGRESSION + TREND MEAN FUNCTION (REVISI)
+# GAUSSIAN PROCESS REGRESSION + WHO PRIOR
 # ==========================================================
 
-class GPRTrendPredictor:
+class GPRWHOPredictor:
     """
-    Wrapper untuk GPR dengan mean function berbasis tren individu anak.
+    Wrapper untuk GPR + WHO Prior agar API-nya seragam dengan model lain.
 
-    Perbedaan dari versi lama (GPRWHOPredictor):
-    - Versi lama: mean function = kurva median WHO -> prediksi jangka
-      panjang "ditarik balik" ke kurva WHO (bug yang dikoreksi dosen).
-    - Versi baru: mean function = tren historis anak itu sendiri
-      (Linear atau Polynomial, dipilih otomatis sesuai jumlah data).
-      GPR hanya memodelkan residual/deviasi dari tren tersebut, sehingga
-      ekstrapolasi tetap mengikuti arah tren anak (naik/turun/datar),
-      bukan mengikuti kurva populasi WHO.
-
-    WHO baru masuk belakangan, di luar kelas ini, murni untuk
-    menghitung Z-score (HAZ/WAZ/HCAZ) dan status gizi dari NILAI
-    PREDIKSI AKHIR — bukan untuk membentuk prediksinya.
+    Menyimpan model GPR yang sudah dilatih pada ruang deviasi WHO,
+    serta referensi sex dan who_lms_df untuk rekonstruksi prediksi akhir.
     """
-    def __init__(self, gpr_model, trend_model):
+    def __init__(self, gpr_model, sex: str, who_lms_df):
         self.gpr_model   = gpr_model
-        self.trend_model = trend_model
+        self.sex         = sex
+        self.who_lms_df  = who_lms_df
 
     def predict(self, X: np.ndarray) -> np.ndarray:
-        """Prediksi nilai akhir (tinggi/berat/lingkar kepala) untuk array usia X."""
-        trend_pred    = self.trend_model.predict(X)
-        residual_pred = self.gpr_model.predict(X)
-        return trend_pred + residual_pred
+        """Prediksi tinggi badan (bukan deviasi) untuk array usia X."""
+        ages = X.flatten()
+        who_medians = np.array([
+            get_who_median(int(round(a)), self.sex, self.who_lms_df)
+            for a in ages
+        ])
+        dev_pred = self.gpr_model.predict(X)
+        return dev_pred + who_medians
 
     def predict_with_std(self, X: np.ndarray):
-        """Prediksi nilai akhir + std (interval kepercayaan) untuk array usia X."""
-        trend_pred = self.trend_model.predict(X)
-        residual_pred, residual_std = self.gpr_model.predict(X, return_std=True)
-        return trend_pred + residual_pred, residual_std
-
-
-def _fit_trend_model(X: np.ndarray, y: np.ndarray):
-    """
-    Memilih & melatih model tren berbasis data anak itu sendiri.
-
-    Aturan pemilihan (disesuaikan dengan jumlah titik data historis,
-    supaya tidak overfit pada anak dengan sedikit kunjungan):
-    - n >= 5 titik  -> Polynomial derajat 2
-    - n <  5 titik  -> Linear
-
-    Ini SENGAJA menggunakan model yang sama dengan train_linear /
-    train_polynomial di atas, supaya narasi BAB III konsisten:
-    "GPR dibangun di atas model tren (Linear/Polynomial) sebagai mean
-    function, lalu menyempurnakan dengan menangkap pola non-linear
-    residual."
-    """
-    n = len(X)
-    if n >= 5:
-        trend_model = Pipeline([
-            ("poly", PolynomialFeatures(degree=2, include_bias=False)),
-            ("linear", LinearRegression())
+        """Prediksi tinggi + std (interval kepercayaan) untuk array usia X."""
+        ages = X.flatten()
+        who_medians = np.array([
+            get_who_median(int(round(a)), self.sex, self.who_lms_df)
+            for a in ages
         ])
-    else:
-        trend_model = LinearRegression()
-
-    trend_model.fit(X, y)
-    return trend_model
+        dev_pred, dev_std = self.gpr_model.predict(X, return_std=True)
+        return dev_pred + who_medians, dev_std
 
 
-def train_gpr_trend(X: np.ndarray, y: np.ndarray) -> dict | None:
+def train_gpr_who(
+    X: np.ndarray,
+    y: np.ndarray,
+    sex: str,
+    who_lms_df
+) -> dict | None:
     """
-    Melatih Gaussian Process Regression dengan MEAN FUNCTION dari tren
-    data historis anak sendiri (BUKAN dari kurva WHO).
+    Melatih Gaussian Process Regression dengan WHO Median sebagai prior mean.
 
-    Strategi (revisi dari train_gpr_who versi lama):
-    - Fit trend_model (Linear/Polynomial) pada (X, y) -> ini mean function
-    - Hitung residual: y_res = y_aktual - trend_model.predict(X)
-    - Latih GPR pada (X, y_res)
-    - Prediksi: trend_model.predict(X_future) + gpr.predict(X_future)
+    Strategi:
+    - Hitung deviasi: y_dev = y_aktual - y_who_median
+    - Latih GPR pada (X, y_dev)
+    - Prediksi: gpr.predict(X_future) + who_median_future
 
     Kernel:
-    - ConstantKernel * RBF : menangkap pola non-linear residual di
-                             sekitar titik data
+    - ConstantKernel * RBF : menangkap tren halus
     - WhiteKernel          : menangkap noise pengukuran
-
-    Kenapa ini memperbaiki bug "line follower":
-    Karena mean function sekarang adalah tren anak itu sendiri, ketika
-    ekstrapolasi keluar jangkauan data (residual GPR meluruh ke ~0),
-    prediksi akhir kembali ke GARIS TREN ANAK, bukan ke kurva WHO.
-    Kalau tren anak menurun, ekstrapolasi tetap menurun.
 
     Returns
     -------
     dict atau None jika fitting gagal
     """
     try:
-        trend_model = _fit_trend_model(X, y)
-        y_residual = y - trend_model.predict(X)
+        ages = X.flatten()
 
+        # Ambil nilai median WHO untuk setiap usia latih
+        who_medians = np.array([
+            get_who_median(int(round(a)), sex, who_lms_df)
+            for a in ages
+        ])
+
+        # Hitung deviasi individu terhadap WHO
+        y_deviation = y - who_medians
+
+        # Definisikan kernel: smooth trend + noise
         kernel = (
             ConstantKernel(1.0, (0.01, 10.0))
             * RBF(length_scale=4.0, length_scale_bounds=(1.0, 20.0))
@@ -163,39 +134,37 @@ def train_gpr_trend(X: np.ndarray, y: np.ndarray) -> dict | None:
             n_restarts_optimizer=5,
             normalize_y=True
         )
-        gpr.fit(X, y_residual)
+        gpr.fit(X, y_deviation)
 
-        predictor = GPRTrendPredictor(gpr_model=gpr, trend_model=trend_model)
+        predictor = GPRWHOPredictor(gpr_model=gpr, sex=sex, who_lms_df=who_lms_df)
 
         return {
-            "name":  "GPR (Trend Mean Function)",
+            "name":  "GPR WHO Prior",
             "model": predictor,
-            "type":  "gpr_trend"
+            "type":  "gpr_who",
+            "sex":   sex
         }
 
     except Exception:
         return None
 
 
-def gpr_predict_trend(
-    gpr_trend_dict: dict,
+def gpr_predict_with_who(
+    gpr_who_dict: dict,
     last_age: int,
     horizon: int
 ) -> list[dict]:
     """
-    Menghasilkan prediksi dari GPR + Trend Mean Function.
-    Mengembalikan juga uncertainty_band (interval kepercayaan 95%).
+    Menghasilkan prediksi dari GPR + WHO Prior.
+    Berbeda dari recursive_predict, fungsi ini juga mengembalikan
+    uncertainty_band (interval kepercayaan 95%).
 
     Returns
     -------
     list of dict:
         [{"age": int, "height": float, "uncertainty_band": float}, ...]
-
-    Catatan: key "height" dipertahankan generik (dipakai juga untuk
-    berat badan / lingkar kepala oleh caller) supaya kompatibel dengan
-    kode yang sudah ada di prediction_route_v3.py.
     """
-    predictor = gpr_trend_dict["model"]
+    predictor = gpr_who_dict["model"]
     results = []
 
     future_ages = np.array([[last_age + i] for i in range(1, horizon + 1)])
@@ -204,7 +173,7 @@ def gpr_predict_trend(
     for i, age_arr in enumerate(future_ages):
         age = int(age_arr[0])
         height = float(heights[i])
-        height = max(height, 0.0)  # failsafe, bukan floor WHO
+        height = max(height, 0.0)  # failsafe
         band = round(float(stds[i] * 1.96), 2)  # 95% confidence interval
 
         results.append({
@@ -214,24 +183,6 @@ def gpr_predict_trend(
         })
 
     return results
-
-
-# ==========================================================
-# TRAIN FUNCTIONS (SKLEARN & REGRESSION MODELS)
-# ==========================================================
-
-def train_bayesian_ridge(X: np.ndarray, y: np.ndarray) -> dict:
-    """
-    Melatih model Bayesian Ridge Regression.
-    Robust terhadap data sedikit karena regularisasi otomatis.
-    """
-    model = BayesianRidge()
-    model.fit(X, y)
-    return {
-        "name": "Bayesian Ridge",
-        "model": model,
-        "type": "bayesian_ridge"
-    }
 
 
 # ==========================================================
@@ -318,13 +269,6 @@ def evaluate_models(
                     pipeline.fit(X_train, y_train)
                     pred = pipeline.predict(X_test)[0]
 
-                elif m_type == "gpr_trend":
-                    gpr_dict = train_gpr_trend(X_train, y_train)
-                    if gpr_dict is None:
-                        loocv_failed = True
-                        break
-                    pred = gpr_dict["model"].predict(X_test)[0]
-
             except Exception:
                 loocv_failed = True
                 break
@@ -363,11 +307,11 @@ def get_sorted_models(
             "Pastikan data historis cukup dan valid."
         )
 
-    # Urutkan: RMSE ascending, lalu R^2 descending sebagai tie-breaker
+    # Urutkan: RMSE ascending, lalu R² descending sebagai tie-breaker
     valid_models.sort(
         key=lambda m: (
             metrics[m["name"]]["rmse"],
-            -metrics[m["name"]]["r2"]   # negatif agar min() memilih R^2 terbesar
+            -metrics[m["name"]]["r2"]   # negatif agar min() memilih R² terbesar
         )
     )
 

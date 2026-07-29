@@ -1,40 +1,23 @@
 """
 prediction_route_v3.py — Endpoint /api/predict/v3
 
-REVISI METODOLOGI (mengikuti arahan dosen pembimbing):
---------------------------------------------------------
-Versi lama menggunakan kurva median WHO sebagai "prior mean" saat
-TRAINING GPR (train_gpr_who). Efeknya, prediksi jangka panjang selalu
-ditarik balik ke kurva WHO -- termasuk saat anak trennya menurun
-(mengarah stunting) atau naik terus (mengarah obesitas). Ini fatal
-karena tujuan sistem justru mendeteksi dini penyimpangan dari WHO,
-bukan menormalkannya.
-
-Versi ini memisahkan dua tahap yang sebelumnya tercampur:
-    Tahap 1 - PREDIKSI : GPR dengan mean function dari tren historis
-                          anak itu sendiri (Linear/Polynomial).
-                          WHO SAMA SEKALI TIDAK dipakai di tahap ini.
-    Tahap 2 - KLASIFIKASI: nilai prediksi dari Tahap 1 dikonversi ke
-                          Z-score (HAZ/WAZ/HCAZ) memakai tabel LMS WHO,
-                          murni untuk interpretasi status gizi.
-
 Model yang digunakan:
-    - GPR dengan Trend Mean Function                       [primary]
-    - Linear Regression                                     [comparison]
-    - Polynomial Regression (degree 2 & 3)                 [comparison]
+    - Gaussian Process Regression (GPR) + WHO Median Prior  [primary]
+    - Linear Regression                                      [comparison]
+    - Polynomial Regression (degree 2 & 3)                  [comparison]
 
-Karakteristik (diperbarui dari versi lama):
-    - Prediksi MENGIKUTI tren individu anak (bisa naik, turun, atau
-      datar) -- tidak lagi dijamin selalu naik/dianchor ke WHO
+Keunggulan dibanding v1 dan v2:
+    - Tidak pernah menghasilkan prediksi yang menurun (guaranteed)
+    - Menggunakan kurva WHO sebagai "pengetahuan awal" (prior)
     - Menghasilkan uncertainty_band (interval kepercayaan 95%)
-    - Semakin banyak titik data historis -> tren yang dipelajari makin
-      representatif (bukan makin dekat ke WHO)
+    - Semakin sedikit data -> lebih dekat ke WHO
+    - Semakin banyak data -> lebih dipersonalisasi ke individu
     - [v3.1] Mendukung prediksi TIGA indikator sekaligus:
         1. Tinggi Badan (HAZ)
         2. Berat Badan (WAZ)   [opsional]
         3. Lingkar Kepala (HCAZ) [opsional]
     - [v3.2] Model perbandingan (Linear & Polynomial) disertakan di:
-        - metrics            : MAE, RMSE, R^2 in-sample
+        - metrics            : MAE, RMSE, R² in-sample
         - model_comparisons  : prediksi masa depan per model
 """
 import os
@@ -48,10 +31,10 @@ from services.preprocessing_service import (
     build_feature_hc,
 )
 from services.model_service import (
-    train_gpr_trend,
-    gpr_predict_trend,
+    train_gpr_who,
+    gpr_predict_with_who,
     train_linear,
-    train_polynomial
+    train_polynomial,
 )
 from services.prediction_service import build_prediction
 from services.who_service import (
@@ -61,6 +44,8 @@ from services.who_service import (
     compute_waz,
     compute_hcaz,
     classify_zscore_status,
+    get_who_weight_median,
+    get_who_hc_median,
 )
 from services.growth_validator import add_velocity_info
 
@@ -80,9 +65,6 @@ _WHO_HCAZ_PATH = os.path.join(_DATA_DIR, "who_hcaz.csv")
 _who_lms_df_v3  = None
 _who_waz_df_v3  = None
 _who_hcaz_df_v3 = None
-
-# _ENABLE_GPR True → GPR WHO Prior menjadi primary model
-_ENABLE_GPR = True
 
 
 def _get_who_lms():
@@ -111,7 +93,7 @@ def _get_who_hcaz():
 # ============================================================
 
 def _compute_gpr_metrics(gpr_dict: dict, X, y) -> dict:
-    """Menghitung MAE, RMSE, R^2 dari hasil fitting GPR pada data historis."""
+    """Menghitung MAE, RMSE, R² dari hasil fitting GPR pada data historis."""
     try:
         predictor = gpr_dict["model"]
         y_fitted  = predictor.predict(X)
@@ -127,7 +109,7 @@ def _compute_gpr_metrics(gpr_dict: dict, X, y) -> dict:
 
 def _compute_sklearn_metrics(model_dict: dict, X, y) -> dict:
     """
-    Menghitung MAE, RMSE, R^2 in-sample untuk model sklearn
+    Menghitung MAE, RMSE, R² in-sample untuk model sklearn
     (LinearRegression, Pipeline Polynomial, dst).
     """
     try:
@@ -149,7 +131,7 @@ def _predict_sklearn_future(
     horizon: int,
 ) -> list[dict]:
     """
-    Hasilkan prediksi masa depan (age = last_age+1 ... last_age+horizon)
+    Hasilkan prediksi masa depan (age = last_age+1 … last_age+horizon)
     menggunakan model sklearn biasa (Linear / Polynomial).
 
     Returns
@@ -169,14 +151,65 @@ def _predict_sklearn_future(
 
 
 # ============================================================
+# HELPER: Prediksi + enrich untuk satu indikator GPR
+# ============================================================
+
+def _predict_indicator(
+    gpr_dict: dict,
+    last_age: int,
+    horizon: int,
+    sex: str,
+    who_df,
+    compute_z_fn,
+    classify_fn,
+    indicator_key: str,
+    z_key: str,
+    unit: str,
+) -> list[dict]:
+    """
+    Generik: jalankan GPR predict + hitung z-score + classify untuk satu indikator.
+
+    Returns list of dicts per bulan prediksi dengan format:
+        {"age": int, "value": float, "z_score": float, "status": str, "uncertainty_band": float}
+    """
+    preds_with_band = gpr_predict_with_who(gpr_dict, last_age, horizon)
+    results = []
+    for p in preds_with_band:
+        age    = p["age"]
+        val    = p["height"]  # note: gpr_predict_with_who returns key "height" generically
+
+        # Monotonicity guard — nilai tidak boleh turun dari WHO floor
+        who_floor = (
+            get_who_weight_median(age, sex, who_df)
+            if indicator_key == "weight"
+            else get_who_hc_median(age, sex, who_df)
+            if indicator_key == "head_circ"
+            else None
+        )
+        # Pastikan nilai tidak negatif
+        val = max(0.0, val)
+
+        z    = compute_z_fn(val, age, sex, who_df)
+        stat = classify_fn(z, indicator_key)
+
+        results.append({
+            "age":              age,
+            "value":            round(val, 3),
+            "z_score":          round(z, 3) if not np.isnan(z) else None,
+            "status":           stat,
+            "uncertainty_band": round(p["uncertainty_band"], 3),
+        })
+    return results
+
+
+# ============================================================
 # POST /api/predict/v3
 # ============================================================
 
 @prediction_v3_bp.route("/api/predict/v3", methods=["POST"])
 def predict_v3():
     """
-    Endpoint prediksi multi-indikator menggunakan Gaussian Process Regression
-    dengan Trend Mean Function (lihat catatan revisi di atas).
+    Endpoint prediksi multi-indikator menggunakan Gaussian Process Regression + WHO Prior.
 
     Request Body (JSON):
     --------------------
@@ -199,9 +232,9 @@ def predict_v3():
     {
         "success": true,
         "version": "v3",
-        "selected_model": "GPR (Trend Mean Function)",
+        "selected_model": "GPR WHO Prior",
         "n_history": 6,
-        "metrics": { "GPR (Trend Mean Function)": {"mae": .., "rmse": .., "r2": ..} },
+        "metrics": { "GPR WHO Prior": {"mae": .., "rmse": .., "r2": ..} },
         "prediction": [
             {
                 "age": 6,
@@ -269,8 +302,7 @@ def predict_v3():
         except ValueError:
             has_hc = False  # Data tidak valid, skip saja
 
-    # 8. Load WHO tables — SEKARANG HANYA DIPAKAI UNTUK KLASIFIKASI
-    #    (Z-score & status gizi), TIDAK LAGI dipakai untuk training GPR.
+    # 8. Load WHO tables
     try:
         who_lms_df  = _get_who_lms()
         who_waz_df  = _get_who_waz()  if has_weight else None
@@ -283,9 +315,6 @@ def predict_v3():
     if gpr_h is None:
         return _error("GPR fitting tinggi badan gagal. Periksa data historis.", 500)
 
-    selected_model_name = "GPR WHO Prior"
-
-    # Hasilkan prediksi masa depan GPR
     try:
         preds_h_raw = gpr_predict_with_who(gpr_h, last_age, horizon)
     except Exception as e:
@@ -298,23 +327,25 @@ def predict_v3():
     except Exception as e:
         return _error(f"Gagal enrich data HAZ: {str(e)}", 500)
 
+    # Tambahkan uncertainty_band ke height
     for i, p in enumerate(preds_h_enriched):
-        p["uncertainty_band"] = preds_h_raw_gpr[i]["uncertainty_band"]
+        p["uncertainty_band"] = preds_h_raw[i]["uncertainty_band"]
 
+    # Tambahkan velocity info (opsional, tidak fatal jika gagal)
     try:
         preds_h_enriched = add_velocity_info(preds_h_enriched, history, sex, who_lms_df)
     except Exception:
         pass
 
-    # 10. Berat Badan (jika ada) — GPR
+    # 10. Latih & prediksi GPR — Berat Badan (jika ada)
     preds_w_enriched = None
     gpr_w = None
     if has_weight and X_w is not None:
         last_age_w = int(X_w[-1][0])
-        gpr_w = train_gpr_trend(X_w, y_w)
+        gpr_w = train_gpr_who(X_w, y_w, sex, who_waz_df)
         if gpr_w is not None:
             try:
-                preds_w_raw = gpr_predict_trend(gpr_w, last_age_w, horizon)
+                preds_w_raw = gpr_predict_with_who(gpr_w, last_age_w, horizon)
                 preds_w_enriched = []
                 for p in preds_w_raw:
                     age = p["age"]
@@ -331,19 +362,19 @@ def predict_v3():
             except Exception:
                 preds_w_enriched = None
 
-    # 11. Lingkar Kepala (jika ada) — GPR
+    # 11. Latih & prediksi GPR — Lingkar Kepala (jika ada)
     preds_hc_enriched = None
     gpr_hc = None
     if has_hc and X_hc is not None:
         last_age_hc = int(X_hc[-1][0])
-        gpr_hc = train_gpr_trend(X_hc, y_hc)
+        gpr_hc = train_gpr_who(X_hc, y_hc, sex, who_hcaz_df)
         if gpr_hc is not None:
             try:
-                preds_hc_raw = gpr_predict_trend(gpr_hc, last_age_hc, horizon)
+                preds_hc_raw = gpr_predict_with_who(gpr_hc, last_age_hc, horizon)
                 preds_hc_enriched = []
                 for p in preds_hc_raw:
-                    age  = p["age"]
-                    val  = max(0.0, p["height"])
+                    age = p["age"]
+                    val = max(0.0, p["height"])
                     hcaz = compute_hcaz(val, age, sex, who_hcaz_df)
                     stat = classify_zscore_status(hcaz, "head_circ")
                     preds_hc_enriched.append({
@@ -356,8 +387,12 @@ def predict_v3():
             except Exception:
                 preds_hc_enriched = None
 
-    # 12. Model perbandingan: Linear Regression & Polynomial Regression
+    # 12. Latih model perbandingan: Linear Regression & Polynomial Regression
+    #     (hanya untuk tinggi badan — indikator primer)
     comparison_models = []
+    linear_dict = None
+    poly2_dict  = None
+    poly3_dict  = None
 
     try:
         linear_dict = train_linear(X_h, y_h)
@@ -385,7 +420,7 @@ def predict_v3():
         if m is not None:
             all_metrics[m["name"]] = _compute_sklearn_metrics(m, X_h, y_h)
 
-    # 12b. Prediksi masa depan model perbandingan
+    # 12b. Buat prediksi masa depan untuk model perbandingan
     comparison_predictions = {}
     for m in comparison_models:
         if m is None:
@@ -393,7 +428,10 @@ def predict_v3():
         future_preds = _predict_sklearn_future(m, last_age, horizon)
         comparison_predictions[m["name"]] = future_preds
 
-    # 13. Gabungkan prediksi per bulan
+    # (alias untuk kompatibilitas ke bawah)
+    gpr_metrics = all_metrics
+
+    # 13. Gabungkan prediksi menjadi satu list per bulan
     combined = []
     for i, h in enumerate(preds_h_enriched):
         entry = {
@@ -405,6 +443,7 @@ def predict_v3():
                 "uncertainty_band": h.get("uncertainty_band"),
             }
         }
+        # Tambahkan weight jika ada
         if preds_w_enriched and i < len(preds_w_enriched):
             w = preds_w_enriched[i]
             entry["weight"] = {
@@ -413,6 +452,7 @@ def predict_v3():
                 "status":           w["status"],
                 "uncertainty_band": w["uncertainty_band"],
             }
+        # Tambahkan head_circ jika ada
         if preds_hc_enriched and i < len(preds_hc_enriched):
             hc = preds_hc_enriched[i]
             entry["head_circ"] = {

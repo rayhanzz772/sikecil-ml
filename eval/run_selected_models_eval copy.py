@@ -2,14 +2,7 @@
 Evaluasi khusus untuk model:
 1. Linear Regression
 2. Polynomial Regression (Degree 2 & 3)
-3. Gaussian Process Regression (GPR dengan Trend Mean Function)
-
-CATATAN REVISI:
-Sebelumnya pakai "GPR WHO Prior" (train_gpr_who) yang mean function-nya
-kurva WHO -- menyebabkan prediksi jangka panjang selalu ditarik balik
-ke WHO (bug yang dikoreksi dosen pembimbing). Sekarang pakai
-train_gpr_trend: mean function dari tren historis anak itu sendiri
-(Linear/Polynomial), WHO tidak lagi dipakai di tahap training/prediksi.
+3. Gaussian Process Regression (GPR WHO Prior)
 
 Output:
   - eval/selected_models_results.json
@@ -32,20 +25,20 @@ from services.preprocessing_service import build_feature
 from services.model_service import (
     train_linear,
     train_polynomial,
-    train_gpr_trend,
+    train_gpr_who,
 )
 from services.prediction_service import recursive_predict
 
 
 def run_target_models(history, sex, who_lms_df):
-    """Train ONLY Linear, Polynomial (Deg 2 & 3), dan GPR (Trend Mean Function)."""
+    """Train ONLY Linear, Polynomial (Deg 2 & 3), and GPR WHO Prior models."""
     X, y = build_feature(history)
 
     candidates = [
         lambda: train_linear(X, y),
         lambda: train_polynomial(X, y, degree=2),
         lambda: train_polynomial(X, y, degree=3),
-        lambda: train_gpr_trend(X, y),
+        lambda: train_gpr_who(X, y, sex, who_lms_df),
     ]
 
     models = []
@@ -84,7 +77,7 @@ def evaluate_model(model_dict, last_age, horizon, ground_truth):
         "rmse": round(rmse, 4),
         "r2": round(r2, 4) if r2 is not None else None,
     }
-
+    
     formatted_preds = [
         {"age": gt["age"], "height": round(p, 2)}
         for gt, p in zip(ground_truth, y_pred)
@@ -96,7 +89,7 @@ def evaluate_model(model_dict, last_age, horizon, ground_truth):
 def run_selected_evaluation():
     base_dir = os.path.dirname(os.path.abspath(__file__))
     cases_path = os.path.join(base_dir, "simulation_cases.json")
-
+    
     if not os.path.exists(cases_path):
         from generate_simulation import generate_cases
         generate_cases()
@@ -229,7 +222,7 @@ def generate_report(results, base_dir):
     lines.append("-" * 75)
     lines.append("TABEL 5: CONTOH DATA INPUT, TARGET (GROUND TRUTH), DAN HASIL PREDIKSI")
     lines.append("-" * 75)
-
+    
     sample_case_ids = ["EARLY-L-Normal", "NORM-L-Normal", "NORM-L-Stunted"]
     for case_id in sample_case_ids:
         case_rows = [r for r in results if r["case_id"] == case_id]
@@ -237,13 +230,13 @@ def generate_report(results, base_dir):
             continue
         first_row = case_rows[0]
         lines.append(f"Kasus ID  : {first_row['case_id']} (Mode: {first_row['mode']}, Label: {first_row['label']}, Sex: {first_row['sex']})")
-
+        
         hist_str = ", ".join([f"Bln {h['age']}: {h['height']}cm" for h in first_row['history']])
         lines.append(f"  Data Input (History)   : [{hist_str}]")
-
+        
         gt_str = ", ".join([f"Bln {g['age']}: {g['height']}cm" for g in first_row['ground_truth']])
         lines.append(f"  Target Actual (GT)     : [{gt_str}]")
-
+        
         lines.append("  Hasil Prediksi Model   :")
         for r in case_rows:
             pred_str = ", ".join([f"Bln {p['age']}: {p['height']}cm" for p in r['predictions']])

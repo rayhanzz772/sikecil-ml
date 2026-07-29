@@ -3,18 +3,6 @@ Evaluasi head-to-head semua model untuk laporan.
 Setiap model dijalankan di setiap kasus (tidak ada auto-select),
 menghasilkan tabel perbandingan MAE, RMSE, R2.
 
-CATATAN REVISI:
-- train_bayesian_ridge, train_von_bertalanffy, train_gompertz, dan
-  train_haz_predictor DIHAPUS dari daftar kandidat karena fungsi-fungsi
-  ini sudah tidak ada di services.model_service / services.haz_predictor
-  (kemungkinan sisa dari eksplorasi model di awal penelitian). Import-nya
-  sebelumnya menyebabkan file ini gagal dijalankan (ImportError).
-- train_gpr_who diganti train_gpr_trend: GPR sekarang pakai mean function
-  dari tren historis anak sendiri (Linear/Polynomial), bukan kurva WHO.
-  Lihat model_service.py untuk detail perbaikannya.
-- Sekarang skrip ini konsisten dengan model final di laporan: Linear,
-  Polynomial (deg 2 & 3), dan GPR.
-
 Output:
   - eval/comparison_results.json  (data mentah)
   - eval/comparison_report.txt    (tabel siap laporan)
@@ -33,18 +21,21 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from services.who_service import load_who_lms
 from services.preprocessing_service import build_feature
 from services.model_service import (
+    train_bayesian_ridge,
     train_linear,
     train_polynomial,
     train_von_bertalanffy,
     train_gompertz,
     train_gpr_who,
 )
+from services.haz_predictor import train_haz_predictor
 from services.prediction_service import recursive_predict
 
 
 def run_all_models(history, sex, who_lms_df):
-    """Train semua model final (Linear, Poly2, Poly3, GPR Trend) pada history, skip yang gagal."""
+    """Train all models on history, return list of model dicts (skip failures)."""
     X, y = build_feature(history)
+    last_age = history[-1]["age"]
 
     candidates = [
         lambda: train_linear(X, y),
