@@ -15,7 +15,7 @@ from flask import Blueprint, request, jsonify
 from services.preprocessing_service import build_feature
 from services.model_service import (
     train_linear,
-    train_polynomial,
+    train_exponential,
     evaluate_models,
     get_sorted_models
 )
@@ -123,8 +123,7 @@ def predict_v1():
     # 6. Latih model klasik
     trained_models = [
         train_linear(X, y),
-        train_polynomial(X, y, degree=2),   # None jika data tidak cukup
-        train_polynomial(X, y, degree=3),   # None jika data tidak cukup
+        train_exponential(X, y),
     ]
 
     try:

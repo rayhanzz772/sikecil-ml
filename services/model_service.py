@@ -1,7 +1,5 @@
 import numpy as np
 from sklearn.linear_model import LinearRegression, BayesianRidge
-from sklearn.preprocessing import PolynomialFeatures
-from sklearn.pipeline import Pipeline
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.model_selection import LeaveOneOut
 from sklearn.gaussian_process import GaussianProcessRegressor
@@ -28,27 +26,36 @@ def train_linear(X: np.ndarray, y: np.ndarray) -> dict:
     }
 
 
-def train_polynomial(X: np.ndarray, y: np.ndarray, degree: int) -> dict | None:
+def train_exponential(X: np.ndarray, y: np.ndarray) -> dict | None:
     """
-    Melatih model Polynomial Regression.
-    Disediakan untuk keperluan perbandingan akademis (/api/predict/v1).
-    Otomatis dilewati jika jumlah data tidak cukup.
+    Melatih model Exponential Regression: y = a * exp(b * x).
+    Diimplementasikan dengan regresi linier pada (X, ln(y)).
+    Disediakan untuk keperluan perbandingan akademis.
     """
-    n_samples = len(X)
-    if n_samples <= degree + 1:
-        return None
+    try:
+        if np.any(y <= 0):
+            return None
 
-    pipeline = Pipeline([
-        ("poly", PolynomialFeatures(degree=degree, include_bias=False)),
-        ("linear", LinearRegression())
-    ])
-    pipeline.fit(X, y)
-    return {
-        "name": f"Polynomial Degree {degree}",
-        "model": pipeline,
-        "type": "poly",
-        "degree": degree
-    }
+        y_log = np.log(y)
+        model = LinearRegression()
+        model.fit(X, y_log)
+
+        class ExponentialPredictor:
+            def __init__(self, lin_model):
+                self.lin_model = lin_model
+
+            def predict(self, X_input: np.ndarray) -> np.ndarray:
+                log_pred = self.lin_model.predict(X_input)
+                return np.exp(log_pred)
+
+        predictor = ExponentialPredictor(model)
+        return {
+            "name": "Exponential Regression",
+            "model": predictor,
+            "type": "exponential"
+        }
+    except Exception:
+        return None
 
 
 # ==========================================================
@@ -395,18 +402,6 @@ def evaluate_models(
                     model = LinearRegression()
                     model.fit(X_train, y_train)
                     pred = model.predict(X_test)[0]
-
-                elif m_type == "poly":
-                    degree = m["degree"]
-                    if len(X_train) <= degree:
-                        loocv_failed = True
-                        break
-                    pipeline = Pipeline([
-                        ("poly", PolynomialFeatures(degree=degree, include_bias=False)),
-                        ("linear", LinearRegression())
-                    ])
-                    pipeline.fit(X_train, y_train)
-                    pred = pipeline.predict(X_test)[0]
 
             except Exception:
                 loocv_failed = True

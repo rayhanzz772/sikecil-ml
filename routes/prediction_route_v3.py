@@ -36,7 +36,7 @@ from services.model_service import (
     train_pure_gpr,
     validate_past_prediction,
     train_linear,
-    train_polynomial
+    train_exponential
 )
 from services.prediction_service import build_prediction
 from services.who_service import (
@@ -68,8 +68,14 @@ _who_lms_df_v3  = None
 _who_waz_df_v3  = None
 _who_hcaz_df_v3 = None
 
-# _ENABLE_GPR True → GPR WHO Prior menjadi primary model
-_ENABLE_GPR = True
+# ============================================================
+# KONFIGURASI MODEL UTAMA YANG DITAMPILKAN
+# Opsi: "gpr"    -> GPR WHO Prior (Default Recommended)
+#       "linear" -> Linear Regression
+#       "exp"    -> Exponential Regression
+# Catatan: Dapat juga di-override secara dinamis lewat JSON request body {"model": "exp"}
+# ============================================================
+DEFAULT_PRIMARY_MODEL = "gpr"
 
 
 def _get_who_lms():
@@ -148,7 +154,11 @@ def _predict_sklearn_future(
         future_ages = np.array([[last_age + i] for i in range(1, horizon + 1)], dtype=float)
         preds = model.predict(future_ages)
         return [
-            {"age": int(last_age + i + 1), "value": round(max(0.0, float(preds[i])), 3)}
+            {
+                "age": int(last_age + i + 1),
+                "height": round(max(0.0, float(preds[i])), 3),
+                "value": round(max(0.0, float(preds[i])), 3)
+            }
             for i in range(horizon)
         ]
     except Exception:
@@ -315,25 +325,44 @@ def predict_v3():
     except Exception as e:
         return _error(f"Gagal memuat data WHO: {str(e)}", 500)
 
-    # 9. Latih GPR WHO Prior — Tinggi Badan (Primary)
-    #    Mempertahankan kanal Z-score/deviasi individual anak mengikuti kurva pertumbuhan WHO
-    gpr_h = train_gpr_who(X_h, y_h, sex, who_lms_df)
-    if gpr_h is None:
-        return _error("GPR fitting tinggi badan gagal. Periksa data historis.", 500)
+    # 9. Tentukan Pilihan Model Utama (berdasarkan variabel DEFAULT_PRIMARY_MODEL atau JSON request body "model")
+    requested_model = data.get("selected_model") or data.get("model") or DEFAULT_PRIMARY_MODEL
+    requested_model = str(requested_model).lower().strip()
 
-    selected_model_name = "GPR WHO Prior"
+    # Melatih seluruh opsi model
+    gpr_h      = train_gpr_who(X_h, y_h, sex, who_lms_df)
+    linear_dict= train_linear(X_h, y_h)
+    exp_dict   = train_exponential(X_h, y_h)
 
-    # 9.5. Validasi Masa Lalu (Held-out Past Validation / Backtesting)
-    trainer_fn = lambda x, y: train_gpr_who(x, y, sex, who_lms_df)
-    past_val_result = validate_past_prediction(X_h, y_h, trainer_fn)
+    # Pilih model mana yang dijadikan model utama untuk ditampilkan
+    if requested_model in ["linear", "linear_regression"] and linear_dict is not None:
+        primary_model_dict  = linear_dict
+        selected_model_name = "Linear Regression"
+        preds_h_plain = _predict_sklearn_future(linear_dict, last_age, horizon)
+        bands = [0.0] * horizon
+        trainer_fn = train_linear
 
-    # Hasikan prediksi masa depan GPR
-    try:
+    elif requested_model in ["exp", "exponential", "exponential_regression"] and exp_dict is not None:
+        primary_model_dict  = exp_dict
+        selected_model_name = "Exponential Regression"
+        preds_h_plain = _predict_sklearn_future(exp_dict, last_age, horizon)
+        bands = [0.0] * horizon
+        trainer_fn = train_exponential
+
+    else:
+        # Default: GPR WHO Prior
+        primary_model_dict  = gpr_h
+        selected_model_name = "GPR WHO Prior"
+        if gpr_h is None:
+            return _error("GPR fitting tinggi badan gagal. Periksa data historis.", 500)
+        
         preds_h_raw_gpr = gpr_predict_with_who(gpr_h, last_age, horizon)
         preds_h_plain   = [{"age": p["age"], "height": p["height"]} for p in preds_h_raw_gpr]
         bands           = [p["uncertainty_band"] for p in preds_h_raw_gpr]
-    except Exception as e:
-        return _error(f"Prediksi GPR tinggi badan gagal: {str(e)}", 500)
+        trainer_fn      = lambda x, y: train_gpr_who(x, y, sex, who_lms_df)
+
+    # 9.5. Validasi Masa Lalu (Held-out Past Validation)
+    past_val_result = validate_past_prediction(X_h, y_h, trainer_fn)
 
     try:
         preds_h_enriched = build_prediction(preds_h_plain, sex, who_lms_df)
@@ -349,7 +378,7 @@ def predict_v3():
     except Exception:
         growth_warning_summary = None
 
-    # 10. Berat Badan (jika ada) — GPR
+    # 10. Berat Badan (jika ada)
     preds_w_enriched = None
     if has_weight and X_w is not None:
         last_age_w = int(X_w[-1][0])
@@ -373,7 +402,7 @@ def predict_v3():
             except Exception:
                 preds_w_enriched = None
 
-    # 11. Lingkar Kepala (jika ada) — GPR
+    # 11. Lingkar Kepala (jika ada)
     preds_hc_enriched = None
     if has_hc and X_hc is not None:
         last_age_hc = int(X_hc[-1][0])
@@ -397,33 +426,15 @@ def predict_v3():
             except Exception:
                 preds_hc_enriched = None
 
-    # 12. Model perbandingan: Linear Regression & Polynomial Regression
+    # 12. Kumpulkan Model Perbandingan untuk Response JSON
     comparison_models = []
-
-    try:
-        linear_dict = train_linear(X_h, y_h)
-        comparison_models.append(linear_dict)
-    except Exception:
-        linear_dict = None
-
-    try:
-        poly2_dict = train_polynomial(X_h, y_h, degree=2)
-        if poly2_dict is not None:
-            comparison_models.append(poly2_dict)
-    except Exception:
-        poly2_dict = None
-
-    try:
-        poly3_dict = train_polynomial(X_h, y_h, degree=3)
-        if poly3_dict is not None:
-            comparison_models.append(poly3_dict)
-    except Exception:
-        poly3_dict = None
+    if linear_dict is not None: comparison_models.append(linear_dict)
+    if exp_dict    is not None: comparison_models.append(exp_dict)
 
     # 12a. Metrik in-sample
-    all_metrics = {selected_model_name: _compute_sklearn_metrics(gpr_h, X_h, y_h)}
+    all_metrics = {selected_model_name: _compute_sklearn_metrics(primary_model_dict, X_h, y_h)}
     for m in comparison_models:
-        if m is not None:
+        if m is not None and m["name"] != selected_model_name:
             all_metrics[m["name"]] = _compute_sklearn_metrics(m, X_h, y_h)
 
     # 12b. Prediksi masa depan model perbandingan
