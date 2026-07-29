@@ -21,11 +21,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from services.who_service import load_who_lms
 from services.preprocessing_service import build_feature
 from services.model_service import (
-    train_bayesian_ridge,
     train_linear,
     train_polynomial,
-    train_von_bertalanffy,
-    train_gompertz,
     train_gpr_who,
 )
 from services.haz_predictor import train_haz_predictor
@@ -41,9 +38,6 @@ def run_all_models(history, sex, who_lms_df):
         lambda: train_linear(X, y),
         lambda: train_polynomial(X, y, degree=2),
         lambda: train_polynomial(X, y, degree=3),
-        lambda: train_bayesian_ridge(X, y),
-        lambda: train_von_bertalanffy(X, y),
-        lambda: train_gompertz(X, y),
         lambda: train_gpr_who(X, y, sex, who_lms_df),
         lambda: train_haz_predictor(history, sex, who_lms_df),
     ]

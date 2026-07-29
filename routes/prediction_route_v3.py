@@ -35,6 +35,10 @@ from services.model_service import (
     gpr_predict_with_who,
     train_linear,
     train_polynomial,
+    train_von_bertalanffy,
+    train_gompertz,
+    backtest_model,
+    get_fitted_history,
 )
 from services.prediction_service import build_prediction
 from services.who_service import (
@@ -65,6 +69,17 @@ _WHO_HCAZ_PATH = os.path.join(_DATA_DIR, "who_hcaz.csv")
 _who_lms_df_v3  = None
 _who_waz_df_v3  = None
 _who_hcaz_df_v3 = None
+
+# ============================================================
+# FEATURE FLAGS
+# ============================================================
+# Urutan prioritas saat keduanya True: Von Bertalanffy > GPR > Gompertz
+#
+# _ENABLE_VON  True  → Von Bertalanffy menjadi primary model
+# _ENABLE_GPR  True  → GPR menjadi primary (jika VON = False atau gagal fit)
+# Jika keduanya False → Gompertz digunakan sebagai last-resort
+_ENABLE_GPR = True
+_ENABLE_VON = True
 
 
 def _get_who_lms():

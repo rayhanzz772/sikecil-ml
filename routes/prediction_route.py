@@ -3,9 +3,6 @@ from flask import Blueprint, request, jsonify
 
 from services.preprocessing_service import build_feature
 from services.model_service import (
-    train_bayesian_ridge,
-    train_von_bertalanffy,
-    train_gompertz,
     evaluate_models,
     get_sorted_models
 )
@@ -168,9 +165,6 @@ def predict():
         prediction_mode = "normal"
         
         trained_models = [
-            train_bayesian_ridge(X, y),
-            # train_von_bertalanffy(X, y),        # None jika fitting gagal
-            train_gompertz(X, y)                # None jika fitting gagal
         ]
 
         try:

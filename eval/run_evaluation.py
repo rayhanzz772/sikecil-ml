@@ -11,9 +11,6 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from services.who_service import load_who_lms
 from services.preprocessing_service import build_feature
 from services.model_service import (
-    train_bayesian_ridge,
-    train_von_bertalanffy,
-    train_gompertz,
     evaluate_models,
     get_sorted_models
 )
@@ -54,9 +51,6 @@ def run_evaluation():
         else:
             X, y = build_feature(history)
             trained_models = [
-                train_bayesian_ridge(X, y),
-                train_von_bertalanffy(X, y),
-                train_gompertz(X, y)
             ]
             metrics = evaluate_models(trained_models, X, y)
             sorted_models = get_sorted_models(trained_models, metrics)
