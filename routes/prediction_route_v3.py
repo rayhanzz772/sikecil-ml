@@ -33,6 +33,8 @@ from services.preprocessing_service import (
 from services.model_service import (
     train_gpr_who,
     gpr_predict_with_who,
+    train_pure_gpr,
+    validate_past_prediction,
     train_linear,
     train_polynomial
 )
@@ -313,17 +315,23 @@ def predict_v3():
     except Exception as e:
         return _error(f"Gagal memuat data WHO: {str(e)}", 500)
 
-    # 9. Latih & prediksi GPR — Tinggi Badan (Primary)
+    # 9. Latih GPR WHO Prior — Tinggi Badan (Primary)
+    #    Mempertahankan kanal Z-score/deviasi individual anak mengikuti kurva pertumbuhan WHO
     gpr_h = train_gpr_who(X_h, y_h, sex, who_lms_df)
     if gpr_h is None:
         return _error("GPR fitting tinggi badan gagal. Periksa data historis.", 500)
 
     selected_model_name = "GPR WHO Prior"
 
-    # Hasilkan prediksi masa depan GPR
+    # 9.5. Validasi Masa Lalu (Held-out Past Validation / Backtesting)
+    trainer_fn = lambda x, y: train_gpr_who(x, y, sex, who_lms_df)
+    past_val_result = validate_past_prediction(X_h, y_h, trainer_fn)
+
+    # Hasikan prediksi masa depan GPR
     try:
         preds_h_raw_gpr = gpr_predict_with_who(gpr_h, last_age, horizon)
         preds_h_plain   = [{"age": p["age"], "height": p["height"]} for p in preds_h_raw_gpr]
+        bands           = [p["uncertainty_band"] for p in preds_h_raw_gpr]
     except Exception as e:
         return _error(f"Prediksi GPR tinggi badan gagal: {str(e)}", 500)
 
@@ -333,16 +341,16 @@ def predict_v3():
         return _error(f"Gagal enrich data HAZ: {str(e)}", 500)
 
     for i, p in enumerate(preds_h_enriched):
-        p["uncertainty_band"] = preds_h_raw_gpr[i]["uncertainty_band"]
+        p["uncertainty_band"] = bands[i]
 
+    growth_warning_summary = None
     try:
-        preds_h_enriched = add_velocity_info(preds_h_enriched, history, sex, who_lms_df)
+        preds_h_enriched, growth_warning_summary = add_velocity_info(preds_h_enriched, history, sex, who_lms_df)
     except Exception:
-        pass
+        growth_warning_summary = None
 
     # 10. Berat Badan (jika ada) — GPR
     preds_w_enriched = None
-    gpr_w = None
     if has_weight and X_w is not None:
         last_age_w = int(X_w[-1][0])
         gpr_w = train_gpr_who(X_w, y_w, sex, who_waz_df)
@@ -367,7 +375,6 @@ def predict_v3():
 
     # 11. Lingkar Kepala (jika ada) — GPR
     preds_hc_enriched = None
-    gpr_hc = None
     if has_hc and X_hc is not None:
         last_age_hc = int(X_hc[-1][0])
         gpr_hc = train_gpr_who(X_hc, y_hc, sex, who_hcaz_df)
@@ -413,8 +420,8 @@ def predict_v3():
     except Exception:
         poly3_dict = None
 
-    # 12a. Metrik in-sample — GPR + model perbandingan
-    all_metrics = {"GPR WHO Prior": _compute_gpr_metrics(gpr_h, X_h, y_h)}
+    # 12a. Metrik in-sample
+    all_metrics = {selected_model_name: _compute_sklearn_metrics(gpr_h, X_h, y_h)}
     for m in comparison_models:
         if m is not None:
             all_metrics[m["name"]] = _compute_sklearn_metrics(m, X_h, y_h)
@@ -462,8 +469,8 @@ def predict_v3():
         "success":         True,
         "version":         "v3",
         "description": (
-            "Gaussian Process Regression dengan WHO Median sebagai Prior Mean. "
-            "Prediksi mencerminkan trajektori individu dianchored ke kurva populasi WHO. "
+            "Pure Data-Driven Gaussian Process Regression (Linear+RBF Kernel). "
+            "Prediksi memodelkan trajektori individual anak secara murni dari data historis tanpa pull WHO median. "
             f"Indikator aktif: tinggi badan"
             + (", berat badan" if preds_w_enriched else "")
             + (", lingkar kepala" if preds_hc_enriched else "")
@@ -473,6 +480,8 @@ def predict_v3():
         "n_history":       n_samples,
         "skipped_models":  [],
         "metrics":         all_metrics,
+        "past_validation": past_val_result,  # Validasi prediksi masa lalu (sesuai saran dosen)
+        "growth_warning":  growth_warning_summary, # Deteksi & Peringatan Dini Perlambatan Pertumbuhan
         "prediction":      combined,
         "model_comparisons": comparison_predictions,
     }

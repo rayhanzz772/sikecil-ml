@@ -54,11 +54,11 @@ def add_velocity_info(
     who_lms_df
 ):
     """
-    Menambahkan field 'growth_velocity', 'expected_velocity', 'velocity_ratio' 
-    ke hasil prediksi.
+    Menambahkan field 'growth_velocity', 'expected_velocity', 'velocity_ratio',
+    serta indikator 'growth_warning' ke hasil prediksi.
     """
     if not history or not predictions:
-        return predictions
+        return predictions, {"has_warning": False, "message": "Data tidak cukup."}
         
     sorted_history = sorted(history, key=lambda x: x["age"])
     last_hist = sorted_history[-1]
@@ -66,19 +66,58 @@ def add_velocity_info(
     all_points = [last_hist] + predictions
     enriched = []
     
+    slow_count = 0
+    total_months = len(predictions)
+
     for i, pred in enumerate(predictions):
         prev = all_points[i]
         
         diff = pred["height"] - prev["height"]
         expected = get_expected_growth(prev["age"], pred["age"], sex, who_lms_df)
         
-        ratio = diff / expected if expected > 0 else 0
+        ratio = round(float(diff / expected), 2) if expected > 0 else 1.0
         
+        # Deteksi perlambatan per bulan (< 70% ekspektasi WHO)
+        if ratio < 0.70:
+            warning_status = "Pertumbuhan Melambat"
+            slow_count += 1
+        elif ratio < 0.40:
+            warning_status = "Pertumbuhan Sangat Lambat (Faltering)"
+            slow_count += 1
+        else:
+            warning_status = "Normal"
+
         new_pred = dict(pred)
         new_pred["growth_velocity"] = round(float(diff), 2)
         new_pred["expected_velocity"] = round(float(expected), 2)
-        new_pred["velocity_ratio"] = round(float(ratio), 2)
+        new_pred["velocity_ratio"] = ratio
+        new_pred["growth_warning"] = warning_status
         
         enriched.append(new_pred)
+
+    # Buat summary warning keseluruhan untuk sistem
+    has_warning = (slow_count > 0)
+    if slow_count >= total_months * 0.5:
+        summary_type = "GROWTH_FALTERING"
+        summary_msg  = (
+            "PERINGATAN KRITIS: Pertumbuhan anak diprediksi melambat signifikan dari standar WHO "
+            f"({slow_count} dari {total_months} bulan di bawah 70% ekspektasi). Berisiko Growth Faltering/Stunting."
+        )
+    elif slow_count > 0:
+        summary_type = "SLOW_GROWTH_WARNING"
+        summary_msg  = (
+            f"PERINGATAN: Terdeteksi perlambatan pertumbuhan pada {slow_count} bulan prediksi. "
+            "Disarankan pemantauan nutrisi dan konsultasi ke Posyandu/Faskes."
+        )
+    else:
+        summary_type = "NORMAL_GROWTH"
+        summary_msg  = "Pertumbuhan anak berjalan optimal sesuai trajektori biologis standar."
+
+    warning_summary = {
+        "has_warning": has_warning,
+        "warning_type": summary_type,
+        "slow_months_count": slow_count,
+        "message": summary_msg
+    }
         
-    return enriched
+    return enriched, warning_summary
