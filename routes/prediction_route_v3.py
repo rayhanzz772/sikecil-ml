@@ -24,6 +24,8 @@ import os
 import math
 import numpy as np
 from flask import Blueprint, request, jsonify
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.model_selection import LeaveOneOut
 
 from services.preprocessing_service import (
     build_feature,
@@ -100,29 +102,11 @@ def _get_who_hcaz():
 
 
 # ============================================================
-# HELPER: Hitung metrik in-sample GPR
+# HELPER: Hitung metrik Out-of-Sample / LOOCV / Ground Truth
 # ============================================================
 
-def _compute_gpr_metrics(gpr_dict: dict, X, y) -> dict:
-    """Menghitung MAE, RMSE, R² dari hasil fitting GPR pada data historis."""
-    try:
-        predictor = gpr_dict["model"]
-        y_fitted  = predictor.predict(X)
-        mae_val   = float(np.mean(np.abs(y - y_fitted)))
-        rmse_val  = float(math.sqrt(np.mean((y - y_fitted) ** 2)))
-        ss_res    = float(np.sum((y - y_fitted) ** 2))
-        ss_tot    = float(np.sum((y - float(np.mean(y))) ** 2))
-        r2_val    = 1.0 - (ss_res / ss_tot) if ss_tot > 0 else 1.0
-        return {"mae": round(mae_val, 6), "rmse": round(rmse_val, 6), "r2": round(r2_val, 6)}
-    except Exception:
-        return {"mae": None, "rmse": None, "r2": None}
-
-
 def _compute_sklearn_metrics(model_dict: dict, X, y) -> dict:
-    """
-    Menghitung MAE, RMSE, R² in-sample untuk model sklearn
-    (LinearRegression, Pipeline Polynomial, dst).
-    """
+    """Fallback hitung MAE, RMSE, R² in-sample."""
     try:
         model     = model_dict["model"]
         y_fitted  = model.predict(X)
@@ -134,6 +118,114 @@ def _compute_sklearn_metrics(model_dict: dict, X, y) -> dict:
         return {"mae": round(mae_val, 6), "rmse": round(rmse_val, 6), "r2": round(r2_val, 6)}
     except Exception:
         return {"mae": None, "rmse": None, "r2": None}
+
+
+def _clean_float(val):
+    if val is None:
+        return None
+    try:
+        f = float(val)
+        if math.isnan(f) or math.isinf(f):
+            return None
+        return round(f, 6)
+    except Exception:
+        return None
+
+
+def _compute_out_of_sample_metrics(
+    model_dict: dict,
+    X: np.ndarray,
+    y: np.ndarray,
+    sex: str = "L",
+    who_lms_df = None,
+    ground_truth: list[dict] = None
+) -> dict:
+    """
+    Menghitung metrik evaluasi out-of-sample:
+    1. Jika ground_truth diberikan: hitung error prediksi masa depan vs ground_truth.
+    2. Jika ground_truth tidak ada: hitung LOOCV (Leave-One-Out Cross-Validation) pada data historis.
+    """
+    if model_dict is None or len(X) < 2:
+        return {"mae": None, "rmse": None, "r2": None}
+
+    m_type = model_dict.get("type", "")
+
+    # 1. Evaluasi dengan Ground Truth (Masa Depan 6 bulan ke depan jika dikirimkan)
+    if ground_truth and isinstance(ground_truth, list) and len(ground_truth) > 0:
+        try:
+            last_age = int(X[-1][0])
+            horizon  = len(ground_truth)
+
+            if m_type == "gpr_who":
+                raw_preds = gpr_predict_with_who(model_dict, last_age, horizon)
+                y_pred = [p["height"] for p in raw_preds]
+            else:
+                predictor = model_dict["model"]
+                future_ages = np.array([[last_age + i] for i in range(1, horizon + 1)], dtype=float)
+                y_pred = list(predictor.predict(future_ages))
+
+            y_true = []
+            for item in ground_truth:
+                val = item.get("height") if item.get("height") is not None else (item.get("h") if item.get("h") is not None else item.get("value"))
+                if val is not None:
+                    y_true.append(float(val))
+
+            if len(y_pred) == len(y_true) and len(y_true) > 0:
+                mae  = mean_absolute_error(y_true, y_pred)
+                rmse = math.sqrt(mean_squared_error(y_true, y_pred))
+                try:
+                    r2 = r2_score(y_true, y_pred)
+                except Exception:
+                    r2 = None
+                return {"mae": _clean_float(mae), "rmse": _clean_float(rmse), "r2": _clean_float(r2)}
+        except Exception:
+            pass
+
+    # 2. Out-of-Sample via LOOCV (Leave-One-Out Cross-Validation) pada Data Historis
+    try:
+        loo = LeaveOneOut()
+        y_true_loo = []
+        y_pred_loo = []
+
+        for train_index, test_index in loo.split(X):
+            X_tr, X_te = X[train_index], X[test_index]
+            y_tr, y_te = y[train_index], y[test_index]
+
+            if len(X_tr) < 2:
+                continue
+
+            if m_type == "gpr_who":
+                g_trained = train_gpr_who(X_tr, y_tr, sex, who_lms_df)
+                if g_trained is None:
+                    continue
+                pred_val = float(g_trained["model"].predict(X_te)[0])
+            elif m_type == "linear":
+                l_trained = train_linear(X_tr, y_tr)
+                pred_val = float(l_trained["model"].predict(X_te)[0])
+            elif m_type == "exponential":
+                e_trained = train_exponential(X_tr, y_tr)
+                if e_trained is None:
+                    continue
+                pred_val = float(e_trained["model"].predict(X_te)[0])
+            else:
+                pred_val = float(model_dict["model"].predict(X_te)[0])
+
+            y_true_loo.append(float(y_te[0]))
+            y_pred_loo.append(pred_val)
+
+        if len(y_true_loo) >= 2:
+            mae  = mean_absolute_error(y_true_loo, y_pred_loo)
+            rmse = math.sqrt(mean_squared_error(y_true_loo, y_pred_loo))
+            try:
+                r2 = r2_score(y_true_loo, y_pred_loo)
+            except Exception:
+                r2 = None
+            return {"mae": _clean_float(mae), "rmse": _clean_float(rmse), "r2": _clean_float(r2)}
+    except Exception:
+        pass
+
+    # Fallback jika LOOCV tidak bisa diproses
+    return _compute_sklearn_metrics(model_dict, X, y)
 
 
 def _predict_sklearn_future(
@@ -431,11 +523,12 @@ def predict_v3():
     if linear_dict is not None: comparison_models.append(linear_dict)
     if exp_dict    is not None: comparison_models.append(exp_dict)
 
-    # 12a. Metrik in-sample
-    all_metrics = {selected_model_name: _compute_sklearn_metrics(primary_model_dict, X_h, y_h)}
+    # 12a. Metrik out-of-sample (Ground Truth jika ada, atau LOOCV pada data historis)
+    gt_req = data.get("ground_truth")
+    all_metrics = {selected_model_name: _compute_out_of_sample_metrics(primary_model_dict, X_h, y_h, sex, who_lms_df, ground_truth=gt_req)}
     for m in comparison_models:
         if m is not None and m["name"] != selected_model_name:
-            all_metrics[m["name"]] = _compute_sklearn_metrics(m, X_h, y_h)
+            all_metrics[m["name"]] = _compute_out_of_sample_metrics(m, X_h, y_h, sex, who_lms_df, ground_truth=gt_req)
 
     # 12b. Prediksi masa depan model perbandingan
     comparison_predictions = {}
