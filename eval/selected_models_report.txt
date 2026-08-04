@@ -122,7 +122,70 @@ NORM-P-Stunted             Linear Regression            5.6490     6.1899    -6.
 NORM-P-Stunted             Exponential Regression       8.9437     9.9771   -19.0684
 
 ---------------------------------------------------------------------------
-TABEL 5: CONTOH DATA INPUT, TARGET (GROUND TRUTH), DAN HASIL PREDIKSI
+TABEL 5: EVALUASI LOOCV — IDENTIK DENGAN METODE API /api/predict/v3
+---------------------------------------------------------------------------
+Catatan: LOOCV mengevaluasi interpolasi pada data yang tersedia (bukan
+         ekstrapolasi ke masa depan). Nilainya bisa berbeda dari Tabel 1
+         (out-of-sample) karena kondisi pengujian berbeda.
+
+Model                            MAE (cm)    RMSE (cm)           R2
+--------------------------------------------------------------------
+GPR WHO Prior                      0.0275       0.0370       1.0000
+Linear Regression                  1.5688       1.9565       0.9171
+Exponential Regression             1.9748       2.4034       0.8749
+
+  [Early Months (riwayat 4 bulan)]
+  Model                             MAE       RMSE         R2
+  ------------------------------------------------------------
+  GPR WHO Prior                  0.0279     0.0393     1.0000
+  Linear Regression              1.5138     1.8963     0.9157
+  Exponential Regression         1.8956     2.3297     0.8727
+
+  [Normal Mode (riwayat 6 bulan)]
+  Model                             MAE       RMSE         R2
+  ------------------------------------------------------------
+  GPR WHO Prior                  0.0270     0.0348     1.0000
+  Linear Regression              1.6238     2.0166     0.9186
+  Exponential Regression         2.0541     2.4772     0.8771
+
+  [Per Label / Status Pertumbuhan]
+  [Severely Stunted]
+  Model                             MAE       RMSE         R2
+  ------------------------------------------------------------
+  GPR WHO Prior                  0.0397     0.0564     0.9999
+  Linear Regression              1.5376     1.9179     0.9131
+  Exponential Regression         1.9385     2.3596     0.8684
+
+  [Stunted]
+  Model                             MAE       RMSE         R2
+  ------------------------------------------------------------
+  GPR WHO Prior                  0.0292     0.0421     1.0000
+  Linear Regression              1.5525     1.9365     0.9153
+  Exponential Regression         1.9556     2.3807     0.8719
+
+  [At Risk]
+  Model                             MAE       RMSE         R2
+  ------------------------------------------------------------
+  GPR WHO Prior                  0.0218     0.0307     1.0000
+  Linear Regression              1.5679     1.9554     0.9173
+  Exponential Regression         1.9736     2.4021     0.8752
+
+  [Normal]
+  Model                             MAE       RMSE         R2
+  ------------------------------------------------------------
+  GPR WHO Prior                  0.0199     0.0240     1.0000
+  Linear Regression              1.5852     1.9766     0.9191
+  Exponential Regression         1.9939     2.4263     0.8781
+
+  [Normal Atas]
+  Model                             MAE       RMSE         R2
+  ------------------------------------------------------------
+  GPR WHO Prior                  0.0267     0.0320     1.0000
+  Linear Regression              1.6010     1.9958     0.9209
+  Exponential Regression         2.0126     2.4486     0.8810
+
+---------------------------------------------------------------------------
+TABEL 6: CONTOH DATA INPUT, TARGET (GROUND TRUTH), DAN HASIL PREDIKSI
 ---------------------------------------------------------------------------
 Kasus ID  : EARLY-L-Normal (Mode: early_months, Label: Normal, Sex: L)
   Data Input (History)   : [Bln 0: 49.88cm, Bln 1: 54.72cm, Bln 2: 58.42cm, Bln 3: 61.43cm]

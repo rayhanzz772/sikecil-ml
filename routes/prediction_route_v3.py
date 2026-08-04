@@ -77,7 +77,7 @@ _who_hcaz_df_v3 = None
 #       "exp"    -> Exponential Regression
 # Catatan: Dapat juga di-override secara dinamis lewat JSON request body {"model": "exp"}
 # ============================================================
-DEFAULT_PRIMARY_MODEL = "gpr"
+DEFAULT_PRIMARY_MODEL = "exp"
 
 
 def _get_who_lms():
@@ -474,49 +474,91 @@ def predict_v3():
     preds_w_enriched = None
     if has_weight and X_w is not None:
         last_age_w = int(X_w[-1][0])
-        gpr_w = train_gpr_who(X_w, y_w, sex, who_waz_df)
-        if gpr_w is not None:
-            try:
-                preds_w_raw = gpr_predict_with_who(gpr_w, last_age_w, horizon)
-                preds_w_enriched = []
-                for p in preds_w_raw:
-                    age = p["age"]
-                    val = max(0.0, p["height"])
-                    waz  = compute_waz(val, age, sex, who_waz_df)
-                    stat = classify_zscore_status(waz, "weight")
-                    preds_w_enriched.append({
-                        "age":              age,
-                        "value":            round(val, 3),
-                        "waz":              round(waz, 3) if not np.isnan(waz) else None,
-                        "status":           stat,
-                        "uncertainty_band": round(p["uncertainty_band"], 3),
-                    })
-            except Exception:
-                preds_w_enriched = None
+        if requested_model in ["linear", "linear_regression"]:
+            linear_w = train_linear(X_w, y_w)
+            if linear_w is not None:
+                try:
+                    preds_w_raw = _predict_sklearn_future(linear_w, last_age_w, horizon)
+                    preds_w_enriched = []
+                    for p in preds_w_raw:
+                        age = p["age"]
+                        val = max(0.0, p["value"])
+                        waz  = compute_waz(val, age, sex, who_waz_df)
+                        stat = classify_zscore_status(waz, "weight")
+                        preds_w_enriched.append({
+                            "age":              age,
+                            "value":            round(val, 3),
+                            "waz":              round(waz, 3) if not np.isnan(waz) else None,
+                            "status":           stat,
+                            "uncertainty_band": 0.0,
+                        })
+                except Exception:
+                    preds_w_enriched = None
+        else:
+            gpr_w = train_gpr_who(X_w, y_w, sex, who_waz_df)
+            if gpr_w is not None:
+                try:
+                    preds_w_raw = gpr_predict_with_who(gpr_w, last_age_w, horizon)
+                    preds_w_enriched = []
+                    for p in preds_w_raw:
+                        age = p["age"]
+                        val = max(0.0, p["height"])
+                        waz  = compute_waz(val, age, sex, who_waz_df)
+                        stat = classify_zscore_status(waz, "weight")
+                        preds_w_enriched.append({
+                            "age":              age,
+                            "value":            round(val, 3),
+                            "waz":              round(waz, 3) if not np.isnan(waz) else None,
+                            "status":           stat,
+                            "uncertainty_band": round(p["uncertainty_band"], 3),
+                        })
+                except Exception:
+                    preds_w_enriched = None
 
     # 11. Lingkar Kepala (jika ada)
     preds_hc_enriched = None
     if has_hc and X_hc is not None:
         last_age_hc = int(X_hc[-1][0])
-        gpr_hc = train_gpr_who(X_hc, y_hc, sex, who_hcaz_df)
-        if gpr_hc is not None:
-            try:
-                preds_hc_raw = gpr_predict_with_who(gpr_hc, last_age_hc, horizon)
-                preds_hc_enriched = []
-                for p in preds_hc_raw:
-                    age  = p["age"]
-                    val  = max(0.0, p["height"])
-                    hcaz = compute_hcaz(val, age, sex, who_hcaz_df)
-                    stat = classify_zscore_status(hcaz, "head_circ")
-                    preds_hc_enriched.append({
-                        "age":              age,
-                        "value":            round(val, 3),
-                        "hcaz":             round(hcaz, 3) if not np.isnan(hcaz) else None,
-                        "status":           stat,
-                        "uncertainty_band": round(p["uncertainty_band"], 3),
-                    })
-            except Exception:
-                preds_hc_enriched = None
+        if requested_model in ["linear", "linear_regression"]:
+            linear_hc = train_linear(X_hc, y_hc)
+            if linear_hc is not None:
+                try:
+                    preds_hc_raw = _predict_sklearn_future(linear_hc, last_age_hc, horizon)
+                    preds_hc_enriched = []
+                    for p in preds_hc_raw:
+                        age  = p["age"]
+                        val  = max(0.0, p["value"])
+                        hcaz = compute_hcaz(val, age, sex, who_hcaz_df)
+                        stat = classify_zscore_status(hcaz, "head_circ")
+                        preds_hc_enriched.append({
+                            "age":              age,
+                            "value":            round(val, 3),
+                            "hcaz":             round(hcaz, 3) if not np.isnan(hcaz) else None,
+                            "status":           stat,
+                            "uncertainty_band": 0.0,
+                        })
+                except Exception:
+                    preds_hc_enriched = None
+        else:
+            gpr_hc = train_gpr_who(X_hc, y_hc, sex, who_hcaz_df)
+            if gpr_hc is not None:
+                try:
+                    preds_hc_raw = gpr_predict_with_who(gpr_hc, last_age_hc, horizon)
+                    preds_hc_enriched = []
+                    for p in preds_hc_raw:
+                        age  = p["age"]
+                        val  = max(0.0, p["height"])
+                        hcaz = compute_hcaz(val, age, sex, who_hcaz_df)
+                        stat = classify_zscore_status(hcaz, "head_circ")
+                        preds_hc_enriched.append({
+                            "age":              age,
+                            "value":            round(val, 3),
+                            "hcaz":             round(hcaz, 3) if not np.isnan(hcaz) else None,
+                            "status":           stat,
+                            "uncertainty_band": round(p["uncertainty_band"], 3),
+                        })
+                except Exception:
+                    preds_hc_enriched = None
 
     # 12. Kumpulkan Model Perbandingan untuk Response JSON
     comparison_models = []
@@ -573,8 +615,7 @@ def predict_v3():
         "success":         True,
         "version":         "v3",
         "description": (
-            "Pure Data-Driven Gaussian Process Regression (Linear+RBF Kernel). "
-            "Prediksi memodelkan trajektori individual anak secara murni dari data historis tanpa pull WHO median. "
+            f"Prediksi pertumbuhan anak menggunakan model {selected_model_name}. "
             f"Indikator aktif: tinggi badan"
             + (", berat badan" if preds_w_enriched else "")
             + (", lingkar kepala" if preds_hc_enriched else "")
